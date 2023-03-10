@@ -1,103 +1,25 @@
-import { NavLink } from 'react-router-dom'
+/* eslint-disable import/no-extraneous-dependencies */
+import { memo, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import styles from './Header.module.css'
+import logo from '../../images/logo.png'
+import { Menu } from '../Menu/Menu'
 
 export function Header() {
+  const [menuActive, setMenuActive] = useState(false)
   return (
     <div className={styles.header}>
-      <nav>
-        <ul className={styles.pagesContainer}>
-          <div>
-            <li>
-              <NavLink
-            // className={({ isActive }) => classNames({ [headerStyle.activeLink]: isActive })}
-                to="/"
-              >
-                {/* <img src= alt="" /> */}
-              </NavLink>
-            </li>
-          </div>
-          <div>
-            <li>
-              <NavLink
-            // className={({ isActive }) => classNames({ [headerStyle.activeLink]: isActive })}
-                to="/about"
-              >
-                О нас
-              </NavLink>
-            </li>
-          </div>
-          <div>
-            <li>
-              <NavLink
-            // className={({ isActive }) => classNames({ [headerStyle.activeLink]: isActive })}
-                to="/bars"
-              >
-                Bars
-              </NavLink>
-            </li>
-          </div>
-          <div>
-            <li>
-              <NavLink
-            // className={({ isActive }) => classNames({ [headerStyle.activeLink]: isActive })}
-                to="/catalog"
-              >
-                catalog
-              </NavLink>
-            </li>
-          </div>
-          <div>
-            <li>
-              <NavLink
-            // className={({ isActive }) => classNames({ [headerStyle.activeLink]: isActive })}
-                to="/news"
-              >
-                news
-              </NavLink>
-            </li>
-          </div>
-          <div>
-            <li>
-              <NavLink
-            // className={({ isActive }) => classNames({ [headerStyle.activeLink]: isActive })}
-                to="/favorite"
-              >
-                favorite
-              </NavLink>
-            </li>
-          </div>
-          <div>
-            <li>
-              <NavLink
-            // className={({ isActive }) => classNames({ [headerStyle.activeLink]: isActive })}
-                to="/user"
-              >
-                user
-              </NavLink>
-            </li>
-          </div>
-          <div>
-            <li>
-              <NavLink
-            // className={({ isActive }) => classNames({ [headerStyle.activeLink]: isActive })}
-                to="/signup"
-              >
-                signup
-              </NavLink>
-            </li>
-          </div>
-          <div>
-            <li>
-              <NavLink
-            // className={({ isActive }) => classNames({ [headerStyle.activeLink]: isActive })}
-                to="/signin"
-              >
-                signin
-              </NavLink>
-            </li>
-          </div>
-        </ul>
-      </nav>
+      <Link to="/">
+        <img className={styles.headerLogo} src={logo} alt="logo" />
+      </Link>
+      <button type="button" className={styles.burgerBtn} onClick={() => setMenuActive(!menuActive)}>
+        <FontAwesomeIcon icon={faBars} />
+      </button>
+      <Menu active={menuActive} setActive={setMenuActive} />
     </div>
   )
 }
+
+export const HeaderMemo = memo(Header)

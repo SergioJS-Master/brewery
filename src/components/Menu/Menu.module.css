@@ -1,0 +1,111 @@
+.menu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  transform: translateX(-150%);
+}
+
+.menuActive {
+  position: fixed;
+  width: 50%;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  transform: translateX(-100%);
+  transform: translateX(0);
+}
+
+.menuContent {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  font-size: 50px;
+}
+
+.menuHeader {
+  font-size: 1.5rem;
+  color: black;
+  border-bottom: 1px solid;
+  width: 100%;
+  text-align: center;
+}
+
+.menuList a {
+  color: black;
+  padding: 4px;
+  font-weight: 200;
+}
+
+.menuContentBlur {
+  width: 100vw;
+  height: 100vh;
+  right: 50%;
+  backdrop-filter: blur(10px);
+  position: absolute;
+  z-index: -1;
+}
+
+.bars {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.5), rgb(0, 0, 0)),
+    url('../../images/pivnoj-pab..jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  width: 700px;
+  height: 170px;
+}
+
+.catalog {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.5), rgb(0, 0, 0)),
+    url('../../images/bdca459f.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  width: 700px;
+  height: 170px;
+}
+
+.news {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.5), rgb(0, 0, 0)),
+    url('../../images/news.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  width: 700px;
+  height: 170px;
+}
+
+.about {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.5), rgb(0, 0, 0)),
+    url('../../images/about.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  width: 700px;
+  height: 170px;
+}
+
+.favorite {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.5), rgb(0, 0, 0)),
+    url('../../images/favorite.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+  width: 700px;
+  height: 170px;
+}
