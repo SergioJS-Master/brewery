@@ -1,12 +1,21 @@
 .header {
-
-    width: 100%;
-    height: 200px;
-    background-color: rgb(4, 0, 118);
+  position: sticky;
+  top: 20px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
 }
 
-.pagesContainer {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
+.headerLogo {
+  height: 130px;
+}
+
+.burgerBtn {
+  border: none;
+  background: transparent;
+  font-size: 40px;
+  color: white;
+  height: 100%;
 }
