@@ -1,4 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Menu.module.css'
@@ -21,26 +23,24 @@ export function Menu({ active, setActive }) {
       setActive(false)
     }
   }
+
+  const closeMenu = () => {
+    setActive(false)
+  }
+
   return (
     <div className={active ? styles.menuActive : styles.menu}>
-      <div className={styles.menuContentBlur} />
+      <div className={styles.menuContentBlur} onClick={closeMenu} />
       <div className={styles.menuContent} onClick={closeMenuByClickWrapper}>
+        <div className={styles.menuX} onClick={closeMenu}>
+          <FontAwesomeIcon icon={faXmark} />
+        </div>
         <ul className={styles.menuList}>
-          <Link to="/about">
-            <div className={styles.about}>О нас</div>
-          </Link>
-          <Link to="/bars">
-            <div className={styles.bars}>Бары</div>
-          </Link>
-          <Link to="/catalog">
-            <div className={styles.catalog}>Каталог</div>
-          </Link>
-          <Link to="/news">
-            <div className={styles.news}>Новости</div>
-          </Link>
-          <Link to="/favorite">
-            <div className={styles.favorite}>Избранное</div>
-          </Link>
+          <Link to="/about">о нас</Link>
+          <Link to="/bars">бары</Link>
+          <Link to="/catalog">каталог</Link>
+          <Link to="/news">новости</Link>
+          <Link to="/favorite">избранное</Link>
         </ul>
       </div>
     </div>
