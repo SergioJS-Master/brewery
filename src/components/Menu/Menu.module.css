@@ -46,10 +46,11 @@
   color: black;
   font-weight: 500;
   letter-spacing: 6px;
-  font-size: 80px;
+  font-size: 60px;
   font-style: normal;
   line-height: 130px;
   cursor: pointer;
+  font-family: Gotham A, Gotham B, sans-serif;
 }
 
 .menuContentBlur {

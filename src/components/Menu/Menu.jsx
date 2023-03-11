@@ -36,11 +36,11 @@ export function Menu({ active, setActive }) {
           <FontAwesomeIcon icon={faXmark} />
         </div>
         <ul className={styles.menuList}>
-          <Link to="/about">о нас</Link>
-          <Link to="/bars">бары</Link>
-          <Link to="/catalog">каталог</Link>
-          <Link to="/news">новости</Link>
-          <Link to="/favorite">избранное</Link>
+          <Link to="/about">О НАС</Link>
+          <Link to="/bars">БАРЫ</Link>
+          <Link to="/catalog">КАТАЛОГ</Link>
+          <Link to="/news">НОВОСТИ</Link>
+          <Link to="/favorite">ИЗБРАННОЕ</Link>
         </ul>
       </div>
     </div>
