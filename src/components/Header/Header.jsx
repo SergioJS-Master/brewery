@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import styles from './Header.module.css'
-import logo from '../../images/logo.png'
+import logo from '../../images/logo2.png'
 import { Menu } from '../Menu/Menu'
 
 export function Header() {
