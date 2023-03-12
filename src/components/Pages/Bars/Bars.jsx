@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import styles from './bars.module.css'
+import { Map } from './components/Map/Map'
 
 export function Bars() {
   return (
@@ -94,6 +95,11 @@ export function Bars() {
           </div>
         </div>
       </div>
+
+      <div className={styles.mapWr}>
+        <Map />
+      </div>
+
     </div>
   )
 }
