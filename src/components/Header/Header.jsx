@@ -9,15 +9,34 @@ import { Menu } from '../Menu/Menu'
 
 export function Header() {
   const [menuActive, setMenuActive] = useState(false)
+  const [scroll, setScroll] = useState(false)
+
+  const changeBackgroundScrolled = () => {
+    if (window.scrollY > 1) {
+      setScroll(true)
+    } else setScroll(false)
+  }
+  window.addEventListener('scroll', changeBackgroundScrolled)
+
   return (
-    <div className={styles.header}>
-      <Link to="/">
-        <img className={styles.headerLogo} src={logo} alt="logo" />
-      </Link>
-      <button type="button" className={styles.burgerBtn} onClick={() => setMenuActive(!menuActive)}>
-        <FontAwesomeIcon icon={faBars} />
-      </button>
-      <Menu active={menuActive} setActive={setMenuActive} />
+    <div className={scroll ? styles.scrolledHeader : styles.scrollHeader}>
+      <div className={styles.header}>
+        <Link to="/">
+          <img
+            className={scroll ? styles.headerLogoScrolled : styles.headerLogo}
+            src={logo}
+            alt="logo"
+          />
+        </Link>
+        <button
+          type="button"
+          className={styles.burgerBtn}
+          onClick={() => setMenuActive(!menuActive)}
+        >
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+        <Menu active={menuActive} setActive={setMenuActive} />
+      </div>
     </div>
   )
 }
