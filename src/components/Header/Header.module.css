@@ -1,15 +1,24 @@
 .header {
   position: sticky;
-  top: 20px;
+  top: 0;
   z-index: 2;
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
   align-items: center;
+  transition: 0.5s ease;
 }
 
 .headerLogo {
-  height: 130px;
+  height: 100px;
+  padding-top: 10px;
+  padding-bottom: 4px;
+  transition: 0.5s ease;
+}
+
+.headerLogoScrolled {
+  height: 70px;
+  padding-top: 10px;
+  transition: 0.5s ease;
 }
 
 .burgerBtn {
@@ -18,4 +27,19 @@
   font-size: 40px;
   color: white;
   height: 100%;
+}
+
+.scrolledHeader {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: #170200b4;
+  transition: 0.5s ease-out;
+}
+
+.scrollHeader {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: transparent;
 }
