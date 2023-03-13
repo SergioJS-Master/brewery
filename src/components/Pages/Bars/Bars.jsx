@@ -1,10 +1,11 @@
 import classNames from 'classnames'
 import styles from './bars.module.css'
-import { Map } from './components/Map/Map'
+import { MapYandex } from './components/MapYandex/MapYandex'
 
 export function Bars() {
   return (
     <div className={styles.wr}>
+
       <div className={styles.card}>
         <div className={styles.cardImage1}>
           <div className={styles.cardName}>
@@ -18,7 +19,7 @@ export function Bars() {
               отечественных производителей
             </p>
             <div>
-              <p>Адрес: г.Москва, ул. Охотный ряд, д.1</p>
+              <p>Адрес: г.Москва, ул. Новый Арбат, д.8</p>
               <div className={styles.iconsWr}>
                 <div className={styles.rating}>
                   <i className={classNames('bi bi-star-fill', styles.gradient)} />
@@ -97,9 +98,8 @@ export function Bars() {
       </div>
 
       <div className={styles.mapWr}>
-        <Map />
+        <MapYandex />
       </div>
-
     </div>
   )
 }
