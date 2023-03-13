@@ -1,0 +1,42 @@
+.arrowLeft {
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: -40px;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.arrowRight {
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cardsContainerSlider {
+    width: 80%
+}
+
+
+.sliderContainer {
+    position: relative;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    width: 700px;
+    height: 550px;
+    position: relative;
+    /* background-color: #0087b480; */
+    /* box-shadow: 10px 10px 10px 10px white; */
+}
