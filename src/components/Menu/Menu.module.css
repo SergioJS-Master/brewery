@@ -2,7 +2,7 @@
   position: fixed;
   width: 50vw;
   height: 100vh;
-  transform: translateX(-150%);
+  transform: translateX(250%);
 }
 
 .menuActive {
@@ -11,8 +11,8 @@
   height: 100vh;
   top: 0;
   right: 0;
-  transform: translateX(-100%);
   transform: translateX(0);
+  /* transition: 0.3s ease; */
 }
 
 .menuContent {

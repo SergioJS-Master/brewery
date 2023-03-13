@@ -1,3 +1,60 @@
 .main {
   height: 1000px;
 }
+
+.fullScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fullScreenVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fullScreenBody {
+  padding: 50px 15px;
+  background: linear-gradient(rgba(0, 0, 0, 0), 20%, #170200);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.fullScreenTitle {
+  position: absolute;
+  bottom: 200px;
+  left: 50px;
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: 20px;
+  margin: 0 0 30px 0;
+  color: white;
+}
+
+.fullScreenText {
+  position: absolute;
+  bottom: 170px;
+  left: 100px;
+  font-size: 20px;
+  letter-spacing: 6px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.span {
+  font-size: 66px;
+  color: rgba(255, 255, 255, 0.4);
+}
