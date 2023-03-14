@@ -35,7 +35,7 @@ export function SignUp() {
       <div className={styles.errorMessage}>
         <div className={styles.error}>
           <p>{error.message}</p>
-          <Link to="/">На главную</Link>
+          <Link to="/">home page</Link>
         </div>
       </div>
     )
