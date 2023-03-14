@@ -1,70 +1,94 @@
 /* eslint-disable max-len */
 import wheatBeer from '../images/beersCards/wheatBeer.png'
+import wheatBeerWheat from '../images/beersCards/wheat.png'
 import lagerBeer from '../images/beersCards/lagerBeer.png'
+import lagerBeerSun from '../images/beersCards/sunBeer.png'
 import aleBeer from '../images/beersCards/aleBeer.png'
+import aleBeerAmber from '../images/beersCards/amber3.png'
 import ipaBeer from '../images/beersCards/ipaBeer1.png'
+import ipaBeerHops from '../images/beersCards/hops.png'
+import porterBeer from '../images/beersCards/porterBeer2.png'
+import porterBeerMoon from '../images/beersCards/moon.png'
+import stoutBeer from '../images/beersCards/stoutBeer1.png'
+import stoutBeerRose from '../images/beersCards/rose.png'
 
 export const dataCardsBeer = [
   {
     _id: '601fc862-2ef5-4b56-8680-1664e11f81cd',
     pictures: wheatBeer,
+    pictures2: wheatBeerWheat,
     name: 'WHEAT BEER',
-    discription: 'Пшеничное пиво в традиционном баварском стиле',
+    discription: 'Wheat beer in the traditional Bavarian style',
     SRM: '4',
     IBU: '10',
     AlC: '4.8%',
     rating: '5',
-    bgColor: '#0087b480',
+    bgColor: '#c607078e',
+    bgColorInfo: '#C60708',
   },
   {
     _id: 'aaec443c-4d9f-4f24-aba6-91b9e7baed94',
     pictures: lagerBeer,
-    name: 'American Lager',
-    discription: 'Светлый лагер с умеренной горечью по традиционным рецептам аериканского легкого лагера',
+    pictures2: lagerBeerSun,
+    name: 'AMR. LAGER',
+    discription: 'Light lager with moderate bitterness according to traditional recipes of American light lager',
     SRM: '2',
     IBU: '11',
     AlC: '4%',
     rating: '5',
-    bgColor: '#e1b800',
+    bgColor: '#ffe10080',
+    bgColorInfo: '#f3a600',
   },
   {
     _id: 'cfe97c19-f376-4f14-ac0b-4904d6e88445',
     pictures: ipaBeer,
-    name: 'English IPA',
-    discription: 'Английская IPA приятная горечь и богатый хмелевой аромат',
+    pictures2: ipaBeerHops,
+    name: 'ENGLICH IPA',
+    discription: 'English IPA pleasant bitterness and rich hop aroma',
     SRM: '8',
     IBU: '48',
     AlC: '5.5%',
     rating: '5',
+    bgColor: '#ff44008f',
+    bgColorInfo: '#E43D00',
   },
   {
     _id: 'a993a197-5788-4e8b-9b2a-93061a38dbff',
     pictures: aleBeer,
-    name: 'Ale',
-    discription: 'Мягкая, изящная солодовость, с нежно бархатистой консистенцией',
+    pictures2: aleBeerAmber,
+    name: 'ALE',
+    discription: 'Soft, elegant maltiness, with a delicate velvety consistency',
     SRM: '13',
     IBU: '22',
     AlC: '4.6%',
     rating: '5',
+    bgColor: '#00ff3c86',
+    bgColorInfo: '#41BA3B',
   },
   {
     _id: '8dd1b920-2e32-404b-8d08-beff1b8a0587',
-    pictures: 'https://static.tildacdn.com/tild3939-6364-4763-b737-363737666133/SAVE_20200822_215706.jpg',
-    name: 'Brown Porter',
-    discription: 'Английский темный эль с ограниченными прожаренными свойствами',
+    pictures: porterBeer,
+    pictures2: porterBeerMoon,
+    name: 'BROWN PORTER',
+    discription: 'English dark ale with limited roasted properties',
     SRM: '28',
     IBU: '20',
     AlC: '5.1%',
     rating: '5',
+    bgColor: '#2e2e2eb1',
+    bgColorInfo: '#383837',
   },
   {
     _id: 'eb3ee46c-72e9-454d-b948-69313cd047fb',
-    pictures: 'https://img2.freepng.ru/20180705/tyf/kisspng-beer-stout-porter-pint-glass-pilsner-somersby-cider-5b3dc196a64829.9432901215307739106811.jpg',
-    name: 'Oatmeal Stout',
-    discription: 'Мягкий аромат жаренного зерна и легкая сладость, оторая напоминает кофе со сливками',
+    pictures: stoutBeer,
+    pictures2: stoutBeerRose,
+    name: 'OATMEAL STOUT',
+    discription: 'The soft aroma of roasted grains and a light sweetness that resembles coffee with cream',
     SRM: '38',
     IBU: '30',
     AlC: '5.5%',
     rating: '5',
+    bgColor: '#000000b1',
+    bgColorInfo: '#000000',
   },
 ]

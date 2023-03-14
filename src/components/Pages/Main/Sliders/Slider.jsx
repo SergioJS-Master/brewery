@@ -24,29 +24,61 @@ export function Slider({ sliders }) {
     <div className={sliderStyles.sliderContainer}>
       {dataCardsBeer.map((el, index) => (
         <div
-          className={index === current ? (sliderStyles.slideActive) : (sliderStyles.slideActive)}
+          className={index === current ? (sliderStyles.slideActive) : (sliderStyles.slide)}
           key={el._id}
         >
           {index === current && (
-            <div>
-              <img
-                src={el.pictures}
-                className={sliderStyles.img}
-                alt="logo"
-              />
-              <h1 style={{
-                backgroundColor: el.bgColor,
-                position: 'absolute',
-                top: '83%',
-                left: '314px',
-                fontSize: '50px',
-                padding: '20px',
-                color: 'white',
-
+            <div className={sliderStyles.cardBeerContainer}>
+              <div>
+                <img
+                  src={el.pictures}
+                  className={sliderStyles.img}
+                  alt="logo"
+                />
+                <img
+                  src={el.pictures2}
+                  className={sliderStyles.img2}
+                  alt="logo"
+                />
+                <h1 style={{
+                  backgroundColor: el.bgColor,
+                  position: 'absolute',
+                  top: '83%',
+                  left: '245px',
+                  fontSize: '-10px',
+                  padding: '20px',
+                  color: 'white',
+                }}
+                >
+                  {el.name}
+                </h1>
+              </div>
+              <div style={{
+                backgroundColor: el.bgColorInfo,
+                padding: '10px',
               }}
               >
-                {el.name}
-              </h1>
+                <h3 className={sliderStyles.h3}>
+                  <span>Discription: </span>
+                  {el.discription}
+                </h3>
+                <h3 className={sliderStyles.h3}>
+                  <span>SRM: </span>
+                  {el.SRM}
+                </h3>
+                <h3 className={sliderStyles.h3}>
+                  <span>IBU: </span>
+                  {el.IBU}
+                </h3>
+                <h3 className={sliderStyles.h3}>
+                  <span>ALC: </span>
+                  {el.AlC}
+                </h3>
+                <h3 className={sliderStyles.h3}>
+                  <span>Rating: </span>
+                  {el.rating}
+                </h3>
+              </div>
             </div>
           )}
         </div>

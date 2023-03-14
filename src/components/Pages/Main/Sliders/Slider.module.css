@@ -1,6 +1,6 @@
 .arrowLeft {
     color: white;
-    font-size: 40px;
+    font-size: 60px;
     position: absolute;
     top: 50%;
     left: -40px;
@@ -11,7 +11,7 @@
 
 .arrowRight {
     color: white;
-    font-size: 40px;
+    font-size: 60px;
     position: absolute;
     top: 50%;
     right: -40px;
@@ -27,16 +27,50 @@
 
 .sliderContainer {
     position: relative;
-    margin-bottom: 40px;
+    margin: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .img {
-    width: 700px;
+    width: 750px;
     height: 550px;
     position: relative;
-    /* background-color: #0087b480; */
+    /* background-color: #2e2e2eb1; */
     /* box-shadow: 10px 10px 10px 10px white; */
+}
+
+.img2 {
+    position: absolute;
+    width: 350px;
+    top: 200px;
+    right: -10px;
+}
+
+.slide {
+    opacity: 0;
+    transition: 1s ease;
+}
+
+.slideActive {
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.08);
+}
+
+.cardBeerContainer {
+    display: flex;
+    align-items: center;
+}
+
+/* .cardBeerInfoContainer {
+    background-color: #c607078e;
+} */
+
+.h3 {
+    color: white;
+    padding: 20px;
+    margin: -10px;
+    width: 500px;
 }
