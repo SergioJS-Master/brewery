@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Provider } from 'react-redux'
 import App from './App'
 import { Main } from './components/Pages/Main/Main'
 import { SignIn } from './components/Pages/SignIn/SignIn'
@@ -14,6 +15,7 @@ import { Favorite } from './components/Pages/Favorite/Favorite'
 import { News } from './components/Pages/News/News'
 import { Catalog } from './components/Pages/Catalog/Catalog'
 import { User } from './components/Pages/User/User'
+import { store } from './redux/store'
 
 const router = createBrowserRouter(
   [
@@ -60,7 +62,7 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: '/brewery/' },
+  // { basename: '/brewery/' },
 )
 
 const queryClient = new QueryClient({
@@ -75,7 +77,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   // <React.StrictMode>
   <QueryClientProvider client={queryClient}>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </QueryClientProvider>,
   // </React.StrictMode>,
 )
