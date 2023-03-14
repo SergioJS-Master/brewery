@@ -44,7 +44,7 @@ export function Slider({ sliders }) {
                   backgroundColor: el.bgColor,
                   position: 'absolute',
                   top: '83%',
-                  left: '245px',
+                  left: '300px',
                   fontSize: '-10px',
                   padding: '20px',
                   color: 'white',
