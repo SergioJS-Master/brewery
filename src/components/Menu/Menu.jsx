@@ -36,11 +36,29 @@ export function Menu({ active, setActive }) {
           <FontAwesomeIcon icon={faXmark} />
         </div>
         <ul className={styles.menuList}>
-          <Link to="/about">О НАС</Link>
-          <Link to="/bars">БАРЫ</Link>
-          <Link to="/catalog">КАТАЛОГ</Link>
-          <Link to="/news">НОВОСТИ</Link>
-          <Link to="/favorite">ИЗБРАННОЕ</Link>
+          <div className={styles.menuListA}>
+            <Link to="/about">ABOUT</Link>
+          </div>
+          <div className={styles.menuListA}>
+            <Link to="/bars">BARS</Link>
+          </div>
+          <div className={styles.menuListA}>
+            <Link to="/catalog">CATALOG</Link>
+          </div>
+          <div className={styles.menuListA}>
+            <Link to="/news">NEWS</Link>
+          </div>
+          <div className={styles.menuListA}>
+            <Link to="/favorite">FAVORITES</Link>
+          </div>
+        </ul>
+        <ul className={styles.menuListTwo}>
+          <div className={styles.reg}>
+            <Link to="/signup">SIGN-UP</Link>
+          </div>
+          <div className={styles.reg}>
+            <Link to="/user">USER</Link>
+          </div>
         </ul>
       </div>
     </div>

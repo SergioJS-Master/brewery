@@ -60,3 +60,27 @@
   backdrop-filter: blur(10px);
   position: absolute;
 }
+
+.menuListA {
+  width: min-content;
+}
+
+.reg a {
+  font-size: 20px;
+}
+
+.reg {
+  align-self: flex-end;
+  height: 40px;
+}
+
+.menuListTwo {
+  align-self: flex-end;
+  margin-right: 50px;
+}
+
+.menuListTwo a {
+  color: black;
+  cursor: pointer;
+  font-family: Gotham A, Gotham B, sans-serif;
+}

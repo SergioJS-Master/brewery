@@ -12,7 +12,7 @@ export function Main() {
             mountain
             <span className={styles.span}>]</span>
           </div>
-          <div className={styles.fullScreenText}>только пиво и ничего кроме!</div>
+          <div className={styles.fullScreenText}>ONLY BEER AND NOTHING BUT!</div>
         </div>
         <video preload="auto" autoPlay muted loop className={styles.fullScreenVideo}>
           <source type="video/mp4" src={video} />

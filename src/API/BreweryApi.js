@@ -54,6 +54,6 @@ class BreweryApi {
   }
 }
 
-export const signApi = new BreweryApi({
+export const breweryApi = new BreweryApi({
   signURL: 'https://api.react-learning.ru',
 })
