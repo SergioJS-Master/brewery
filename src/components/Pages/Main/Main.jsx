@@ -1,5 +1,8 @@
+import { Link } from 'react-router-dom'
 import styles from './Main.module.css'
 import video from '../../../videos/video1.mp4'
+import { dataCardsBeer } from '../../../API/dataCardsBeer'
+import { Slider } from './Sliders/Slider'
 
 export function Main() {
   return (
@@ -18,6 +21,10 @@ export function Main() {
           <source type="video/mp4" src={video} />
         </video>
       </div>
+      <div className={styles.sliderContainer}>
+        <Slider sliders={dataCardsBeer} />
+      </div>
+      <Link to="/about">about</Link>
     </div>
   )
 }
