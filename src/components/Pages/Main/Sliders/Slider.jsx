@@ -51,6 +51,7 @@ export function Slider({ sliders }) {
                 style={{
                   backgroundColor: el.bgColorInfo,
                   padding: '10px',
+                  paddingTop: '60px',
                 }}
               >
                 <h3 className={sliderStyles.h3}>
