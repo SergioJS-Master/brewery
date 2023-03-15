@@ -75,7 +75,7 @@ export const Modal = ({ closeHandler, children, isOpen = false }) => {
         animate="visible"
         exit="hidden"
       >
-        <ModalInner>{children}</ModalInner>
+        <ModalInner closeHandler={closeHandler}>{children}</ModalInner>
       </motion.div>
     )
   }

@@ -1,9 +1,7 @@
 /* eslint-disable object-curly-newline */
-/* eslint-disable import/named */
-/* eslint-disable import/no-extraneous-dependencies */
-import { useNavigate } from 'react-router'
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { useMutation } from '@tanstack/react-query'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import styles from './SignUp.module.css'
 import logo from '../../../images/signUp1.jpg'
@@ -21,21 +19,21 @@ const initialRegisterValues = {
 }
 
 export function SignUp() {
-  const naigate = useNavigate()
+  const navigate = useNavigate()
   const { mutateAsync, isLoading, isError, error } = useMutation({
     mutationFn: (values) => breweryApi.signUp(values),
   })
 
   const submitHandler = async (values) => {
     await mutateAsync(values)
-    naigate('/singin')
+    navigate('/signin')
   }
   if (isError) {
     return (
       <div className={styles.errorMessage}>
         <div className={styles.error}>
-          <p>{error.message}</p>
-          <Link to="/">home page</Link>
+          <p className={styles.errorText}>{error.message}</p>
+          <Link to="/">/ home page</Link>
         </div>
       </div>
     )

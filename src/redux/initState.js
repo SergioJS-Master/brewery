@@ -7,6 +7,8 @@ export const initState = {
     email: '',
     token: '',
     userId: '',
+    avatar: '',
+    about: '',
   },
   favourite: [],
 }

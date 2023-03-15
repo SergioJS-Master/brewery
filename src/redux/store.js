@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TOKEN_LS_KEY } from './constants'
-
 import { getIniteState } from './initState'
 import { favouriteReducer } from './slices/favouriteSlice'
 import { userReducer } from './slices/userSlice'
