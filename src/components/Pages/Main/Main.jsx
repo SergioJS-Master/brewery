@@ -30,6 +30,9 @@ export function Main() {
           <Slider sliders={dataCardsBeer} />
         </div>
       </div>
+      <div>
+        <hr className={styles.hrMain} />
+      </div>
       <div className={styles.picnicContainer}>
         <h2 className={styles.picnicHeaderH2}>TIME WITH MOUNTAIN</h2>
         <div className={styles.picnicContant}>
