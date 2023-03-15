@@ -14,61 +14,61 @@ export function Footer() {
       <div className={styles.footerContainer}>
         <div className={styles.footerGroup}>
           <Link to="/about">
-            <span className={styles.footerSpan}>О НАС</span>
+            <span className={styles.footerSpan}>ABOUT</span>
           </Link>
           <div className={styles.footerLinks}>
-            <Link to="/about">ТУТ О ПИВОВАРНЕ 1</Link>
-            <Link to="/about">ТУТ О ПИВОВАРНЕ2</Link>
-            <Link to="/about">ТУТ О ПИВОВАРНЕ 3</Link>
+            <Link to="/about">ABOUT BREWERY 1</Link>
+            <Link to="/about">ABOUT BREWERY 2</Link>
+            <Link to="/about">ABOUT BREWERY 3</Link>
           </div>
         </div>
         <div className={styles.footerGroup}>
           <Link to="/bars">
-            <span className={styles.footerSpan}>БАРЫ</span>
+            <span className={styles.footerSpan}>BARS</span>
           </Link>
           <div className={styles.footerLinks}>
-            <Link to="/bars">БАР 1</Link>
-            <Link to="/bars">БАР 2</Link>
-            <Link to="/bars">БАР 3</Link>
-            <Link to="/bars">БАР 4</Link>
-            <Link to="/bars">БАР 5</Link>
-            <Link to="/bars">БАР 6</Link>
+            <Link to="/bars">BAR 1</Link>
+            <Link to="/bars">BAR 2</Link>
+            <Link to="/bars">BAR 3</Link>
+            <Link to="/bars">BAR 4</Link>
+            <Link to="/bars">BAR 5</Link>
+            <Link to="/bars">BAR 6</Link>
           </div>
         </div>
         <div className={styles.footerGroup}>
           <Link to="/catalog">
-            <span className={styles.footerSpan}>КАТАЛОГ</span>
+            <span className={styles.footerSpan}>CATALOG</span>
           </Link>
           <div className={styles.footerLinks}>
-            <Link to="/catalog">СОРТ 1</Link>
-            <Link to="/catalog">СОРТ 2</Link>
-            <Link to="/catalog">СОРТ 3</Link>
-            <Link to="/catalog">СОРТ 4</Link>
-            <Link to="/catalog">СОРТ 5</Link>
-            <Link to="/catalog">СОРТ 6</Link>
+            <Link to="/catalog">BEER 1</Link>
+            <Link to="/catalog">BEER 2</Link>
+            <Link to="/catalog">BEER 3</Link>
+            <Link to="/catalog">BEER 4</Link>
+            <Link to="/catalog">BEER 5</Link>
+            <Link to="/catalog">BEER 6</Link>
           </div>
         </div>
         <div className={styles.footerGroup}>
           <Link to="/news">
-            <span className={styles.footerSpan}>НОВОСТИ</span>
+            <span className={styles.footerSpan}>NEWS</span>
           </Link>
           <div className={styles.footerLinks}>
-            <Link to="/news">НОВОСТИ 1</Link>
-            <Link to="/news">НОВОСТИ 2</Link>
-            <Link to="/news">НОВОСТИ 3</Link>
-            <Link to="/news">НОВОСТИ 4</Link>
-            <Link to="/news">НОВОСТИ 5</Link>
-            <Link to="/news">НОВОСТИ 6</Link>
+            <Link to="/news">NEWS 1</Link>
+            <Link to="/news">NEWS 2</Link>
+            <Link to="/news">NEWS 3</Link>
+            <Link to="/news">NEWS 4</Link>
+            <Link to="/news">NEWS 5</Link>
+            <Link to="/news">NEWS 6</Link>
           </div>
         </div>
         <div className={styles.footerGroup}>
           <Link to="/">
-            <span className={styles.footerSpan}>ПОЛЬЗОВАТЕЛЬ</span>
+            <span className={styles.footerSpan}>USER</span>
           </Link>
           <div className={styles.footerLinks}>
-            <Link to="/signin">ВХОД</Link>
-            <Link to="/signup">РЕГИСТРАЦИЯ</Link>
-            <Link to="/user">ЛИЧНАЯ СТРАНИЦА</Link>
+            <Link to="/signin">LOGIN</Link>
+            <Link to="/signup">SIGN-UP</Link>
+            <Link to="/user">PERSONAL PAGE</Link>
           </div>
         </div>
         <div className={styles.footerSocial}>
