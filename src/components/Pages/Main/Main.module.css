@@ -129,9 +129,111 @@
 }
 
 .picnicContantParagraph {
-  width: 650px;
+  width: 640px;
 }
 
 .hrMain {
   width: 1100px;
+}
+
+.solodContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+  margin-top: 80px;
+  position: relative;
+}
+
+.solodHeaderH1 {
+  margin-left: 70px;
+  font-size: 55px;
+  width: 640px;
+}
+
+.solodHeaderH2 {
+  position: absolute;
+  top: -52px;
+  left: 300px;
+  padding: 20px;
+  padding-left: 0;
+  background-color: #170200;
+  color: white;
+  font-size: 30px;
+}
+
+.solodHeaderH3 {
+  margin-left: 280px;
+}
+
+.solodContantText {
+  display: flex;
+  flex-direction: column;
+
+  color: white;
+  font-size: 30px;
+}
+
+.solodContant {
+  display: flex;
+  justify-content: center;
+  width: 1300px;
+}
+
+.solodImgLogo {
+  width: 100%;
+  background-color: #00000051;
+}
+
+.solodContantParagraph {
+  width: 650px;
+  margin-right: 10px;
+  position: absolute;
+  top: 177px;
+  right: 380px;
+  padding: 20px;
+  background-color: #170200;
+}
+
+.solodLink {
+  position: absolute;
+  top: 320px;
+  right: 330px;
+}
+
+.solodLinkA a {
+  background-color: #B97F29;
+  color: black;
+  padding: 10px;
+}
+
+.signUpInMsinContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.signUpInMsinContant {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 40px;
+  text-align: center;
+}
+
+.signUpInMsinP {
+  color: white;
+  font-size: 20px;
+}
+
+.signUpInMainLinkA a {
+  background-color: #B97F29;
+  color: black;
+  padding: 25px;
+}
+
+.imgHoops1 {
+  width: 100px;
+}
+
+.imgHoops2 {
+  width: 100px;
 }
