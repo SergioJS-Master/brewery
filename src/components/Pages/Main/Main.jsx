@@ -1,11 +1,18 @@
 /* eslint-disable max-len */
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styles from './Main.module.css'
 import video from '../../../videos/video1.mp4'
 import { dataCardsBeer } from '../../../API/dataCardsBeer'
 import { Slider } from './Sliders/Slider'
 import picnicImg from '../../../images/picnic.jpg'
+import solodImg from '../../../images/solod.jpg'
+import { getTokenSelector } from '../../../redux/slices/userSlice'
+import hoops from '../../../images/beersCards/hops.png'
 
 export function Main() {
+  const token = useSelector(getTokenSelector)
+
   return (
     <>
       <div className={styles.main}>
@@ -30,9 +37,11 @@ export function Main() {
           <Slider sliders={dataCardsBeer} />
         </div>
       </div>
+
       <div>
         <hr className={styles.hrMain} />
       </div>
+
       <div className={styles.picnicContainer}>
         <h2 className={styles.picnicHeaderH2}>TIME WITH MOUNTAIN</h2>
         <div className={styles.picnicContant}>
@@ -54,6 +63,60 @@ export function Main() {
           </div>
         </div>
       </div>
+
+      <div className={styles.solodContainer}>
+        <h2 className={styles.solodHeaderH2}>TIME WITH MOUNTAIN</h2>
+        <div className={styles.solodContant}>
+          <div>
+            <img
+              className={styles.solodImgLogo}
+              src={solodImg}
+              alt="logo"
+            />
+          </div>
+          <div className={styles.solodContantText}>
+            <div>
+              <h1 className={styles.solodHeaderH1}>THE WIND OF CHANGE</h1>
+              <h3 className={styles.solodHeaderH3}>CENTURY-OLD HISTORY</h3>
+            </div>
+            <div>
+              <p className={styles.solodContantParagraph}>From grandfathers to fathers, from fathers to sons. The whole history of the MOUNTAIN brewery is in a special section. Sincerely, your MOUNTAIN team.</p>
+            </div>
+            <ul className={styles.solodLink}>
+              <div className={styles.solodLinkA}>
+                <Link to="/about">ABOUT</Link>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <hr className={styles.hrMain} />
+      </div>
+
+      {!token && (
+        <div className={styles.signUpInMsinContainer}>
+          <div className={styles.signUpInMsinContant}>
+            <p className={styles.signUpInMsinP}>Go through registration to access all the functionality.</p>
+            <ul className={styles.signUpInMainLink}>
+              <div className={styles.signUpInMainLinkA}>
+                <Link to="/signup">SIGN-UP</Link>
+              </div>
+              <img
+                className={styles.imgHoops1}
+                src={hoops}
+                alt="logo"
+              />
+              <img
+                className={styles.imgHoops2}
+                src={hoops}
+                alt="logo"
+              />
+            </ul>
+          </div>
+        </div>
+      )}
     </>
   )
 }
