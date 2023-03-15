@@ -18,9 +18,9 @@
   user-select: none;
 }
 
-.cardsContainerSlider {
-  width: 80%;
-}
+/* .cardsContainerSlider {
+  width: 1300px;
+} */
 
 .sliderContainer {
   position: relative;
@@ -35,7 +35,7 @@
 .img2 {
   position: absolute;
   width: 350px;
-  top: 200px;
+  top: 220px;
   right: -10px;
 }
 
@@ -53,6 +53,8 @@
 .cardBeerContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 1300px;
 }
 
 .h3 {
