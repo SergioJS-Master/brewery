@@ -43,7 +43,7 @@ export function Menu({ active, setActive }) {
             <Link to="/bars">BARS</Link>
           </div>
           <div className={styles.menuListA}>
-            <Link to="/catalog">CATALOG</Link>
+            <Link to="/user">USER</Link>
           </div>
           <div className={styles.menuListA}>
             <Link to="/news">NEWS</Link>
@@ -57,7 +57,7 @@ export function Menu({ active, setActive }) {
             <Link to="/signup">SIGN-UP</Link>
           </div>
           <div className={styles.reg}>
-            <Link to="/user">USER</Link>
+            <Link to="/signin">LOG-IN</Link>
           </div>
         </ul>
       </div>

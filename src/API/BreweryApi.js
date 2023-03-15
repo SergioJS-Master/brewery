@@ -13,15 +13,15 @@ class BreweryApi {
     })
 
     if (res.status === 401) {
-      throw new Error(`Ошибка ${res.status}: Неправильные почта или пароль`)
+      throw new Error(`Error ${res.status}: Wrong email or password`)
     }
 
     if (res.status === 404) {
-      throw new Error(`Ошибка ${res.status}: Пользователь с указанным email не найден`)
+      throw new Error(`Error ${res.status}: The user with the specified email was not found`)
     }
 
     if (res.status >= 300) {
-      throw new Error(`Ошибка ${res.status}: Поле "email" должно быть валидным email-адресом`)
+      throw new Error(`Error ${res.status}: The "email" field must be a valid email address`)
     }
 
     return res.json()
@@ -37,7 +37,7 @@ class BreweryApi {
     })
 
     if (res.status > 299) {
-      throw new Error(`Ошибка ${res.status}: пользователь с таким email уже зарегистрирован`)
+      throw new Error(`Error ${res.status}: User with this email is already registered`)
     }
 
     return res.json()

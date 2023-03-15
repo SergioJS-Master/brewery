@@ -1,9 +1,10 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable object-curly-newline */
 /* eslint-disable import/no-extraneous-dependencies */
 import { useMutation } from '@tanstack/react-query'
 import { Form, Formik } from 'formik'
-import { useNavigate } from 'react-router'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { breweryApi } from '../../../API/BreweryApi'
 import { EmailInput } from '../../EmailInput/EmailInput'
 import { Loader } from '../../Loader/Loader'
@@ -11,6 +12,7 @@ import { PasswordInput } from '../../PasswordInput/PasswordInput'
 import styles from './SignIn.module.css'
 import { createSignInFormValidationScheme } from './validator'
 import logo from '../../../images/signUp1.jpg'
+import { getTokenSelector, setUser } from '../../../redux/slices/userSlice'
 
 const initialLoginValues = {
   email: '',
@@ -19,8 +21,13 @@ const initialLoginValues = {
 
 export function SignIn() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const token = useSelector(getTokenSelector)
   const { mutateAsync, isLoading, isError, error } = useMutation({
-    mutationFn: (values) => breweryApi.signIn(values),
+    mutationFn: (values) =>
+      breweryApi.signIn(values).then((data) => {
+        dispatch(setUser(data))
+      }),
   })
 
   const submitHandler = async (values) => {
@@ -34,12 +41,14 @@ export function SignIn() {
       <div className={styles.errorMessage}>
         <div className={styles.error}>
           <p>{error.message}</p>
-          <Link to="/">На главную</Link>
+          <Link to="/">/ home page</Link>
         </div>
       </div>
     )
   }
   if (isLoading) return <Loader />
+
+  console.log(token)
 
   return (
     <div className={styles.wr}>
