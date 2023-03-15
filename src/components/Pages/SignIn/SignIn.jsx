@@ -3,7 +3,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { useMutation } from '@tanstack/react-query'
 import { Form, Formik } from 'formik'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { breweryApi } from '../../../API/BreweryApi'
 import { EmailInput } from '../../EmailInput/EmailInput'
@@ -55,15 +56,11 @@ export function SignIn() {
       <div className={styles.imageBox}>
         <img className={styles.logo} src={logo} alt="signUpLogo" />
         <div className={styles.bgLogo}>
-          <span className={styles.title}>Join us</span>
-        </div>
-        <div className={styles.bgTextOne}>
-          <span className={styles.textOne}>the most interesting is yet to come</span>
+          <span className={styles.title}>Everything will start soon</span>
         </div>
         <div className={styles.bgTextTwo}>
           <span className={styles.text}>
-            After registration, you will be able to add bars to your favorites, follow the news,
-            view beers, and so on.
+            One step left, and you will be able to use all the functionality of the site.
           </span>
         </div>
       </div>
