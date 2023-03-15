@@ -67,7 +67,7 @@
   margin-top: 60px;
 }
 
-.content {
+.sliderСontent {
   position: relative;
 }
 
@@ -75,8 +75,8 @@
   position: absolute;
   z-index: 1;
   padding: 20px;
-  top: 110px;
-  right: 239px;
+  top: 52px;
+  right: -67px;
   font-size: 30px;
   color: white;
   background-color: #170200;
@@ -87,7 +87,6 @@
   justify-content: center;
   margin-bottom: 80px;
   margin-top: 80px;
-  position: relative;
 }
 
 .picnicHeaderH1 {
@@ -97,7 +96,7 @@
 .picnicHeaderH2 {
   position: absolute;
   top: -52px;
-  right: 300px;
+  right: 0px;
   padding: 20px;
   padding-right: 0;
   background-color: #170200;
@@ -112,7 +111,6 @@
 .picnicContantText {
   display: flex;
   flex-direction: column;
-
   color: white;
   font-size: 30px;
 }
@@ -121,6 +119,7 @@
   display: flex;
   justify-content: center;
   width: 1300px;
+  position: relative;
 }
 
 .picnicImgLogo {
@@ -141,7 +140,6 @@
   justify-content: center;
   margin-bottom: 80px;
   margin-top: 80px;
-  position: relative;
 }
 
 .solodHeaderH1 {
@@ -153,7 +151,7 @@
 .solodHeaderH2 {
   position: absolute;
   top: -52px;
-  left: 300px;
+  left: 0px;
   padding: 20px;
   padding-left: 0;
   background-color: #170200;
@@ -177,6 +175,7 @@
   display: flex;
   justify-content: center;
   width: 1300px;
+  position: relative;
 }
 
 .solodImgLogo {
@@ -189,7 +188,7 @@
   margin-right: 10px;
   position: absolute;
   top: 177px;
-  right: 380px;
+  right: 90px;
   padding: 20px;
   background-color: #170200;
 }
@@ -197,21 +196,22 @@
 .solodLink {
   position: absolute;
   top: 320px;
-  right: 330px;
+  right: 50px;
 }
 
 .solodLinkA a {
   background-color: #B97F29;
   color: black;
-  padding: 10px;
+  padding: 15px;
+  font-size: 20px;
 }
 
-.signUpInMsinContainer {
+.signUpInMainContainer {
   display: flex;
   justify-content: center;
 }
 
-.signUpInMsinContant {
+.signUpInMainContant {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -219,15 +219,16 @@
   text-align: center;
 }
 
-.signUpInMsinP {
+.signUpInMainP {
   color: white;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .signUpInMainLinkA a {
   background-color: #B97F29;
   color: black;
   padding: 25px;
+  font-size: 20px;
 }
 
 .imgHoops1 {

@@ -31,9 +31,10 @@ export function Main() {
           </video>
         </div>
       </div>
-      <div className={styles.content}>
-        <h3 className={styles.headingSlider}>OUR QUALITY PRODUCTS</h3>
-        <div className={styles.sliderContainer}>
+
+      <div className={styles.sliderContainer}>
+        <div className={styles.sliderСontent}>
+          <h3 className={styles.headingSlider}>OUR QUALITY PRODUCTS</h3>
           <Slider sliders={dataCardsBeer} />
         </div>
       </div>
@@ -43,7 +44,6 @@ export function Main() {
       </div>
 
       <div className={styles.picnicContainer}>
-        <h2 className={styles.picnicHeaderH2}>TIME WITH MOUNTAIN</h2>
         <div className={styles.picnicContant}>
           <div className={styles.picnicContantText}>
             <div>
@@ -60,12 +60,12 @@ export function Main() {
               src={picnicImg}
               alt="logo"
             />
+            <h2 className={styles.picnicHeaderH2}>TIME WITH MOUNTAIN</h2>
           </div>
         </div>
       </div>
 
       <div className={styles.solodContainer}>
-        <h2 className={styles.solodHeaderH2}>TIME WITH MOUNTAIN</h2>
         <div className={styles.solodContant}>
           <div>
             <img
@@ -73,6 +73,7 @@ export function Main() {
               src={solodImg}
               alt="logo"
             />
+            <h2 className={styles.solodHeaderH2}>ESTABLISHED TRADITIONS</h2>
           </div>
           <div className={styles.solodContantText}>
             <div>
@@ -96,9 +97,9 @@ export function Main() {
       </div>
 
       {!token && (
-        <div className={styles.signUpInMsinContainer}>
-          <div className={styles.signUpInMsinContant}>
-            <p className={styles.signUpInMsinP}>Go through registration to access all the functionality.</p>
+        <div className={styles.signUpInMainContainer}>
+          <div className={styles.signUpInMainContant}>
+            <p className={styles.signUpInMainP}>Go through registration to access all the functionality.</p>
             <ul className={styles.signUpInMainLink}>
               <div className={styles.signUpInMainLinkA}>
                 <Link to="/signup">SIGN-UP</Link>
