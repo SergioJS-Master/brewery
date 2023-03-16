@@ -92,31 +92,32 @@ export function Main() {
         </div>
       </div>
 
-      <div>
-        <hr className={styles.hrMain} />
-      </div>
-
       {!token && (
-        <div className={styles.signUpInMainContainer}>
-          <div className={styles.signUpInMainContant}>
-            <p className={styles.signUpInMainP}>Go through registration to access all the functionality.</p>
-            <ul className={styles.signUpInMainLink}>
-              <div className={styles.signUpInMainLinkA}>
-                <Link to="/signup">SIGN-UP</Link>
-              </div>
-              <img
-                className={styles.imgHoops1}
-                src={hoops}
-                alt="logo"
-              />
-              <img
-                className={styles.imgHoops2}
-                src={hoops}
-                alt="logo"
-              />
-            </ul>
+        <>
+          <div>
+            <hr className={styles.hrMain} />
           </div>
-        </div>
+          <div className={styles.signUpInMainContainer}>
+            <div className={styles.signUpInMainContant}>
+              <p className={styles.signUpInMainP}>Go through registration to access all the functionality.</p>
+              <ul className={styles.signUpInMainLink}>
+                <div className={styles.signUpInMainLinkA}>
+                  <Link to="/signup">SIGN-UP</Link>
+                </div>
+                <img
+                  className={styles.imgHoops1}
+                  src={hoops}
+                  alt="logo"
+                />
+                <img
+                  className={styles.imgHoops2}
+                  src={hoops}
+                  alt="logo"
+                />
+              </ul>
+            </div>
+          </div>
+        </>
       )}
     </>
   )
