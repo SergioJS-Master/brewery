@@ -1,3 +1,5 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable class-methods-use-this */
 class BarsApi {
   constructor({ baseUrl }) {
@@ -40,9 +42,7 @@ class BarsApi {
       body: JSON.stringify(values),
     })
     if (res.status >= 300) {
-      throw new Error(
-        `Произошла ошибка при добавлении бара, код ${res.status}`,
-      )
+      throw new Error(`Произошла ошибка при добавлении бара, код ${res.status}`)
     }
     return res.json()
   }
@@ -57,9 +57,7 @@ class BarsApi {
       },
     })
     if (res.status >= 300) {
-      throw new Error(
-        `${res.status}: Произошла ошибка при удалении бара, код ${res.statusText}.`,
-      )
+      throw new Error(`${res.status}: Произошла ошибка при удалении бара, код ${res.statusText}.`)
     }
     return res.json()
   }
@@ -86,11 +84,13 @@ class BarsApi {
   async getBarsByIds(ids, token) {
     this.checkToken(token)
     return Promise.all(
-      ids.map((id) => fetch(`${this.baseUrl}/bars/${id}`, {
-        headers: {
-          authorization: this.getAuthorizationHeader(token),
-        },
-      }).then((res) => res.json())),
+      ids.map((id) =>
+        fetch(`${this.baseUrl}/bars/${id}`, {
+          headers: {
+            authorization: this.getAuthorizationHeader(token),
+          },
+        }).then((res) => res.json()),
+      ),
     )
   }
 
