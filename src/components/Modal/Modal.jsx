@@ -1,6 +1,8 @@
-import { AnimatePresence, motion } from 'framer-motion'
+/* eslint-disable import/no-duplicates */
+import { AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
+import { motion } from 'framer-motion'
 import styles from './Modal.module.css'
 
 const modalWrVariants = {
@@ -70,9 +72,9 @@ export const Modal = ({ closeHandler, children, isOpen = false }) => {
       <motion.div
         className={styles.modalWr}
         onMouseDown={closeModalByClickWrapper}
-        variant={modalWrVariants}
+        variants={modalWrVariants}
         initial="hidden"
-        animate="visible"
+        animate="visable"
         exit="hidden"
       >
         <ModalInner closeHandler={closeHandler}>{children}</ModalInner>

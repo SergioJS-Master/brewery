@@ -2,10 +2,14 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { getTokenSelector, removeUser } from '../../redux/slices/userSlice'
 import styles from './Menu.module.css'
 
 export function Menu({ active, setActive }) {
+  const dispatch = useDispatch()
+  const token = useSelector(getTokenSelector)
   useEffect(() => {
     const closeMenu = (e) => {
       if (e.key === 'Escape') {
@@ -26,6 +30,10 @@ export function Menu({ active, setActive }) {
 
   const closeMenu = () => {
     setActive(false)
+  }
+
+  const deleteUser = () => {
+    dispatch(removeUser())
   }
 
   return (
@@ -56,9 +64,17 @@ export function Menu({ active, setActive }) {
           <div className={styles.reg}>
             <Link to="/signup">SIGN-UP</Link>
           </div>
-          <div className={styles.reg}>
-            <Link to="/signin">LOG-IN</Link>
-          </div>
+          {token ? (
+            <div className={styles.reg}>
+              <Link to="/signin" onClick={deleteUser}>
+                LOGOUT
+              </Link>
+            </div>
+          ) : (
+            <div className={styles.reg}>
+              <Link to="/signin">LOG-IN</Link>
+            </div>
+          )}
         </ul>
       </div>
     </div>
