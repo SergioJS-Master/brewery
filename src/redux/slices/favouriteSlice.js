@@ -25,7 +25,6 @@ const favouriteSlice = createSlice({
         return {
           payload: {
             id,
-            count: 1,
             isChecked: true,
           },
         }
