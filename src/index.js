@@ -16,6 +16,7 @@ import { News } from './components/Pages/News/News'
 import { Catalog } from './components/Pages/Catalog/Catalog'
 import { User } from './components/Pages/User/User'
 import { store } from './redux/store'
+import { DetailPageBar } from './components/Pages/DetailPageBar/DetailPageBar'
 
 const router = createBrowserRouter(
   [
@@ -38,6 +39,10 @@ const router = createBrowserRouter(
         {
           path: 'bars',
           element: <Bars />,
+        },
+        {
+          path: 'bars/:barId',
+          element: <DetailPageBar />,
         },
         {
           path: 'about',

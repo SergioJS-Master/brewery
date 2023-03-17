@@ -2,7 +2,7 @@
 import { useEffect } from 'react'
 import styles from './mapYandex.module.css'
 
-export function MapYandex() {
+export function MapYandex({ data }) {
   useEffect(() => {
     function init() {
       // eslint-disable-next-line no-undef
@@ -11,47 +11,22 @@ export function MapYandex() {
         zoom: 5,
       })
 
-      // eslint-disable-next-line no-undef
-      const placemark1 = new ymaps.Placemark([55.76374056896741, 37.60628049999999], {
-        balloonContentHeader: 'Flava',
-        balloonContentBody: 'г.Москва, ул. Тверская, д.17',
-        // balloonContentFooter: 'рейтинг 5',
-      }, {
-        iconLayout: 'default#image',
-        iconImageHref: 'https://cdn-icons-png.flaticon.com/512/931/931949.png',
-        iconImageSize: [30, 30],
-        iconImageOffset: [0, 0],
-      })
+      data.forEach((el) => {
+        // eslint-disable-next-line no-undef
+        const placemark = new ymaps.Placemark([el.latitude_N, el.longitude_E], {
+          balloonContentHeader: `${el.name}`,
+          balloonContentBody: `${el.city}, ${el.address}`,
+          balloonContentFooter: `рейтинг ${el.rating}`,
+        }, {
+          iconLayout: 'default#image',
+          iconImageHref: 'https://cdn-icons-png.flaticon.com/512/931/931949.png',
+          iconImageSize: [30, 30],
+          iconImageOffset: [0, 0],
+          // balloonImageOffset: [-36, -90], // смещание балуна, если его необходимо подогнать
+        })
 
-      // eslint-disable-next-line no-undef
-      const placemark2 = new ymaps.Placemark([55.75310856899971, 37.59534799999998], {
-        balloonContentHeader: 'The Royal Oak',
-        balloonContentBody: 'г.Москва, ул. Новый Арбат, д.8',
-        // balloonContentFooter: 'рейтинг 5',
-      }, {
-        iconLayout: 'default#image',
-        iconImageHref: 'https://cdn-icons-png.flaticon.com/512/931/931949.png',
-        iconImageSize: [30, 30],
-        iconImageOffset: [0, 0],
-        // balloonImageOffset: [-36, -90], // смещание балуна, если его необходимо подогнать
+        map.geoObjects.add(placemark)
       })
-
-      // eslint-disable-next-line no-undef
-      const placemark3 = new ymaps.Placemark([48.13793907401535, 11.580182499999964], {
-        balloonContentHeader: 'Hofbräuhaus',
-        balloonContentBody: 'г.Мюнхен, Плацль, д.8',
-        // balloonContentFooter: 'рейтинг 5',
-      }, {
-        iconLayout: 'default#image',
-        iconImageHref: 'https://cdn-icons-png.flaticon.com/512/931/931949.png',
-        iconImageSize: [30, 30],
-        iconImageOffset: [0, 0],
-        // balloonImageOffset: [-36, -90], // смещание балуна, если его необходимо подогнать
-      })
-
-      map.geoObjects.add(placemark1)
-      map.geoObjects.add(placemark2)
-      map.geoObjects.add(placemark3)
 
       map.controls.remove('trafficControl') // удаляем контроль трафика
       map.controls.remove('typeSelector') // удаляем тип
