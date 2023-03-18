@@ -10,7 +10,7 @@ function BarsInner({ data }) {
   if (!data.length) {
     return (
       <div className={styles.emptyList}>
-        <p>Бары не найдены</p>
+        <p>Bars not found</p>
         <i className="bi bi-emoji-frown" />
       </div>
     )
@@ -18,7 +18,6 @@ function BarsInner({ data }) {
 
   return (
     <div className={styles.wr}>
-
       {data.map((el) => (
         <BarsItem
           key={el.id}
@@ -53,9 +52,22 @@ export function Bars() {
     queryFn: () => barsApi.getAllBars(),
   })
 
-  console.log(error, data)
-  if (isLoading) return <Loader />
-  if (isError) return <h1>Error happend</h1>
+  // console.log(error, data)
+  if (isLoading) {
+    return (
+      <div className={styles.loader}>
+        <Loader />
+      </div>
+    )
+  }
+  if (isError) {
+    return (
+      <div className={styles.errorMessage}>
+        <h1>Bars not found</h1>
+        <p>please try again later</p>
+      </div>
+    )
+  }
 
   return (
     <BarsInnerWithQuery
