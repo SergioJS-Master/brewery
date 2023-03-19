@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { breweryApi } from '../../../API/BreweryApi'
 import { getTokenSelector } from '../../../redux/slices/userSlice'
 import { Loader } from '../../Loader/Loader'
@@ -9,8 +10,15 @@ import { Modal } from '../../Modal/Modal'
 import styles from './User.module.css'
 
 export function User() {
+  const navigate = useNavigate()
   const token = useSelector(getTokenSelector)
   const [isOpenModalAvatar, setIsOpenModalAvatar] = useState()
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/signin')
+    }
+  }, [token])
 
   const closeModalAvatar = () => {
     setIsOpenModalAvatar(false)
@@ -22,8 +30,12 @@ export function User() {
   const { data, isLoading } = useQuery({
     queryKey: ['user'],
     queryFn: () => breweryApi.getUserByToken(token),
+    enabled: !!token,
     keepPreviousData: true,
   })
+
+  console.log(data)
+
   if (isLoading) {
     return (
       <div className={styles.loader}>

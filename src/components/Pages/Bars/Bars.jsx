@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { barsApi } from '../../../API/api'
+import { barsApi } from '../../../API/BarsApi'
 import { withQuery } from '../../HOCs/withQuery'
 import { Loader } from '../../Loader/Loader'
 import styles from './bars.module.css'

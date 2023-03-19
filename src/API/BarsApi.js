@@ -95,11 +95,11 @@ class BarsApi {
   }
 
   async getBarById(id) {
-    const res = await fetch(`${this.baseURL}/bars/${id}`)
+    const res = await fetch(`${this.baseUrl}/bars/${id}`)
 
-    if (res.status >= 300) {
-      throw new Error(`Произошла ошибка, код ${res.status}`)
-    }
+    // if (res.status >= 300) {
+    //   throw new Error(`Произошла ошибка, код ${res.status}`)
+    // }
 
     return res.json()
   }
