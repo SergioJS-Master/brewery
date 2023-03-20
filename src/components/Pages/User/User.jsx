@@ -5,9 +5,10 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
 import { breweryApi } from '../../../API/BreweryApi'
 import { getTokenSelector } from '../../../redux/slices/userSlice'
 import { Loader } from '../../Loader/Loader'
@@ -17,9 +18,16 @@ import { EditUserInfo } from './EditUserInfo/EditUserInfo'
 import styles from './User.module.css'
 
 export const User = () => {
+  const navigate = useNavigate()
   const token = useSelector(getTokenSelector)
   const [isOpenModalAvatar, setIsOpenModalAvatar] = useState(false)
   const [isOpenModalInfo, setIsOpenModalInfo] = useState(false)
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/signin')
+    }
+  }, [token])
 
   const closeModalAvatarHandler = () => {
     document.body.style.overflow = ''
@@ -41,6 +49,7 @@ export const User = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['user'],
     queryFn: () => breweryApi.getUserByToken(token),
+    enabled: !!token,
     keepPreviousData: true,
   })
   if (isLoading) {
