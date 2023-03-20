@@ -22,15 +22,19 @@ export const User = () => {
   const [isOpenModalInfo, setIsOpenModalInfo] = useState(false)
 
   const closeModalAvatarHandler = () => {
+    document.body.style.overflow = ''
     setIsOpenModalAvatar(false)
   }
   const openModalAvatarHandler = () => {
+    document.body.style.overflow = 'hidden'
     setIsOpenModalAvatar(true)
   }
   const closeModalInfo = () => {
+    document.body.style.overflow = ''
     setIsOpenModalInfo(false)
   }
   const openModalInfo = () => {
+    document.body.style.overflow = 'hidden'
     setIsOpenModalInfo(true)
   }
 

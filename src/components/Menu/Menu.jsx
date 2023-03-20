@@ -14,6 +14,7 @@ export function Menu({ active, setActive }) {
   useEffect(() => {
     const closeMenu = (e) => {
       if (e.key === 'Escape') {
+        document.body.style.overflow = ''
         setActive(false)
       }
     }
@@ -25,11 +26,13 @@ export function Menu({ active, setActive }) {
 
   const closeMenuByClickWrapper = (e) => {
     if (e.target !== e.currentTarget) {
+      document.body.style.overflow = ''
       setActive(false)
     }
   }
 
   const closeMenu = () => {
+    document.body.style.overflow = ''
     setActive(false)
   }
 
