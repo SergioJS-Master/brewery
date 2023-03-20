@@ -51,15 +51,15 @@ export function Main() {
               <h3 className={styles.picnicHeaderH3}>NICE EXPERIENCE</h3>
             </div>
             <div className={styles.picnicContantParagraph}>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam numquam eaque omnis
-                sapiente consectetur animi excepturi natus asperiores recusandae mollitia culpa
-                dicta est ab, eligendi nemo earum eos provident dolorem?
-              </p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam numquam eaque omnis sapiente consectetur animi excepturi natus asperiores recusandae mollitia culpa dicta est ab, eligendi nemo earum eos provident dolorem?</p>
             </div>
           </div>
           <div>
-            <img className={styles.picnicImgLogo} src={picnicImg} alt="logo" />
+            <img
+              className={styles.picnicImgLogo}
+              src={picnicImg}
+              alt="logo"
+            />
             <h2 className={styles.picnicHeaderH2}>TIME WITH MOUNTAIN</h2>
           </div>
         </div>
@@ -68,7 +68,11 @@ export function Main() {
       <div className={styles.solodContainer}>
         <div className={styles.solodContant}>
           <div>
-            <img className={styles.solodImgLogo} src={solodImg} alt="logo" />
+            <img
+              className={styles.solodImgLogo}
+              src={solodImg}
+              alt="logo"
+            />
             <h2 className={styles.solodHeaderH2}>ESTABLISHED TRADITIONS</h2>
           </div>
           <div className={styles.solodContantText}>
@@ -77,10 +81,7 @@ export function Main() {
               <h3 className={styles.solodHeaderH3}>CENTURY-OLD HISTORY</h3>
             </div>
             <div>
-              <p className={styles.solodContantParagraph}>
-                From grandfathers to fathers, from fathers to sons. The whole history of the
-                MOUNTAIN brewery is in a special section. Sincerely, your MOUNTAIN team.
-              </p>
+              <p className={styles.solodContantParagraph}>From grandfathers to fathers, from fathers to sons. The whole history of the MOUNTAIN brewery is in a special section. Sincerely, your MOUNTAIN team.</p>
             </div>
             <ul className={styles.solodLink}>
               <div className={styles.solodLinkA}>
@@ -98,15 +99,21 @@ export function Main() {
           </div>
           <div className={styles.signUpInMainContainer}>
             <div className={styles.signUpInMainContant}>
-              <p className={styles.signUpInMainP}>
-                Go through registration to access all the functionality.
-              </p>
+              <p className={styles.signUpInMainP}>Go through registration to access all the functionality.</p>
               <ul className={styles.signUpInMainLink}>
                 <div className={styles.signUpInMainLinkA}>
                   <Link to="/signup">SIGN-UP</Link>
                 </div>
-                <img className={styles.imgHoops1} src={hoops} alt="logo" />
-                <img className={styles.imgHoops2} src={hoops} alt="logo" />
+                <img
+                  className={styles.imgHoops1}
+                  src={hoops}
+                  alt="logo"
+                />
+                <img
+                  className={styles.imgHoops2}
+                  src={hoops}
+                  alt="logo"
+                />
               </ul>
             </div>
           </div>

@@ -1,48 +1,41 @@
-/* eslint-disable react/function-component-definition */
-/* eslint-disable no-undef */
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-one-expression-per-line */
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
-import { Toaster } from 'react-hot-toast'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { breweryApi } from '../../../API/BreweryApi'
 import { getTokenSelector } from '../../../redux/slices/userSlice'
 import { Loader } from '../../Loader/Loader'
 import { Modal } from '../../Modal/Modal'
-import { EditAvatarUser } from './EditAvatarUser/EditAvatarUser'
-import { EditUserInfo } from './EditUserInfo/EditUserInfo'
 import styles from './User.module.css'
 
-export const User = () => {
+export function User() {
+  const navigate = useNavigate()
   const token = useSelector(getTokenSelector)
-  const [isOpenModalAvatar, setIsOpenModalAvatar] = useState(false)
-  const [isOpenModalInfo, setIsOpenModalInfo] = useState(false)
+  const [isOpenModalAvatar, setIsOpenModalAvatar] = useState()
 
-  const closeModalAvatarHandler = () => {
-    document.body.style.overflow = ''
+  useEffect(() => {
+    if (!token) {
+      navigate('/signin')
+    }
+  }, [token])
+
+  const closeModalAvatar = () => {
     setIsOpenModalAvatar(false)
   }
-  const openModalAvatarHandler = () => {
-    document.body.style.overflow = 'hidden'
+  const openModalAvatar = () => {
     setIsOpenModalAvatar(true)
-  }
-  const closeModalInfo = () => {
-    document.body.style.overflow = ''
-    setIsOpenModalInfo(false)
-  }
-  const openModalInfo = () => {
-    document.body.style.overflow = 'hidden'
-    setIsOpenModalInfo(true)
   }
 
   const { data, isLoading } = useQuery({
     queryKey: ['user'],
     queryFn: () => breweryApi.getUserByToken(token),
+    enabled: !!token,
     keepPreviousData: true,
   })
+
+  console.log(data)
+
   if (isLoading) {
     return (
       <div className={styles.loader}>
@@ -57,10 +50,10 @@ export const User = () => {
         <div className={styles.headerUserLeft}>
           <p className={styles.textTitle}>WELCOME TO PERSONAL PAGE</p>
         </div>
-        {/* <div className={styles.headerUserRight}>
+        <div className={styles.headerUserRight}>
           <img className={styles.avatarMini} src={data.avatar} alt="avatar" />
           <p className={styles.textTitleRight}>Hello {data.name.split(' ', 1)}</p>
-        </div> */}
+        </div>
       </div>
       <div className={styles.userInfo}>
         <div className={styles.userInfoLeft}>
@@ -68,7 +61,7 @@ export const User = () => {
             <img className={styles.avatarFull} src={data.avatar} alt="avatarFull" />
           </div>
           <div className={styles.btnAvatar}>
-            <button className={styles.aboutMeBtn} type="button" onClick={openModalAvatarHandler}>
+            <button className={styles.aboutMeBtn} type="button" onClick={openModalAvatar}>
               Edit avatar
             </button>
           </div>
@@ -88,7 +81,7 @@ export const User = () => {
             </p>
           </div>
           <div className={styles.btnAvatar}>
-            <button className={styles.aboutMeBtnBottom} type="button" onClick={openModalInfo}>
+            <button className={styles.aboutMeBtnBottom} type="button" onClick={openModalAvatar}>
               Edit User
             </button>
           </div>
@@ -140,31 +133,9 @@ export const User = () => {
           </div>
         </div>
       </div>
-      <Modal isOpen={isOpenModalAvatar} closeHandler={closeModalAvatarHandler}>
-        <FontAwesomeIcon
-          className={styles.close}
-          icon={faXmark}
-          onClick={closeModalAvatarHandler}
-        />
-        <EditAvatarUser closeModalHandler={closeModalAvatarHandler} avatar={data.avatar} />
+      <Modal isOpen={isOpenModalAvatar} closeHandler={closeModalAvatar}>
+        <div className={styles.modal}>asd</div>
       </Modal>
-      <Modal isOpen={isOpenModalInfo} closeHandler={closeModalInfo}>
-        <FontAwesomeIcon className={styles.close} icon={faXmark} onClick={closeModalInfo} />
-        <EditUserInfo closeModalHandler={closeModalInfo} name={data.name} about={data.about} />
-      </Modal>
-      <Toaster
-        position="bottom-right"
-        reverseOrder={false}
-        toastOptions={{
-          style: {
-            border: '1px solid white',
-            borderRadius: '8px',
-            backgroundColor: 'rgba(17, 28, 51, 0.6)',
-            padding: '4px',
-            color: 'white',
-          },
-        }}
-      />
     </div>
   )
 }

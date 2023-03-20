@@ -32,8 +32,6 @@
   margin: auto;
   width: 80%;
   text-align: left;
-  margin-top: 130px;
-  gap: 30px;
 }
 
 .menuX {
@@ -50,7 +48,7 @@
   letter-spacing: 6px;
   font-size: 60px;
   font-style: normal;
-  line-height: 100px;
+  line-height: 130px;
   cursor: pointer;
   font-family: Gotham A, Gotham B, sans-serif;
 }
@@ -73,8 +71,7 @@
 
 .reg {
   align-self: flex-end;
-  /* height: 40px; */
-  margin: 10px;
+  height: 40px;
 }
 
 .menuListTwo {

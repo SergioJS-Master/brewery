@@ -1,6 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { toast } from 'react-hot-toast'
-
 class BreweryApi {
   constructor({ signURL }) {
     this.signUrl = signURL
@@ -53,41 +50,6 @@ class BreweryApi {
       },
     })
 
-    return res.json()
-  }
-
-  async editUserInfo(token, value) {
-    const res = await fetch(`${this.signUrl}/v2/sm9/users/me`, {
-      method: 'PATCH',
-      headers: {
-        authorization: `Bearer ${token}`,
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(value),
-    })
-    if (res.status === 200) {
-      toast.success('Info updated successfully!', {
-        duration: 2000,
-      })
-    }
-    return res.json()
-  }
-
-  async editUserAvatar(token, value) {
-    const res = await fetch(`${this.signUrl}/v2/sm9/users/me/avatar`, {
-      method: 'PATCH',
-      headers: {
-        authorization: `Bearer ${token}`,
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(value),
-    })
-
-    if (res.status === 200) {
-      toast.success('Avatar updated successfully!', {
-        duration: 2000,
-      })
-    }
     return res.json()
   }
 }

@@ -9,7 +9,6 @@ export const initState = {
     userId: '',
     avatar: '',
     about: '',
-    _id: '',
   },
   favourite: [],
 }

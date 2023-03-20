@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { barsApi } from '../../../API/api'
+import { barsApi } from '../../../API/BarsApi'
 import { withQuery } from '../../HOCs/withQuery'
 import { Loader } from '../../Loader/Loader'
 import styles from './bars.module.css'
@@ -10,7 +10,7 @@ function BarsInner({ data }) {
   if (!data.length) {
     return (
       <div className={styles.emptyList}>
-        <p>Bars not found</p>
+        <p>Бары не найдены</p>
         <i className="bi bi-emoji-frown" />
       </div>
     )
@@ -18,6 +18,7 @@ function BarsInner({ data }) {
 
   return (
     <div className={styles.wr}>
+
       {data.map((el) => (
         <BarsItem
           key={el.id}
@@ -52,22 +53,9 @@ export function Bars() {
     queryFn: () => barsApi.getAllBars(),
   })
 
-  // console.log(error, data)
-  if (isLoading) {
-    return (
-      <div className={styles.loader}>
-        <Loader />
-      </div>
-    )
-  }
-  if (isError) {
-    return (
-      <div className={styles.errorMessage}>
-        <h1>Bars not found</h1>
-        <p>please try again later</p>
-      </div>
-    )
-  }
+  console.log(error, data)
+  if (isLoading) return <Loader />
+  if (isError) return <h1>Error happend</h1>
 
   return (
     <BarsInnerWithQuery

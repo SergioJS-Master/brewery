@@ -1,4 +1,4 @@
-.modalWr {
+.modarWr {
   position: fixed;
   top: 0;
   left: 0;
@@ -8,11 +8,13 @@
   justify-content: center;
   align-items: center;
   z-index: 999;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
 }
 
 .modalInner {
-  padding: 20px;
-  backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid white;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.5);
 }

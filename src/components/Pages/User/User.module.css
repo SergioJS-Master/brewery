@@ -17,10 +17,9 @@
   justify-content: space-between;
   padding-left: 10px;
   padding-right: 10px;
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+  background-color: rgba(94, 94, 94, 0.493);
   position: relative;
-  height: 70px;
+  height: 100px;
 }
 
 .textTitle {
@@ -42,7 +41,7 @@
   background-color: #170200;
   right: 50px;
   top: -20px;
-  /* border: 2px solid white; */
+  border: 2px solid white;
   padding: 10px;
   width: auto;
 }
@@ -50,7 +49,7 @@
 .headerUserLeft {
   position: absolute;
   background-color: #170200;
-  /* border: 2px solid white; */
+  border: 2px solid white;
   padding: 10px;
   width: auto;
   top: -20px;
@@ -215,16 +214,4 @@
 
 .text {
   color: white;
-}
-
-.modal {
-  position: relative;
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: white;
-  cursor: pointer;
 }
