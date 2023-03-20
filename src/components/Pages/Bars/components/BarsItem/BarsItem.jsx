@@ -1,7 +1,6 @@
 import classNames from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { getIniteState } from '../../../../../redux/initState'
 import {
   addItemInFavourite,
   deleteItemFromFavourite,
@@ -19,10 +18,6 @@ export function BarsItem({
 }) {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-
-  const {
-    user: { token },
-  } = getIniteState()
 
   const itemsFavourite = useSelector((state) => state.favourite)
   const isItemInFavourite = itemsFavourite.some((item) => item.id === id)
@@ -69,19 +64,17 @@ export function BarsItem({
                 <i className={classNames('bi bi-star-fill', styles.gradient)} />
                 <p className={styles.gradient}>{rating}</p>
               </div>
-              {token ? (
-                <Link onClick={clickFavouriteHandler} to="/#">
-                  <i
-                    className={classNames(
-                      {
-                        'bi bi-heart-fill': isItemInFavourite,
-                        'bi bi-heart': !isItemInFavourite,
-                      },
-                      styles.icon,
-                    )}
-                  />
-                </Link>
-              ) : null}
+              <Link onClick={clickFavouriteHandler} to="/#">
+                <i
+                  className={classNames(
+                    {
+                      'bi bi-heart-fill': isItemInFavourite,
+                      'bi bi-heart': !isItemInFavourite,
+                    },
+                    styles.icon,
+                  )}
+                />
+              </Link>
             </div>
           </div>
         </div>

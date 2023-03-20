@@ -31,7 +31,10 @@ export function Header() {
         <button
           type="button"
           className={styles.burgerBtn}
-          onClick={() => setMenuActive(!menuActive)}
+          onClick={() => {
+            document.body.style.overflow = 'hidden'
+            setMenuActive(!menuActive)
+          }}
         >
           <FontAwesomeIcon icon={faBars} />
         </button>
