@@ -31,18 +31,15 @@ export function Main() {
           </video>
         </div>
       </div>
-
       <div className={styles.sliderContainer}>
         <div className={styles.sliderСontent}>
           <h3 className={styles.headingSlider}>OUR QUALITY PRODUCTS</h3>
           <Slider sliders={dataCardsBeer} />
         </div>
       </div>
-
       <div>
         <hr className={styles.hrMain} />
       </div>
-
       <div className={styles.picnicContainer}>
         <div className={styles.picnicContant}>
           <div className={styles.picnicContantText}>
@@ -64,7 +61,6 @@ export function Main() {
           </div>
         </div>
       </div>
-
       <div className={styles.solodContainer}>
         <div className={styles.solodContant}>
           <div>
@@ -90,7 +86,6 @@ export function Main() {
           </div>
         </div>
       </div>
-
       {!token && (
         <>
           <div>
