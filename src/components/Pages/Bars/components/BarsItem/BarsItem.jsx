@@ -57,7 +57,7 @@ export function BarsItem({
           <p>{description}</p>
           <div>
             <p>
-              Адрес:
+              Address:
               {' '}
               {city}
               ,
