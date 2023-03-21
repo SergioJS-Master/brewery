@@ -1,0 +1,40 @@
+.warning {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  margin: 0;
+}
+
+.wr {
+  border: 2px solid black;
+  padding: 10px;
+}
+
+.text {
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.btnBox {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(10 4 6 / var(--tw-text-opacity));
+  width: max-content;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px;
+  font-family: Gotham A, Gotham B, sans-serif;
+}

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { getTokenSelector, removeUser } from '../../redux/slices/userSlice'
 import styles from './Menu.module.css'
 
@@ -13,6 +14,7 @@ export function Menu({ active, setActive }) {
   useEffect(() => {
     const closeMenu = (e) => {
       if (e.key === 'Escape') {
+        document.body.style.overflow = ''
         setActive(false)
       }
     }
@@ -24,11 +26,13 @@ export function Menu({ active, setActive }) {
 
   const closeMenuByClickWrapper = (e) => {
     if (e.target !== e.currentTarget) {
+      document.body.style.overflow = ''
       setActive(false)
     }
   }
 
   const closeMenu = () => {
+    document.body.style.overflow = ''
     setActive(false)
   }
 
@@ -40,40 +44,77 @@ export function Menu({ active, setActive }) {
     <div className={active ? styles.menuActive : styles.menu}>
       <div className={styles.menuContentBlur} onClick={closeMenu} />
       <div className={styles.menuContent} onClick={closeMenuByClickWrapper}>
-        <div className={styles.menuX} onClick={closeMenu}>
+        <motion.div
+          whileHover={{ rotate: [0, 90] }}
+          transition={{ duration: 0.3 }}
+          className={styles.menuX}
+          onClick={closeMenu}
+        >
           <FontAwesomeIcon icon={faXmark} />
-        </div>
+        </motion.div>
         <ul className={styles.menuList}>
-          <div className={styles.menuListA}>
+          <motion.div
+            whileHover={{ scale: [null, 1.2, 1.1] }}
+            transition={{ duration: 0.3 }}
+            className={styles.menuListA}
+          >
             <Link to="/about">ABOUT</Link>
-          </div>
-          <div className={styles.menuListA}>
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: [null, 1.2, 1.1] }}
+            transition={{ duration: 0.3 }}
+            className={styles.menuListA}
+          >
             <Link to="/bars">BARS</Link>
-          </div>
-          <div className={styles.menuListA}>
-            <Link to="/user">USER</Link>
-          </div>
-          <div className={styles.menuListA}>
-            <Link to="/news">NEWS</Link>
-          </div>
-          <div className={styles.menuListA}>
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: [null, 1.2, 1.1] }}
+            transition={{ duration: 0.3 }}
+            className={styles.menuListA}
+          >
             <Link to="/favorite">FAVORITES</Link>
-          </div>
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: [null, 1.2, 1.1] }}
+            transition={{ duration: 0.3 }}
+            className={styles.menuListA}
+          >
+            <Link to="/news">NEWS</Link>
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: [null, 1.2, 1.1] }}
+            transition={{ duration: 0.3 }}
+            className={styles.menuListA}
+          >
+            <Link to="/user">USER</Link>
+          </motion.div>
         </ul>
         <ul className={styles.menuListTwo}>
-          <div className={styles.reg}>
+          <motion.div
+            whileHover={{ scale: [null, 1.2, 1.1] }}
+            transition={{ duration: 0.3 }}
+            className={styles.reg}
+          >
             <Link to="/signup">SIGN-UP</Link>
-          </div>
+          </motion.div>
           {token ? (
-            <div className={styles.reg}>
+            <motion.div
+              whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              className={styles.reg}
+            >
               <Link to="/signin" onClick={deleteUser}>
-                LOGOUT
+                SIGN-OUT
               </Link>
-            </div>
+            </motion.div>
           ) : (
-            <div className={styles.reg}>
+            <motion.div
+              whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              className={styles.reg}
+            >
               <Link to="/signin">LOG-IN</Link>
-            </div>
+            </motion.div>
           )}
         </ul>
       </div>
