@@ -8,8 +8,6 @@ import styles from './News.module.css'
 
 import { listPicturesNews } from '../../../API/newsApi'
 
-import { ButtonAnimated } from '../../ButtonAnimated/ButtonAnimated'
-
 export function News() {
   const [imageIndex, setImageIndex] = useState(0)
 
