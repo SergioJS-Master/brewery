@@ -18,7 +18,7 @@ export function MapYandex({ data }) {
         const placemark = new ymaps.Placemark([el.latitude_N, el.longitude_E], {
           balloonContentHeader: `${el.name}`,
           balloonContentBody: `${el.city}, ${el.address}`,
-          balloonContentFooter: `рейтинг ${el.rating}`,
+          balloonContentFooter: `rating ${el.rating}`,
         }, {
           iconLayout: 'default#image',
           iconImageHref: 'https://cdn-icons-png.flaticon.com/512/931/931949.png',

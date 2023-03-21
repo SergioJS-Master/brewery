@@ -9,19 +9,25 @@ import { useEffect, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
+import { Link, NavLink } from 'react-router-dom'
+import { barsApi } from '../../../API/BarsApi'
 import { breweryApi } from '../../../API/BreweryApi'
+import { getFavouriteSelector } from '../../../redux/slices/favouriteSlice'
 import { getTokenSelector } from '../../../redux/slices/userSlice'
 import { Loader } from '../../Loader/Loader'
 import { Modal } from '../../Modal/Modal'
 import { EditAvatarUser } from './EditAvatarUser/EditAvatarUser'
 import { EditUserInfo } from './EditUserInfo/EditUserInfo'
 import styles from './User.module.css'
+import { getQueryBarKey } from './utils'
 
 export const User = () => {
   const navigate = useNavigate()
   const token = useSelector(getTokenSelector)
   const [isOpenModalAvatar, setIsOpenModalAvatar] = useState(false)
   const [isOpenModalInfo, setIsOpenModalInfo] = useState(false)
+
+  const favouritesBarId = useSelector(getFavouriteSelector)
 
   useEffect(() => {
     if (!token) {
@@ -46,12 +52,21 @@ export const User = () => {
     setIsOpenModalInfo(true)
   }
 
+  const { data: favouritesBar = [] } = useQuery({
+    queryKey: [getQueryBarKey(favouritesBarId.lenght)],
+    queryFn: () => barsApi.getBarsByIds(favouritesBarId.map((product) => product.id), token),
+    keepPreviousData: true,
+    enabled: !!token,
+  })
+  console.log({ favouritesBar })
+
   const { data, isLoading } = useQuery({
     queryKey: ['user'],
     queryFn: () => breweryApi.getUserByToken(token),
     enabled: !!token,
     keepPreviousData: true,
   })
+
   if (isLoading) {
     return (
       <div className={styles.loader}>
@@ -102,29 +117,34 @@ export const User = () => {
             </button>
           </div>
         </div>
+
         <div className={styles.userInfoRight}>
-          <div className={styles.userInfoRightTop}>
+          {!favouritesBar[0]
+      && (
+        <div>
+          <h3 className={styles.userInfoNoBars}>No favorite bars</h3>
+          <NavLink to="/bars" className={styles.userInfoGoToHomePage}>Go to bars page</NavLink>
+        </div>
+      )}
+          {favouritesBar[0] && (
+          <div>
             <div className={styles.userInfoRightTitleDiv}>
-              <p className={styles.userInfoRightTitle}>MY FAVORITE BARS</p>
+              <p className={styles.userInfoRightTitle}>FAVORITES BARS</p>
             </div>
             <hr />
-            <div className={styles.barLink}>
-              <p className={styles.text}>bar 1</p>
-              <button type="button">go to bar</button>
-            </div>
-            <div className={styles.barLink}>
-              <p className={styles.text}>bar 2</p>
-              <button type="button">go to bar</button>
-            </div>
-            <div className={styles.barLink}>
-              <p className={styles.text}>bar 3</p>
-              <button type="button">go to bar</button>
-            </div>
-            <div className={styles.barLink}>
-              <p className={styles.text}>bar 4</p>
-              <button type="button">go to bar</button>
-            </div>
+            {favouritesBar.map((bar) => (
+              <div>
+                <div className={styles.barLink}>
+                  <p className={styles.text}>{bar.name}</p>
+                  <Link to={`/bars/${bar.id}`}>
+                    <button type="button">go to bar</button>
+                  </Link>
+                </div>
+
+              </div>
+            ))}
           </div>
+          )}
           <div className={styles.userInfoRightBottom}>
             <div className={styles.userInfoRightTitleDiv}>
               <p className={styles.userInfoRightTitle}>MY FAVORITE BEERS</p>
