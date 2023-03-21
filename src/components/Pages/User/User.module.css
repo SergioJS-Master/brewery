@@ -162,6 +162,7 @@
   flex-direction: column;
   gap: 20px;
   margin-top: 50px;
+  gap: 50px;
 }
 
 .userInfoRightTop {
@@ -179,6 +180,23 @@
   font-size: 30px;
   font-weight: 600;
   letter-spacing: 10px;
+  color: white;
+  margin: 0;
+}
+
+.userInfoNoBars {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 5px;
+  color: white;
+  margin: 0;
+}
+
+.userInfoGoToHomePage {
+  font-size: 30px;
+  text-decoration:underline;
+  font-weight: 600;
+  letter-spacing: 5px;
   color: white;
   margin: 0;
 }
