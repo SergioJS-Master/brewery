@@ -84,7 +84,7 @@ export function DetailPageBar() {
               {data.description_2}
             </p>
             <p>
-              Адрес:
+              Address:
               {' '}
               {data.city}
               ,
