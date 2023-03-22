@@ -1,3 +1,4 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable no-undef */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -9,9 +10,10 @@ import { useEffect, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { barsApi } from '../../../API/BarsApi'
 import { breweryApi } from '../../../API/BreweryApi'
+import { dataCardsBeer } from '../../../API/dataCardsBeer'
 import { getFavouriteSelector } from '../../../redux/slices/favouriteSlice'
 import { getTokenSelector } from '../../../redux/slices/userSlice'
 import { Loader } from '../../Loader/Loader'
@@ -54,11 +56,14 @@ export const User = () => {
 
   const { data: favouritesBar = [] } = useQuery({
     queryKey: [getQueryBarKey(favouritesBarId.lenght)],
-    queryFn: () => barsApi.getBarsByIds(favouritesBarId.map((product) => product.id), token),
+    queryFn: () =>
+      barsApi.getBarsByIds(
+        favouritesBarId.map((product) => product.id),
+        token,
+      ),
     keepPreviousData: true,
     enabled: !!token,
   })
-  console.log({ favouritesBar })
 
   const { data, isLoading } = useQuery({
     queryKey: ['user'],
@@ -117,56 +122,50 @@ export const User = () => {
             </button>
           </div>
         </div>
-
         <div className={styles.userInfoRight}>
-          {!favouritesBar[0]
-      && (
-        <div>
-          <h3 className={styles.userInfoNoBars}>No favorite bars</h3>
-          <NavLink to="/bars" className={styles.userInfoGoToHomePage}>Go to bars page</NavLink>
-        </div>
-      )}
-          {favouritesBar[0] && (
-          <div>
+          <div className={styles.userInfoRightBottom}>
             <div className={styles.userInfoRightTitleDiv}>
-              <p className={styles.userInfoRightTitle}>FAVORITES BARS</p>
+              <p className={styles.userInfoRightTitle}>BEER FROM OUR BREWERY</p>
             </div>
             <hr />
-            {favouritesBar.map((bar) => (
+            {dataCardsBeer.map((el) => (
               <div>
                 <div className={styles.barLink}>
-                  <p className={styles.text}>{bar.name}</p>
-                  <Link to={`/bars/${bar.id}`}>
-                    <button type="button">go to bar</button>
+                  <p className={styles.text}>{el.name}</p>
+                  <Link to="/">
+                    <button type="button">go to beer</button>
                   </Link>
                 </div>
-
               </div>
             ))}
           </div>
+          {!favouritesBar[0] && (
+            <div>
+              <p className={styles.userInfoNoBars}>NO FAVORITE BARS</p>
+              <hr />
+              <Link to="/bars" className={styles.userInfoGoToHomePage}>
+                / Go to bars page
+              </Link>
+            </div>
           )}
-          <div className={styles.userInfoRightBottom}>
-            <div className={styles.userInfoRightTitleDiv}>
-              <p className={styles.userInfoRightTitle}>MY FAVORITE BEERS</p>
+          {favouritesBar[0] && (
+            <div>
+              <div className={styles.userInfoRightTitleDiv}>
+                <p className={styles.userInfoRightTitle}>FAVORITES BARS</p>
+              </div>
+              <hr />
+              {favouritesBar.map((bar) => (
+                <div>
+                  <div className={styles.barLink}>
+                    <p className={styles.text}>{bar.name.toUpperCase()}</p>
+                    <Link to={`/bars/${bar.id}`}>
+                      <button type="button">go to bar</button>
+                    </Link>
+                  </div>
+                </div>
+              ))}
             </div>
-            <hr />
-            <div className={styles.barLink}>
-              <p className={styles.text}>beer 1</p>
-              <button type="button">go to beer</button>
-            </div>
-            <div className={styles.barLink}>
-              <p className={styles.text}>beer 2</p>
-              <button type="button">go to beer</button>
-            </div>
-            <div className={styles.barLink}>
-              <p className={styles.text}>beer 3</p>
-              <button type="button">go to beer</button>
-            </div>
-            <div className={styles.barLink}>
-              <p className={styles.text}>beer 4</p>
-              <button type="button">go to beer</button>
-            </div>
-          </div>
+          )}
         </div>
       </div>
       <Modal isOpen={isOpenModalAvatar} closeHandler={closeModalAvatarHandler}>

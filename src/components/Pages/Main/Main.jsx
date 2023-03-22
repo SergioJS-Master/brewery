@@ -33,7 +33,7 @@ export function Main() {
           </video>
         </div>
       </div>
-      <div ref={myRef} className={styles.sliderContainer}>
+      <div ref={myRef} id="beer" className={styles.sliderContainer}>
         <div className={styles.sliderСontent}>
           <h3 className={styles.headingSlider}>OUR QUALITY PRODUCTS</h3>
           <Slider sliders={dataCardsBeer} />
