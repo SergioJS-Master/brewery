@@ -21,15 +21,15 @@ export function DetailPageBar() {
   } = getIniteState()
 
   const itemsFavourite = useSelector((state) => state.favourite)
-  const isItemInFavourite = itemsFavourite.some((item) => item.id === barId)
+  const isItemInFavourite = itemsFavourite.some((item) => item.id === +barId)
 
   const getQueryDetailPageKey = (id) => ['detailPage', id]
 
   const {
     data, isLoading, isError, error, refetch,
   } = useQuery({
-    queryKey: getQueryDetailPageKey(barId),
-    queryFn: () => barsApi.getBarById(barId),
+    queryKey: getQueryDetailPageKey(+barId),
+    queryFn: () => barsApi.getBarById(+barId),
     enabled: !!barId,
   })
 
@@ -42,9 +42,9 @@ export function DetailPageBar() {
     e.stopPropagation()
     e.preventDefault()
     if (isItemInFavourite) {
-      dispatch(deleteItemFromFavourite(barId))
+      dispatch(deleteItemFromFavourite(+barId))
     } else {
-      dispatch(addItemInFavourite(barId))
+      dispatch(addItemInFavourite(+barId))
     }
   }
   return (
