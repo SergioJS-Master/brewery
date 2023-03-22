@@ -28,13 +28,10 @@ class BarsApi {
     return res.json()
   }
 
-  async addBar(values, token) {
-    this.checkToken(token)
-
+  async addBar(values) {
     const res = await fetch(`${this.baseUrl}/bars`, {
       method: 'POST',
       headers: {
-        authorization: this.getAuthorizationHeader(token),
         'Content-type': 'application/json',
       },
       body: JSON.stringify(values),
@@ -47,14 +44,9 @@ class BarsApi {
     return res.json()
   }
 
-  async deleteBar(barId, token) {
-    this.checkToken(token)
-
+  async deleteBar(barId) {
     const res = await fetch(`${this.baseUrl}/bars/${barId}`, {
       method: 'DELETE',
-      headers: {
-        authorization: this.getAuthorizationHeader(token),
-      },
     })
     if (res.status >= 300) {
       throw new Error(
@@ -64,13 +56,10 @@ class BarsApi {
     return res.json()
   }
 
-  async editBar(barId, data, token) {
-    this.checkToken(token)
-
+  async editBar(barId, data) {
     const res = await fetch(`${this.baseUrl}/bars/${barId}`, {
       method: 'PATCH',
       headers: {
-        authorization: this.getAuthorizationHeader(token),
         'Content-type': 'application/json',
       },
       body: JSON.stringify(data),
@@ -108,3 +97,7 @@ class BarsApi {
 export const barsApi = new BarsApi({
   baseUrl: 'http://lovz1.j06047276.m6x5m.vps.myjino.ru:49297/api/v1',
 })
+
+// baseUrl: 'http://lovz1.j06047276.m6x5m.vps.myjino.ru:49297/api/v1',
+
+// baseUrl: 'http://localhost:5000/api/v1',
