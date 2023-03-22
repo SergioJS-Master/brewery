@@ -11,7 +11,7 @@ import { SignIn } from './components/Pages/SignIn/SignIn'
 import { SignUp } from './components/Pages/SignUp/SignUp'
 import { Bars } from './components/Pages/Bars/Bars'
 import { About } from './components/Pages/About/About'
-import { Favorite } from './components/Pages/Favorite/Favorite'
+// import { Favorite } from './components/Pages/Favorite/Favorite'
 import { News } from './components/Pages/News/News'
 import { Catalog } from './components/Pages/Catalog/Catalog'
 import { User } from './components/Pages/User/User'
@@ -48,10 +48,10 @@ const router = createBrowserRouter(
           path: 'about',
           element: <About />,
         },
-        {
-          path: 'favorite',
-          element: <Favorite />,
-        },
+        // {
+        //   path: 'favorite',
+        //   element: <Favorite />,
+        // },
         {
           path: 'news',
           element: <News />,

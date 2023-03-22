@@ -82,6 +82,10 @@
   padding: 12px;
 }
 
+.formBtn:hover {
+  color: white;
+}
+
 .errorText {
   color: white;
   font-size: 30px;

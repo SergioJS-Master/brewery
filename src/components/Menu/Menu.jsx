@@ -11,6 +11,7 @@ import styles from './Menu.module.css'
 export function Menu({ active, setActive }) {
   const dispatch = useDispatch()
   const token = useSelector(getTokenSelector)
+
   useEffect(() => {
     const closeMenu = (e) => {
       if (e.key === 'Escape') {
@@ -72,7 +73,7 @@ export function Menu({ active, setActive }) {
             transition={{ duration: 0.3 }}
             className={styles.menuListA}
           >
-            <Link to="/favorite">FAVORITES</Link>
+            <Link to="/">BEER</Link>
           </motion.div>
           <motion.div
             whileHover={{ scale: [null, 1.2, 1.1] }}

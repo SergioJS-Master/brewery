@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from './ModalWarning.module.css'
 import { ModalWrapper } from './ModalWrapper/ModalWrapper'
+import logo from '../../images/logo2.png'
 
 const STORAGE_NAME = 'test-message'
 const CHANGE_VALUE = '1'
@@ -11,8 +12,10 @@ export function ModalWarning() {
   useEffect(() => {
     if (isTest) {
       window.localStorage.setItem(STORAGE_NAME, CHANGE_VALUE)
+      document.body.style.overflow = ''
     }
-    document.body.classList.toggle('test-message', !isTest)
+    if (!isTest) document.body.style.overflow = 'hidden'
+    // document.body.classList.toggle('test-message', !isTest)
   }, [isTest])
 
   const onSubmit = (e) => {
@@ -23,19 +26,18 @@ export function ModalWarning() {
   return (
     <ModalWrapper isOpen={!isTest}>
       <div className={styles.wr}>
+        <img className={styles.logo} src={logo} alt="logo" />
         <div className={styles.textBox}>
-          <p className={styles.warning}>WARNING!</p>
-          <p className={styles.text}>
-            Страницы, которые вы собираетесь посмотреть, могут содержать материалы, предназначенные
-            для взрослых. Чтобы продолжить, вы должны подвтердить, что вам 18 лет
-          </p>
+          <p className={styles.warning}>AGE LIMIT 18+</p>
+          <p className={styles.text}>This website is for persons over 18</p>
+          <p className={styles.text}>Are you 18 or older?</p>
         </div>
         <div className={styles.btnBox}>
           <button type="submit" onClick={onSubmit} className={styles.btn}>
-            Я уже старый пес
+            I&apos;m already an old dog
           </button>
           <a className={styles.btn} href="https://animego.org/" target="_blank" rel="noreferrer">
-            Пойду аниме посмотрю..
+            I&apos;m going to watch anime..
           </a>
         </div>
       </div>

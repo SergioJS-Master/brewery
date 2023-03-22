@@ -200,10 +200,24 @@
 }
 
 .solodLinkA a {
-  background-color: #B9965B;
-  color: black;
-  padding: 15px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(10 4 6 / var(--tw-text-opacity));
+  width: max-content;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
   font-size: 20px;
+  font-weight: 600;
+  padding: 12px;
+  position: absolute;
+  right: -40px;
+}
+
+.solodLinkA a:hover {
+  color: white;
 }
 
 .signUpInMainContainer {
@@ -225,10 +239,24 @@
 }
 
 .signUpInMainLinkA a {
-  background-color: #B9965B;
-  color: black;
   padding: 25px;
   font-size: 20px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(10 4 6 / var(--tw-text-opacity));
+  width: max-content;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 16px;
+}
+
+.signUpInMainLinkA a:hover {
+  color: white;
 }
 
 .imgHoops1 {
