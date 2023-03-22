@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <footer className={styles.wr}>
       <div className={styles.footerContainer}>
-        <div className={styles.footerGroup}>
+        {/* <div className={styles.footerGroup}>
           <Link to="/about">
             <span className={styles.footerSpan}>ABOUT</span>
           </Link>
@@ -21,31 +21,31 @@ export function Footer() {
             <Link to="/about">ABOUT BREWERY 2</Link>
             <Link to="/about">ABOUT BREWERY 3</Link>
           </div>
-        </div>
+        </div> */}
         <div className={styles.footerGroup}>
           <Link to="/bars">
             <span className={styles.footerSpan}>BARS</span>
           </Link>
           <div className={styles.footerLinks}>
-            <Link to="/bars">BAR 1</Link>
-            <Link to="/bars">BAR 2</Link>
-            <Link to="/bars">BAR 3</Link>
-            <Link to="/bars">BAR 4</Link>
-            <Link to="/bars">BAR 5</Link>
-            <Link to="/bars">BAR 6</Link>
+            <Link to="/bars">BROUWERIJ DE HALVE MAAN</Link>
+            <Link to="/bars">THE ROYAL OAK</Link>
+            <Link to="/bars">HOFBRÄUHAUS</Link>
+            <Link to="/bars">FLAVA</Link>
+            <Link to="/bars">SEAN ONEILL PUB</Link>
+            <Link to="/bars">AF BREW TAPROOM</Link>
           </div>
         </div>
         <div className={styles.footerGroup}>
           <Link to="/catalog">
-            <span className={styles.footerSpan}>CATALOG</span>
+            <span className={styles.footerSpan}>BEER</span>
           </Link>
           <div className={styles.footerLinks}>
-            <Link to="/catalog">BEER 1</Link>
-            <Link to="/catalog">BEER 2</Link>
-            <Link to="/catalog">BEER 3</Link>
-            <Link to="/catalog">BEER 4</Link>
-            <Link to="/catalog">BEER 5</Link>
-            <Link to="/catalog">BEER 6</Link>
+            <Link to="/catalog">WHEAT BEER</Link>
+            <Link to="/catalog">AMR. LAGER</Link>
+            <Link to="/catalog">ENGLISH IPA</Link>
+            <Link to="/catalog">ENGLISH BROWN ALE</Link>
+            <Link to="/catalog">BROWN PORTER</Link>
+            <Link to="/catalog">OATMEAL STOUT</Link>
           </div>
         </div>
         <div className={styles.footerGroup}>
@@ -53,12 +53,11 @@ export function Footer() {
             <span className={styles.footerSpan}>NEWS</span>
           </Link>
           <div className={styles.footerLinks}>
-            <Link to="/news">NEWS 1</Link>
-            <Link to="/news">NEWS 2</Link>
-            <Link to="/news">NEWS 3</Link>
-            <Link to="/news">NEWS 4</Link>
-            <Link to="/news">NEWS 5</Link>
-            <Link to="/news">NEWS 6</Link>
+            <Link to="/news">OCTOBERFEST</Link>
+            <Link to="/news">PARTYANDBULSHIT</Link>
+            <Link to="/news">BEER FEST</Link>
+            <Link to="/news">MOSCOW CIDER DAYS 2023</Link>
+            <Link to="/news">BREWCOM 2022</Link>
           </div>
         </div>
         <div className={styles.footerGroup}>

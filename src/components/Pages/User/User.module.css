@@ -139,6 +139,10 @@
   bottom: -10px;
 }
 
+.aboutMeBtn:hover {
+  color: white;
+}
+
 .aboutMeBtnBottom {
   --tw-bg-opacity: 1;
   background-color: rgb(185 150 91 / var(--tw-bg-opacity));
@@ -155,6 +159,10 @@
   position: absolute;
   right: 10px;
   bottom: -30px;
+}
+
+.aboutMeBtnBottom:hover {
+  color: white;
 }
 
 .userInfoRight {
@@ -194,7 +202,7 @@
 
 .userInfoGoToHomePage {
   font-size: 30px;
-  text-decoration:underline;
+  text-decoration: underline;
   font-weight: 600;
   letter-spacing: 5px;
   color: white;
@@ -229,6 +237,10 @@
   padding: 12px;
   position: absolute;
   right: -40px;
+}
+
+.barLink button:hover {
+  color: white;
 }
 
 .text {

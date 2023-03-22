@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useRef } from 'react'
 import styles from './Main.module.css'
 import video from '../../../videos/video1.mp4'
 import { dataCardsBeer } from '../../../API/dataCardsBeer'
@@ -12,6 +13,7 @@ import hoops from '../../../images/beersCards/hops.png'
 
 export function Main() {
   const token = useSelector(getTokenSelector)
+  const myRef = useRef()
 
   return (
     <>
@@ -31,7 +33,7 @@ export function Main() {
           </video>
         </div>
       </div>
-      <div className={styles.sliderContainer}>
+      <div ref={myRef} className={styles.sliderContainer}>
         <div className={styles.sliderСontent}>
           <h3 className={styles.headingSlider}>OUR QUALITY PRODUCTS</h3>
           <Slider sliders={dataCardsBeer} />

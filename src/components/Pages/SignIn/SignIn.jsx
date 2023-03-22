@@ -47,7 +47,13 @@ export function SignIn() {
       </div>
     )
   }
-  if (isLoading) return <Loader />
+  if (isLoading) {
+    return (
+      <div className={styles.loader}>
+        <Loader />
+      </div>
+    )
+  }
 
   console.log(token)
 

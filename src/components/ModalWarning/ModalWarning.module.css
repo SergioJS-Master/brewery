@@ -10,6 +10,7 @@
 .wr {
   border: 2px solid black;
   padding: 10px;
+  position: relative;
 }
 
 .text {
@@ -21,6 +22,11 @@
 .btnBox {
   display: flex;
   justify-content: space-around;
+  gap: 20px;
+}
+
+.btnRight {
+  height: 50px;
 }
 
 .btn {
@@ -37,4 +43,16 @@
   font-weight: 600;
   padding: 12px;
   font-family: Gotham A, Gotham B, sans-serif;
+  text-align: center;
+}
+
+.btn:hover {
+  color: white;
+}
+
+.logo {
+  width: 100%;
+  position: absolute;
+  top: -400px;
+  opacity: 0.5;
 }
