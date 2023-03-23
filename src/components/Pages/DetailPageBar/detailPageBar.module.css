@@ -166,3 +166,44 @@
 .rating p {
     font-size: 20px;
 }
+
+.descriptionWr {
+    display: flex;
+}
+
+.timeWorking p {
+    color: white;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+    font-family: Gotham A, Gotham B, sans-serif;
+}
+
+.timeWorking {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    padding-top: 70px;
+    margin-bottom: 20px;
+    margin-left: 190px;
+}
+
+.aboutMeBtnBottom {
+    --tw-bg-opacity: 1;
+    background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+    text-transform: uppercase;
+    --tw-text-opacity: 1;
+    color: rgb(10 4 6 / var(--tw-text-opacity));
+    width: max-content;
+    border: none;
+    cursor: pointer;
+    align-self: flex-end;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px;
+  }
+
+  .aboutMeBtnBottom:hover {
+    color: white;
+  }
