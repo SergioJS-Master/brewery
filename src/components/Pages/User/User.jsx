@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable no-undef */
@@ -8,13 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 import { barsApi } from '../../../API/BarsApi'
 import { breweryApi } from '../../../API/BreweryApi'
 import { dataCardsBeer } from '../../../API/dataCardsBeer'
-import { getFavouriteSelector } from '../../../redux/slices/favouriteSlice'
+import { deleteItemFromFavourite, getFavouriteSelector } from '../../../redux/slices/favouriteSlice'
 import { getTokenSelector } from '../../../redux/slices/userSlice'
 import { Loader } from '../../Loader/Loader'
 import { Modal } from '../../Modal/Modal'
@@ -22,6 +23,37 @@ import { EditAvatarUser } from './EditAvatarUser/EditAvatarUser'
 import { EditUserInfo } from './EditUserInfo/EditUserInfo'
 import styles from './User.module.css'
 import { getQueryBarKey } from './utils'
+
+function FavouriteBar({
+  id, name,
+}) {
+  const dispatch = useDispatch()
+  // const queryClient = useQueryClient()
+  const deleteFavouritesBarHandler = () => {
+    dispatch(deleteItemFromFavourite(id))
+    // queryClient.invalidateQueries({ queryKey: [getQueryBarKey(favouritesBarId.lenght)] })
+  }
+
+  return (
+    <div>
+      <div className={styles.barLink}>
+        <div>
+          <p className={styles.text}>{name}</p>
+        </div>
+        <div className={styles.but_link}>
+          <div className={styles.bars_button}>
+            <button onClick={deleteFavouritesBarHandler} style={{ backgroundColor: 'red', color: 'white' }} type="button">DELETE</button>
+          </div>
+          <div className={styles.bars_link}>
+            <Link to={`/bars/${id}`}>
+              <button type="button">go to bar</button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export const User = () => {
   const navigate = useNavigate()
@@ -63,6 +95,14 @@ export const User = () => {
       ),
     keepPreviousData: true,
     enabled: !!token,
+  })
+
+  const bars = favouritesBarId.map((bar) => {
+    const barFromBack = favouritesBar.find((productBack) => productBack.id === bar.id)
+    if (barFromBack) {
+      return { ...bar, ...barFromBack }
+    }
+    return bar
   })
 
   const { data, isLoading } = useQuery({
@@ -139,7 +179,7 @@ export const User = () => {
               </div>
             ))}
           </div>
-          {!favouritesBar[0] && (
+          {!bars[0] && (
             <div>
               <p className={styles.userInfoNoBars}>NO FAVORITE BARS</p>
               <hr />
@@ -148,21 +188,19 @@ export const User = () => {
               </Link>
             </div>
           )}
-          {favouritesBar[0] && (
+          {bars[0] && (
             <div>
               <div className={styles.userInfoRightTitleDiv}>
                 <p className={styles.userInfoRightTitle}>FAVORITES BARS</p>
               </div>
               <hr />
-              {favouritesBar.map((bar) => (
-                <div>
-                  <div className={styles.barLink}>
-                    <p className={styles.text}>{bar.name.toUpperCase()}</p>
-                    <Link to={`/bars/${bar.id}`}>
-                      <button type="button">go to bar</button>
-                    </Link>
-                  </div>
-                </div>
+              {bars.map((bar) => (
+                <FavouriteBar
+                  favouritesBar={bars}
+                  key={bar.id}
+                  id={bar.id}
+                  name={bar.name}
+                />
               ))}
             </div>
           )}
