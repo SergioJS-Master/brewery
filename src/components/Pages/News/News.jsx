@@ -73,7 +73,7 @@ export function News() {
         <hr className={styles.hrNewsCards} />
         <div className={styles.newsCards}>
           {listPicturesNews.map((el) => (
-            <div className={styles.newsCardsContent}>
+            <div key={el.id} className={styles.newsCardsContent}>
               <h1 className={styles.newsCardsH1}>{el.name}</h1>
               <img
                 className={styles.newsCardsImg}
