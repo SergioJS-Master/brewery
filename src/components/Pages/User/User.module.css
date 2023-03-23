@@ -234,7 +234,7 @@
   cursor: pointer;
 }
 
-.barLink button  {
+.barLink button {
   --tw-bg-opacity: 1;
   background-color: rgb(185 150 91 / var(--tw-bg-opacity));
   text-transform: uppercase;
@@ -250,7 +250,6 @@
   position: relative;
 }
 
-
 .barLink {
   position: relative;
   display: flex;
@@ -262,20 +261,17 @@
 .text {
   position: relative;
   color: white;
-  
 }
 
-.bars_button{
+.bars_button {
   position: relative;
- 
 }
 
-.bars_link{
+.bars_link {
   position: relative;
-  
 }
 
-.but_link{
+.but_link {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -288,4 +284,52 @@
   color: white;
 }
 
+.btnTrash {
+  color: white;
+  font-size: 26px;
+  margin-right: 20px;
+  cursor: pointer;
+}
 
+.btnDelete {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(10 4 6 / var(--tw-text-opacity));
+  width: 100px;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px;
+}
+
+.btnDeleteBox {
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  margin-top: 40px;
+}
+
+.modal {
+  height: 150px;
+  width: 400px;
+}
+
+.textDelete {
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+.btnDelete:hover {
+  color: white;
+}
+
+.textDelete span {
+  --tw-bg-opacity: 1;
+  color: rgb(185 150 91 / var(--tw-bg-opacity));
+  font-size: 22px;
+}

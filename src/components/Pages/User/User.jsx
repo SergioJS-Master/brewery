@@ -6,12 +6,14 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { barsApi } from '../../../API/BarsApi'
 import { breweryApi } from '../../../API/BreweryApi'
 import { dataCardsBeer } from '../../../API/dataCardsBeer'
@@ -26,28 +28,42 @@ import { getQueryBarKey } from './utils'
 
 function FavouriteBar({ id, name }) {
   const dispatch = useDispatch()
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   // const queryClient = useQueryClient()
   const deleteFavouritesBarHandler = () => {
+    document.body.style.overflow = ''
     dispatch(deleteItemFromFavourite(id))
     // queryClient.invalidateQueries({ queryKey: [getQueryBarKey(favouritesBarId.lenght)] })
+  }
+
+  const closeDeleteModalHandler = () => {
+    document.body.style.overflow = ''
+    setIsOpenDeleteModal(false)
+  }
+
+  const openDeleteModalHandler = () => {
+    document.body.style.overflow = 'hidden'
+    setIsOpenDeleteModal(true)
   }
 
   return (
     <div>
       <div className={styles.barLink}>
         <div>
-          <p className={styles.text}>{name}</p>
+          <p className={styles.text}>{name?.toUpperCase()}</p>
         </div>
         <div className={styles.but_link}>
-          <div className={styles.bars_button}>
-            <button
-              onClick={deleteFavouritesBarHandler}
-              style={{ backgroundColor: 'red', color: 'white' }}
-              type="button"
-            >
-              DELETE
-            </button>
-          </div>
+          <motion.div
+            className={styles.bars_button}
+            whileHover={{ scale: [null, 1.2, 1.1] }}
+            transition={{ duration: 0.3 }}
+          >
+            <FontAwesomeIcon
+              onClick={openDeleteModalHandler}
+              icon={faTrashCan}
+              className={styles.btnTrash}
+            />
+          </motion.div>
           <div className={styles.bars_link}>
             <Link to={`/bars/${id}`}>
               <button type="button">go to bar</button>
@@ -55,6 +71,32 @@ function FavouriteBar({ id, name }) {
           </div>
         </div>
       </div>
+      <Modal isOpen={isOpenDeleteModal} closeHandler={closeDeleteModalHandler}>
+        <FontAwesomeIcon
+          className={styles.close}
+          icon={faXmark}
+          onClick={closeDeleteModalHandler}
+        />
+        <div className={styles.modal}>
+          <div>
+            <p className={styles.textDelete}>
+              Are you sure you want to remove <span>&laquo;{name}&raquo;</span> from your favorites?
+            </p>
+            <div className={styles.btnDeleteBox}>
+              <button
+                className={styles.btnDelete}
+                type="submit"
+                onClick={deleteFavouritesBarHandler}
+              >
+                Yes
+              </button>
+              <button className={styles.btnDelete} type="button" onClick={closeDeleteModalHandler}>
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </div>
   )
 }
@@ -179,7 +221,7 @@ export const User = () => {
             </div>
             <hr />
             {dataCardsBeer.map((el) => (
-              <div>
+              <div key={el._id}>
                 <div className={styles.barLink}>
                   <p className={styles.text}>{el.name}</p>
                   <Link to="/">
@@ -232,7 +274,7 @@ export const User = () => {
           style: {
             border: '1px solid white',
             borderRadius: '8px',
-            backgroundColor: 'rgba(17, 28, 51, 0.6)',
+            backgroundColor: 'rgba(0, 0, 0)',
             padding: '4px',
             color: 'white',
           },
