@@ -37,13 +37,17 @@ export function BarsItem({
     }
   }
 
-  const clickDetailPage = () => {
-    navigate(`/bars/${id}`)
+  const clickDetailPage = (e) => {
+    console.log(e)
+    if (e.target.dataset.hello === 'hello' || e.target.dataset.helloname === 'helloName') {
+      navigate(`/bars/${id}`)
+    }
   }
 
   return (
     <div onClick={clickDetailPage} className={styles.card}>
       <div
+        data-hello="hello"
         style={{
           backgroundImage: `url(${pictureMain})`,
           backgroundRepeat: 'no-repeat',
@@ -51,7 +55,7 @@ export function BarsItem({
         className={styles.cardImage}
       >
         <div className={styles.cardName}>
-          <h3>{name}</h3>
+          <h3 data-helloName="helloName">{name}</h3>
         </div>
         <div className={styles.cardDescription}>
           <p>{description}</p>

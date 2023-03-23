@@ -79,37 +79,45 @@ export function DetailPageBar() {
           <div className={styles.cardName}>
             <h3>{data.name}</h3>
           </div>
-          <div className={styles.cardDescription}>
-            <p>
-              {data.description_2}
-            </p>
-            <p>
-              Address:
-              {' '}
-              {data.city}
-              ,
-              {' '}
-              {data.address}
-            </p>
-            <div className={styles.iconsWr}>
-              <div className={styles.rating}>
-                <i className={classNames('bi bi-star-fill', styles.gradient)} />
-                <p className={styles.gradient}>5</p>
+          <div className={styles.descriptionWr}>
+            <div className={styles.cardDescription}>
+              <p>
+                {data.description_2}
+              </p>
+              <p>
+                Address:
+                {' '}
+                {data.city}
+                ,
+                {' '}
+                {data.address}
+              </p>
+              <div className={styles.iconsWr}>
+                <div className={styles.rating}>
+                  <i className={classNames('bi bi-star-fill', styles.gradient)} />
+                  <p className={styles.gradient}>5</p>
+                </div>
+                {token ? (
+                  <Link onClick={clickFavouriteHandler} to="/#">
+                    <i
+                      className={classNames(
+                        {
+                          'bi bi-heart-fill': isItemInFavourite,
+                          'bi bi-heart': !isItemInFavourite,
+                        },
+                        styles.icon,
+                      )}
+                    />
+                  </Link>
+                ) : null}
               </div>
-              {token ? (
-                <Link onClick={clickFavouriteHandler} to="/#">
-                  <i
-                    className={classNames(
-                      {
-                        'bi bi-heart-fill': isItemInFavourite,
-                        'bi bi-heart': !isItemInFavourite,
-                      },
-                      styles.icon,
-                    )}
-                  />
-                </Link>
-              ) : null}
             </div>
+            {/* <div className={styles.timeWorking}>
+              <p>12:00 – 01:00</p>
+              <button className={styles.aboutMeBtnBottom} type="button">
+                Book now
+              </button>
+            </div> */}
           </div>
         </div>
       </div>
