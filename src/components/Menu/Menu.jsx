@@ -3,13 +3,14 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { getTokenSelector, removeUser } from '../../redux/slices/userSlice'
 import styles from './Menu.module.css'
 
 export function Menu({ active, setActive }) {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const token = useSelector(getTokenSelector)
 
   useEffect(() => {
@@ -39,6 +40,13 @@ export function Menu({ active, setActive }) {
 
   const deleteUser = () => {
     dispatch(removeUser())
+  }
+
+  const navigateToBeer = () => {
+    navigate('/#beer')
+    setTimeout(() => {
+      window.scrollTo(0, 800)
+    }, 0)
   }
 
   return (
@@ -72,6 +80,7 @@ export function Menu({ active, setActive }) {
             whileHover={{ scale: [null, 1.2, 1.1] }}
             transition={{ duration: 0.3 }}
             className={styles.menuListA}
+            onClick={navigateToBeer}
           >
             <Link to="/">BEER</Link>
           </motion.div>
