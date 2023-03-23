@@ -2,26 +2,25 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faVk } from '@fortawesome/free-brands-svg-icons'
 import { memo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './Footer.module.css'
 import logo1 from '../../images/test1.jpeg'
 import logo2 from '../../images/test2.png'
 import logo3 from '../../images/test3.jpg'
 
 export function Footer() {
+  const navigate = useNavigate()
+
+  const navigateToBeer = () => {
+    navigate('/#beer')
+    setTimeout(() => {
+      window.scrollTo(0, 800)
+    }, 0)
+  }
+
   return (
     <footer className={styles.wr}>
       <div className={styles.footerContainer}>
-        {/* <div className={styles.footerGroup}>
-          <Link to="/about">
-            <span className={styles.footerSpan}>ABOUT</span>
-          </Link>
-          <div className={styles.footerLinks}>
-            <Link to="/about">ABOUT BREWERY 1</Link>
-            <Link to="/about">ABOUT BREWERY 2</Link>
-            <Link to="/about">ABOUT BREWERY 3</Link>
-          </div>
-        </div> */}
         <div className={styles.footerGroup}>
           <Link to="/bars">
             <span className={styles.footerSpan}>BARS</span>
@@ -36,16 +35,18 @@ export function Footer() {
           </div>
         </div>
         <div className={styles.footerGroup}>
-          <Link to="/catalog">
-            <span className={styles.footerSpan}>BEER</span>
+          <Link to="/">
+            <span className={styles.footerSpan} onClick={navigateToBeer}>
+              BEER
+            </span>
           </Link>
-          <div className={styles.footerLinks}>
-            <Link to="/catalog">WHEAT BEER</Link>
-            <Link to="/catalog">AMR. LAGER</Link>
-            <Link to="/catalog">ENGLISH IPA</Link>
-            <Link to="/catalog">ENGLISH BROWN ALE</Link>
-            <Link to="/catalog">BROWN PORTER</Link>
-            <Link to="/catalog">OATMEAL STOUT</Link>
+          <div className={styles.footerLinks} onClick={navigateToBeer}>
+            <Link to="/">WHEAT BEER</Link>
+            <Link to="/">AMR. LAGER</Link>
+            <Link to="/">ENGLISH IPA</Link>
+            <Link to="/">ENGLISH BROWN ALE</Link>
+            <Link to="/">BROWN PORTER</Link>
+            <Link to="/">OATMEAL STOUT</Link>
           </div>
         </div>
         <div className={styles.footerGroup}>

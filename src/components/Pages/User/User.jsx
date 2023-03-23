@@ -24,9 +24,7 @@ import { EditUserInfo } from './EditUserInfo/EditUserInfo'
 import styles from './User.module.css'
 import { getQueryBarKey } from './utils'
 
-function FavouriteBar({
-  id, name,
-}) {
+function FavouriteBar({ id, name }) {
   const dispatch = useDispatch()
   // const queryClient = useQueryClient()
   const deleteFavouritesBarHandler = () => {
@@ -42,7 +40,13 @@ function FavouriteBar({
         </div>
         <div className={styles.but_link}>
           <div className={styles.bars_button}>
-            <button onClick={deleteFavouritesBarHandler} style={{ backgroundColor: 'red', color: 'white' }} type="button">DELETE</button>
+            <button
+              onClick={deleteFavouritesBarHandler}
+              style={{ backgroundColor: 'red', color: 'white' }}
+              type="button"
+            >
+              DELETE
+            </button>
           </div>
           <div className={styles.bars_link}>
             <Link to={`/bars/${id}`}>
@@ -60,7 +64,6 @@ export const User = () => {
   const token = useSelector(getTokenSelector)
   const [isOpenModalAvatar, setIsOpenModalAvatar] = useState(false)
   const [isOpenModalInfo, setIsOpenModalInfo] = useState(false)
-
   const favouritesBarId = useSelector(getFavouriteSelector)
 
   useEffect(() => {
@@ -120,6 +123,13 @@ export const User = () => {
     )
   }
 
+  const navigateToBeer = () => {
+    navigate('/#beer')
+    setTimeout(() => {
+      window.scrollTo(0, 800)
+    }, 0)
+  }
+
   return (
     <div className={styles.wr}>
       <div className={styles.headerUser}>
@@ -173,7 +183,9 @@ export const User = () => {
                 <div className={styles.barLink}>
                   <p className={styles.text}>{el.name}</p>
                   <Link to="/">
-                    <button type="button">go to beer</button>
+                    <button type="button" onClick={navigateToBeer}>
+                      go to beer
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -195,12 +207,7 @@ export const User = () => {
               </div>
               <hr />
               {bars.map((bar) => (
-                <FavouriteBar
-                  favouritesBar={bars}
-                  key={bar.id}
-                  id={bar.id}
-                  name={bar.name}
-                />
+                <FavouriteBar favouritesBar={bars} key={bar.id} id={bar.id} name={bar.name} />
               ))}
             </div>
           )}
