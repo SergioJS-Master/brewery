@@ -51,9 +51,10 @@ export function Main() {
             </div>
             <div className={styles.picnicContantParagraph}>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam numquam eaque omnis
-                sapiente consectetur animi excepturi natus asperiores recusandae mollitia culpa
-                dicta est ab, eligendi nemo earum eos provident dolorem?
+                I believe, it is very important to have a break from the city life. Unfortunately,
+                my family doesn`t have a country house. Nevertheless, we really enjoy spending time
+                in quiet and peaceful places. Going for a picnic in a park is an ideal way for us to
+                relax!
               </p>
             </div>
           </div>

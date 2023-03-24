@@ -1,12 +1,11 @@
 .wr {
-  background-color: rgb(10, 4, 6);
+  background-color: #170200;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 .mapWr {

@@ -50,84 +50,86 @@ export function Menu({ active, setActive }) {
   }
 
   return (
-    <div className={active ? styles.menuActive : styles.menu}>
-      <div className={styles.menuContentBlur} onClick={closeMenu} />
-      <div className={styles.menuContent} onClick={closeMenuByClickWrapper}>
-        <motion.div
-          whileHover={{ rotate: [0, 90] }}
-          transition={{ duration: 0.3 }}
-          className={styles.menuX}
-          onClick={closeMenu}
-        >
-          <FontAwesomeIcon icon={faXmark} />
-        </motion.div>
-        <ul className={styles.menuList}>
+    <>
+      {active && <div className={styles.menuContentBlur} onClick={closeMenu} />}
+      <div className={active ? styles.menuActive : styles.menu}>
+        <div className={styles.menuContent} onClick={closeMenuByClickWrapper}>
           <motion.div
-            whileHover={{ scale: [null, 1.2, 1.1] }}
+            whileHover={{ rotate: [0, 90] }}
             transition={{ duration: 0.3 }}
-            className={styles.menuListA}
+            className={styles.menuX}
+            onClick={closeMenu}
           >
-            <Link to="/about">ABOUT</Link>
+            <FontAwesomeIcon icon={faXmark} />
           </motion.div>
-          <motion.div
-            whileHover={{ scale: [null, 1.2, 1.1] }}
-            transition={{ duration: 0.3 }}
-            className={styles.menuListA}
-          >
-            <Link to="/bars">BARS</Link>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: [null, 1.2, 1.1] }}
-            transition={{ duration: 0.3 }}
-            className={styles.menuListA}
-            onClick={navigateToBeer}
-          >
-            <Link to="/">BEER</Link>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: [null, 1.2, 1.1] }}
-            transition={{ duration: 0.3 }}
-            className={styles.menuListA}
-          >
-            <Link to="/news">NEWS</Link>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: [null, 1.2, 1.1] }}
-            transition={{ duration: 0.3 }}
-            className={styles.menuListA}
-          >
-            <Link to="/user">USER</Link>
-          </motion.div>
-        </ul>
-        <ul className={styles.menuListTwo}>
-          <motion.div
-            whileHover={{ scale: [null, 1.2, 1.1] }}
-            transition={{ duration: 0.3 }}
-            className={styles.reg}
-          >
-            <Link to="/signup">SIGN-UP</Link>
-          </motion.div>
-          {token ? (
+          <ul className={styles.menuList}>
+            <motion.div
+              whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              className={styles.menuListA}
+            >
+              <Link to="/about">ABOUT</Link>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              className={styles.menuListA}
+            >
+              <Link to="/bars">BARS</Link>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              className={styles.menuListA}
+              onClick={navigateToBeer}
+            >
+              <Link to="/">BEER</Link>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              className={styles.menuListA}
+            >
+              <Link to="/news">NEWS</Link>
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              className={styles.menuListA}
+            >
+              <Link to="/user">USER</Link>
+            </motion.div>
+          </ul>
+          <ul className={styles.menuListTwo}>
             <motion.div
               whileHover={{ scale: [null, 1.2, 1.1] }}
               transition={{ duration: 0.3 }}
               className={styles.reg}
             >
-              <Link to="/signin" onClick={deleteUser}>
-                SIGN-OUT
-              </Link>
+              <Link to="/signup">SIGN-UP</Link>
             </motion.div>
-          ) : (
-            <motion.div
-              whileHover={{ scale: [null, 1.2, 1.1] }}
-              transition={{ duration: 0.3 }}
-              className={styles.reg}
-            >
-              <Link to="/signin">LOG-IN</Link>
-            </motion.div>
-          )}
-        </ul>
+            {token ? (
+              <motion.div
+                whileHover={{ scale: [null, 1.2, 1.1] }}
+                transition={{ duration: 0.3 }}
+                className={styles.reg}
+              >
+                <Link to="/signin" onClick={deleteUser}>
+                  SIGN-OUT
+                </Link>
+              </motion.div>
+            ) : (
+              <motion.div
+                whileHover={{ scale: [null, 1.2, 1.1] }}
+                transition={{ duration: 0.3 }}
+                className={styles.reg}
+              >
+                <Link to="/signin">LOG-IN</Link>
+              </motion.div>
+            )}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
