@@ -18,10 +18,14 @@ export function Header() {
   }
   window.addEventListener('scroll', changeBackgroundScrolled)
 
+  const scrollTop = () => {
+    window.scrollTo(0, 0)
+  }
+
   return (
     <div className={scroll ? styles.scrolledHeader : styles.scrollHeader}>
       <div className={styles.header}>
-        <Link to="/">
+        <Link to="/" onClick={scrollTop}>
           <img
             className={scroll ? styles.headerLogoScrolled : styles.headerLogo}
             src={logo}
