@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable func-names */
 import { useEffect } from 'react'
 import styles from './mapYandex.module.css'
@@ -7,8 +8,18 @@ export function MapYandex({ data }) {
     function init() {
       // eslint-disable-next-line no-undef
       const map = new ymaps.Map('map', {
-        center: [51.24525810760668, 13.179435288048003],
+        center: [51.35846587348802, 16.04162565797728],
         zoom: 5,
+      })
+
+      const clusterer = new ymaps.Clusterer({
+        // preset: 'islands#invertedVioletClusterIcons',
+        clusterIconColor: 'black',
+        // groupByCoordinates: false,
+        clusterDisableClickZoom: true,
+        // clusterHideIconOnBalloonOpen: true,
+        // geoObjectHideIconOnBalloonOpen: false,
+        showInAlphabeticalOrder: true,
       })
 
       data.forEach((el) => {
@@ -19,6 +30,7 @@ export function MapYandex({ data }) {
           balloonContentHeader: `${el.name}`,
           balloonContentBody: `${el.city}, ${el.address}`,
           balloonContentFooter: `rating ${el.rating}`,
+          clusterCaption: `${el.name}`,
         }, {
           iconLayout: 'default#image',
           iconImageHref: 'https://cdn-icons-png.flaticon.com/512/931/931949.png',
@@ -27,8 +39,11 @@ export function MapYandex({ data }) {
           // balloonImageOffset: [-36, -90], // смещание балуна, если его необходимо подогнать
         })
 
-        map.geoObjects.add(placemark)
+        // map.geoObjects.add(placemark)
+        clusterer.add(placemark)
       })
+
+      map.geoObjects.add(clusterer)
 
       map.controls.remove('trafficControl') // удаляем контроль трафика
       map.controls.remove('typeSelector') // удаляем тип

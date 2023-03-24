@@ -55,7 +55,7 @@ export function BarsItem({
         className={styles.cardImage}
       >
         <div className={styles.cardName}>
-          <h3 data-helloName="helloName">{name}</h3>
+          <h3 data-helloname="helloName">{name}</h3>
         </div>
         <div className={styles.cardDescription}>
           <p>{description}</p>
