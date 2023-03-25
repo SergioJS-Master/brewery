@@ -24,6 +24,8 @@ export function Header() {
 
   const scrollTop = () => {
     window.scrollTo(0, 0)
+    document.body.style.overflow = ''
+    setMenuActive(false)
   }
 
   return (
