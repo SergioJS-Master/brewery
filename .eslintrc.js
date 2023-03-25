@@ -21,6 +21,8 @@ module.exports = {
     'import/prefer-default-export': 0,
     'react/jsx-filename-extension': 0,
     'jsx-a11y/click-events-have-key-events': 'off',
+    'no-return-assign': 'off',
+    'no-param-reassign': 'off',
     'jsx-a11y/no-static-element-interactions': [
       'error',
       {

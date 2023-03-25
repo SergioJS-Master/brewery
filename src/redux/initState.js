@@ -12,6 +12,7 @@ export const initState = {
     _id: '',
   },
   favourite: [],
+  basket: [],
 }
 
 console.log('Рендерится initState')

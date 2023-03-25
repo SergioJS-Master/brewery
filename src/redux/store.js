@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TOKEN_LS_KEY } from './constants'
 import { getIniteState } from './initState'
+import { basketReducer } from './slices/basketSlice'
 import { favouriteReducer } from './slices/favouriteSlice'
 import { userReducer } from './slices/userSlice'
 
@@ -8,6 +9,7 @@ export const store = configureStore({
   reducer: {
     user: userReducer,
     favourite: favouriteReducer,
+    basket: basketReducer,
   },
   preloadedState: getIniteState(),
 })
