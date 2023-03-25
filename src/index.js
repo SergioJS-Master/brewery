@@ -11,12 +11,12 @@ import { SignIn } from './components/Pages/SignIn/SignIn'
 import { SignUp } from './components/Pages/SignUp/SignUp'
 import { Bars } from './components/Pages/Bars/Bars'
 import { About } from './components/Pages/About/About'
-// import { Favorite } from './components/Pages/Favorite/Favorite'
 import { News } from './components/Pages/News/News'
-import { Catalog } from './components/Pages/Catalog/Catalog'
+import { Merch } from './components/Pages/Merch/Merch'
 import { User } from './components/Pages/User/User'
 import { store } from './redux/store'
 import { DetailPageBar } from './components/Pages/DetailPageBar/DetailPageBar'
+import { Cart } from './components/Pages/Cart/Cart'
 
 const router = createBrowserRouter(
   [
@@ -48,10 +48,6 @@ const router = createBrowserRouter(
           path: 'about',
           element: <About />,
         },
-        // {
-        //   path: 'favorite',
-        //   element: <Favorite />,
-        // },
         {
           path: 'news',
           element: <News />,
@@ -61,8 +57,12 @@ const router = createBrowserRouter(
           element: <User />,
         },
         {
-          path: 'catalog',
-          element: <Catalog />,
+          path: 'merch',
+          element: <Merch />,
+        },
+        {
+          path: 'cart',
+          element: <Cart />,
         },
       ],
     },
