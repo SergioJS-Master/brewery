@@ -1,269 +1,93 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './merchItem.module.css'
-import pic from '../../../../images/merch1.jpg'
 
-export function MerchItem() {
+export function MerchItem({
+  id,
+  name,
+  picture,
+  picture2,
+  description,
+  discount,
+  stock,
+  price,
+  tags,
+}) {
+  const [over, setOver] = useState(false)
+  const navigate = useNavigate()
+
+  console.log(description, stock)
+
+  const priceDiscount = Math.round(price * (1 - (discount / 100)))
+
+  const clickDetailPage = () => {
+    navigate(`/merch/${id}`)
+  }
+
   return (
-    <>
-      <div className={styles.card}>
-        <div className={styles.image__body}>
+    <div className={styles.card}>
+      <div
+        onClick={clickDetailPage}
+        className={styles.image__body}
+      >
+        {discount ? (
           <div className={styles.discount}>
-            <p>5% OFF</p>
-          </div>
-          <div className={styles.tag}>
-            <p>New In</p>
-          </div>
-          <img
-            src={pic}
-            className={styles.card__image}
-            alt="картинка"
-          />
-        </div>
-        <div className={styles.card__body}>
-          <div className={styles.merchName}>
-            <p>NOTRE DAME OATMEAL STADIUM HOODIE NOTRE DAME OATMEAL STADIUM</p>
-          </div>
-          {/* {!discount ? (
-        <div className={styles.priceWr}>
-          {' '}
-          <p>
-            {price}
-            {' '}
-            ₽
-          </p>
-        </div>
-      ) : ( */}
-          <div className={styles.priceDiscountWr}>
             <p>
-              €1000
+              {discount}
+              % OFF
             </p>
-            <div>
-              <p>
-                €1100
-              </p>
-            </div>
           </div>
-          {/* )} */}
-        </div>
-      </div>
-
-      <div className={styles.card}>
-        <div className={styles.image__body}>
-          <div className={styles.discount}>
-            <p>5% OFF</p>
-          </div>
+        ) : null}
+        {tags ? (
           <div className={styles.tag}>
-            <p>New In</p>
+            <p>{tags}</p>
           </div>
+        ) : null}
+        { picture2 ? (
           <img
-            src={pic}
+            onMouseOver={() => setOver(true)}
+            onMouseOut={() => setOver(false)}
+            src={!over ? picture : picture2}
             className={styles.card__image}
             alt="картинка"
           />
+        ) : (
+          <img
+            src={picture}
+            className={styles.card__image}
+            alt="картинка"
+          />
+        )}
+      </div>
+      <div className={styles.card__body}>
+        <div onClick={clickDetailPage} className={styles.merchName}>
+          <p>{name}</p>
         </div>
-        <div className={styles.card__body}>
-          <div className={styles.merchName}>
-            <p>NOTRE DAME OATMEAL STADIUM HOODIE</p>
-          </div>
-          {/* {!discount ? ( */}
+        {!discount ? (
           <div className={styles.priceWr}>
             {' '}
             <p>
-              €1100
-            </p>
-          </div>
-          {/* ) : (
-          <div className={styles.priceDiscountWr}>
-            <h6>
-              1000
-              {' '}
               €
-            </h6>
-            <div>
-              <p>
-                1100
-                {' '}
-                €
-              </p>
-            </div>
-          </div> */}
-          {/* )} */}
-
-        </div>
-      </div>
-
-      <div className={styles.card}>
-        <div className={styles.image__body}>
-          <div className={styles.discount}>
-            <p>5% OFF</p>
-          </div>
-          <div className={styles.tag}>
-            <p>New In</p>
-          </div>
-          <img
-            src={pic}
-            className={styles.card__image}
-            alt="картинка"
-          />
-        </div>
-        <div className={styles.card__body}>
-          <div className={styles.merchName}>
-            <p>NOTRE DAME OATMEAL STADIUM HOODIE NOTRE DAME OATMEAL STADIUM</p>
-          </div>
-          {/* {!discount ? (
-        <div className={styles.priceWr}>
-          {' '}
-          <p>
-            {price}
-            {' '}
-            ₽
-          </p>
-        </div>
-      ) : ( */}
-          <div className={styles.priceDiscountWr}>
-            <p>
-              €1000
-            </p>
-            <div>
-              <p>
-                €1100
-              </p>
-            </div>
-          </div>
-          {/* )} */}
-        </div>
-      </div>
-
-      <div className={styles.card}>
-        <div className={styles.image__body}>
-          <div className={styles.discount}>
-            <p>5% OFF</p>
-          </div>
-          <div className={styles.tag}>
-            <p>New In</p>
-          </div>
-          <img
-            src={pic}
-            className={styles.card__image}
-            alt="картинка"
-          />
-        </div>
-        <div className={styles.card__body}>
-          <div className={styles.merchName}>
-            <p>NOTRE DAME OATMEAL STADIUM HOODIE</p>
-          </div>
-          {/* {!discount ? ( */}
-          <div className={styles.priceWr}>
-            {' '}
-            <p>
-              €1100
-            </p>
-          </div>
-          {/* ) : (
-          <div className={styles.priceDiscountWr}>
-            <h6>
-              1000
+              {price}
               {' '}
-              €
-            </h6>
-            <div>
-              <p>
-                1100
-                {' '}
-                €
-              </p>
-            </div>
-          </div> */}
-          {/* )} */}
-
-        </div>
-      </div>
-
-      <div className={styles.card}>
-        <div className={styles.image__body}>
-          <div className={styles.discount}>
-            <p>5% OFF</p>
+            </p>
           </div>
-          <div className={styles.tag}>
-            <p>New In</p>
-          </div>
-          <img
-            src={pic}
-            className={styles.card__image}
-            alt="картинка"
-          />
-        </div>
-        <div className={styles.card__body}>
-          <div className={styles.merchName}>
-            <p>NOTRE DAME OATMEAL STADIUM HOODIE NOTRE DAME OATMEAL STADIUM</p>
-          </div>
-          {/* {!discount ? (
-        <div className={styles.priceWr}>
-          {' '}
-          <p>
-            {price}
-            {' '}
-            ₽
-          </p>
-        </div>
-      ) : ( */}
+        ) : (
           <div className={styles.priceDiscountWr}>
             <p>
-              €1000
+              €
+              {priceDiscount}
             </p>
             <div>
               <p>
-                €1100
-              </p>
-            </div>
-          </div>
-          {/* )} */}
-        </div>
-      </div>
-
-      <div className={styles.card}>
-        <div className={styles.image__body}>
-          <div className={styles.discount}>
-            <p>5% OFF</p>
-          </div>
-          <div className={styles.tag}>
-            <p>New In</p>
-          </div>
-          <img
-            src={pic}
-            className={styles.card__image}
-            alt="картинка"
-          />
-        </div>
-        <div className={styles.card__body}>
-          <div className={styles.merchName}>
-            <p>NOTRE DAME OATMEAL STADIUM HOODIE</p>
-          </div>
-          {/* {!discount ? ( */}
-          <div className={styles.priceWr}>
-            {' '}
-            <p>
-              €1100
-            </p>
-          </div>
-          {/* ) : (
-          <div className={styles.priceDiscountWr}>
-            <h6>
-              1000
-              {' '}
-              €
-            </h6>
-            <div>
-              <p>
-                1100
-                {' '}
                 €
+                {price}
               </p>
             </div>
-          </div> */}
-          {/* )} */}
-
-        </div>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   )
 }

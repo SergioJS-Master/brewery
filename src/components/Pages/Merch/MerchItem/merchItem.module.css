@@ -6,6 +6,11 @@
     align-items: center;
     max-width: 442.5px;
     min-height: 513px;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgba(55, 55, 55, 0.15);
 }
 
 .image__body {
@@ -35,12 +40,12 @@ margin: 0;
 }
 
 .merchName {
-min-height: 55px;
+min-height: 45px;
 cursor: pointer;
 }
 
 .merchName p {
-    color: rgb(0, 0, 0);
+    color: rgb(47, 47, 47);
     padding: 3px 6px 4px 5px;
     font-size: 16px;
     font-weight: 800;
