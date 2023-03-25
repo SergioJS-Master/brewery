@@ -1,0 +1,38 @@
+.productListWr {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.wr {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(442.5px, auto));
+    justify-content: center;
+    margin-top: 50px;
+}
+
+/* .emptyList {
+    min-height: calc(100vh - 100px - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.emptyList p {
+font-size: 20px;
+}
+
+.emptyList i {
+    font-size: 56px;
+} */
+
+
+
+
+
+
+
+
+
+
