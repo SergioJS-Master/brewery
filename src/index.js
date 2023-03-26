@@ -17,6 +17,7 @@ import { User } from './components/Pages/User/User'
 import { store } from './redux/store'
 import { DetailPageBar } from './components/Pages/DetailPageBar/DetailPageBar'
 import { Cart } from './components/Pages/Cart/Cart'
+import { Сheckout } from './components/Pages/Cart/Сheckout/Сheckout'
 
 const router = createBrowserRouter(
   [
@@ -63,6 +64,10 @@ const router = createBrowserRouter(
         {
           path: 'cart',
           element: <Cart />,
+        },
+        {
+          path: 'checkout',
+          element: <Сheckout />,
         },
       ],
     },
