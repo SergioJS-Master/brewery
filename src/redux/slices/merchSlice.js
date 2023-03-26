@@ -6,13 +6,44 @@ const merchSlice = createSlice({
   initialState: initState.merch,
   reducers: {
     setMerch(state, actions) {
-      state = actions.payload
-      return state
+      // state = {
+      //   ...actions.payload, count: 1, selectedSize: null, inCart: false,
+      // }
+      return actions.payload.map((item) => ({
+        ...item, count: 1, selectedSize: null, inCart: false,
+      }))
+    },
+    increment(state, actions) {
+      state.map((item) => {
+        if (item.id === actions.payload) {
+          return (item.count += 1)
+        }
+        return item
+      })
+    },
+    decrement(state, actions) {
+      state.map((item) => {
+        if (item.id === actions.payload) {
+          return (item.count -= 1)
+        }
+        return item
+      })
+    },
+    setSize(state, actions) {
+      console.log(actions)
+      state.map((item) => {
+        if (item.id === actions.payload.id) {
+          item.selectedSize = actions.payload.size
+        }
+        return item
+      })
     },
   },
 })
 
-export const { setMerch } = merchSlice.actions
+export const {
+  setMerch, increment, decrement, setSize,
+} = merchSlice.actions
 export const getMerchtSelector = (state) => state.merch
 export const getMerchByIdSelector = (state, merchId) => state.merch
   .find(({ id }) => merchId === id)
