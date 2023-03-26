@@ -20,7 +20,6 @@ import { Cart } from './components/Pages/Cart/Cart'
 import { DetailPageMerch } from './components/Pages/DetailPageMerch/DetailPageMerch'
 import { Сheckout } from './components/Pages/Cart/Сheckout/Сheckout'
 
-
 const router = createBrowserRouter(
   [
     {
