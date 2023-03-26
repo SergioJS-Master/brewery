@@ -1,7 +1,7 @@
 .DetailPageMerchBlock {
     background-color: rgb(255, 255, 255);
     width: 100%;
-    height: 1000px;
+    height: 1200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +19,7 @@
     width: 50%;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .DetailPageMerchImgContainer {
@@ -71,7 +72,7 @@
 }
 
 .statusProduct {
-    color: rgb(0, 159, 0);
+    color: rgb(0, 128, 79);
     font-weight: 900;
     font-size: 20px;
 }
@@ -116,4 +117,38 @@
     height: 80%;
     margin: 50px;
     opacity: 0.1;
+}
+
+.priceDiscountWr {
+    display: flex;
+}
+
+.priceDiscount {
+    margin-right: 15px;
+    margin-top: -20px;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    color: rgb(168, 36, 36);
+    margin-top: -20px;
+}
+
+.tags {
+    position: absolute;
+    top: -32px;
+    left: -10px;
+    background-color: rgba(21, 71, 52, 0.8);
+    padding: 20px;
+    font-size: 25px;
+}
+
+.buttonSize {
+    margin-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #B9965B;
+    border: none;
+    font-size: 15px;
+    font-weight: 800;
 }

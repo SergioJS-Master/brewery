@@ -7,96 +7,132 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 /* eslint-disable max-len */
 // import { useSelector } from 'react-redux'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getMerchByIdSelector } from '../../../redux/slices/merchSlice'
+import {
+  decrement, getMerchByIdSelector, increment, setSize,
+} from '../../../redux/slices/merchSlice'
 import styles from './detailPageMerch.module.css'
 
 export function DetailPageMerch() {
   // const merch = useSelector()
   const [over, setOver] = useState(false)
   const { merchId } = useParams()
+  const dispatch = useDispatch()
 
   const {
-    size, name, picture, picture2, discription, discount, price, tags,
+    id, size, name, picture, picture2, discription, discount, price, tags,
   } = useSelector((state) => getMerchByIdSelector(state, merchId))
+
   const priceDiscount = Math.round(price * (1 - (discount / 100)))
 
-  return (
-    <div className={styles.DetailPageMerchBlock}>
-      <div className={styles.DetailPageMerchContainer}>
-        <div className={styles.DetailPageMerchContantPictures}>
-          <div className={styles.DetailPageMerchImgContainer}>
-            <div>
-              {tags}
-            </div>
-            { picture2 ? (
-              <img
-                onMouseOver={() => setOver(true)}
-                onMouseOut={() => setOver(false)}
-                src={!over ? picture : picture2}
-                className={styles.DetailPageMerchImg}
-                alt="картинка"
-              />
-            ) : (
-              <img
-                src={picture}
-                className={styles.DetailPageMerchImg}
-                alt="картинка"
-              />
-            )}
+  const incrementButton = () => {
+    dispatch(increment(id))
+  }
 
-          </div>
-        </div>
-        <div className={styles.DetailPageMerchContantInfo}>
-          <h1 className={styles.headerNameH1}>
-            {name.toUpperCase()}
-          </h1>
-          <div>
-            <p className={styles.statusProduct}>In Stock</p>
-            <h1 className={styles.price}>
-              {!discount ? (
-                <div className={styles.priceWr}>
-                  {' '}
-                  <p>
-                    €
-                    {price}
-                    {' '}
-                  </p>
-                </div>
+  const decrementButton = () => {
+    dispatch(decrement())
+  }
+
+  const onSizeClick = (selectedSize) => {
+    dispatch(setSize({ id, size: selectedSize }))
+  }
+
+  return (
+    <>
+      <div className={styles.DetailPageMerchBlock}>
+        <div className={styles.DetailPageMerchContainer}>
+          <div className={styles.DetailPageMerchContantPictures}>
+            <div className={styles.DetailPageMerchImgContainer}>
+              <div>
+                <h3 className={styles.tags}>{tags}</h3>
+              </div>
+              { picture2 ? (
+                <img
+                  onMouseOver={() => setOver(true)}
+                  onMouseOut={() => setOver(false)}
+                  src={!over ? picture : picture2}
+                  className={styles.DetailPageMerchImg}
+                  alt="картинка"
+                />
               ) : (
-                <div className={styles.priceDiscountWr}>
-                  <p>
-                    €
-                    {priceDiscount}
-                  </p>
-                  <div>
+                <img
+                  src={picture}
+                  className={styles.DetailPageMerchImg}
+                  alt="картинка"
+                />
+              )}
+
+            </div>
+          </div>
+          <div className={styles.DetailPageMerchContantInfo}>
+            <h1 className={styles.headerNameH1}>
+              {name.toUpperCase()}
+            </h1>
+            <div>
+              <p className={styles.statusProduct}>In Stock</p>
+              <h1 className={styles.price}>
+                {!discount ? (
+                  <div className={styles.priceWr}>
+                    {' '}
                     <p>
                       €
                       {price}
+                      {' '}
                     </p>
                   </div>
-                </div>
-              )}
-              <span>&#8364;</span>
-            </h1>
-          </div>
-          {size && (
+                ) : (
+                  <div className={styles.priceDiscountWr}>
+                    <p className={styles.priceDiscount}>
+                      €
+                      {priceDiscount}
+                    </p>
+                    <div>
+                      <p className={styles.oldPrice}>
+                        €
+                        {price}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </h1>
+            </div>
+            {size && (
             <div className={styles.sizeContainer}>
-              {Object.keys(size).map((key) => <button type="button" disabled={!size[key]}>{key}</button>)}
+              {Object.keys(size).map((key) => (
+                <button
+                  onClick={() => onSizeClick(key)}
+                  type="button"
+                  disabled={!size[key]}
+                  className={styles.buttonSize}
+                >{key}
+                </button>
+              ))}
 
             </div>
-          )}
-          <h2 className={styles.discription}>
-            {discription}
-          </h2>
-          <div className={styles.counterContainer}>
-            <h2 className={styles.counterh2}>-</h2>
-            <h2 className={styles.counterh2}>1</h2>
-            <h2 className={styles.counterh2}>+</h2>
-            <button type="button">ADD BASKET</button>
+            )}
+            <h2 className={styles.discription}>
+              {discription}
+            </h2>
+            <div className={styles.counterContainer}>
+              <button
+                type="button"
+                className={styles.counterh2}
+                onClick={decrementButton}
+              >-
+              </button>
+              <h2 className={styles.counterh2}>1</h2>
+              <button
+                type="button"
+                className={styles.counterh2}
+                onClick={incrementButton}
+              >+
+              </button>
+              <button type="button">ADD BASKET</button>
+            </div>
           </div>
         </div>
+
       </div>
       <div className={styles.divider}>
         <div className={styles.text}>
@@ -123,6 +159,6 @@ export function DetailPageMerch() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
