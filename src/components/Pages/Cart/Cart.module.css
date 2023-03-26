@@ -1,0 +1,13 @@
+.clearCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+}
+
+.clearCartP a {
+  --tw-bg-opacity: 1;
+  color: rgb(185 150 91 / var(--tw-bg-opacity));
+}
