@@ -1,78 +1,119 @@
 .DetailPageMerchBlock {
-    background-color: rgb(255, 255, 255);
-    width: 100%;
-    height: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .DetailPageMerchContainer {
-    width: 80%;
-    background-color: rgb(255, 255, 255);
-    height: 80%;
-    display: flex;
+  width: 80%;
+  background-color: rgb(255, 255, 255);
+  height: 80%;
+  display: flex;
 }
 
 .DetailPageMerchContantPictures {
-    background-color: rgb(224, 224, 224);
-    width: 50%;
-    display: flex;
-    justify-content: center;
+  background-color: rgb(224, 224, 224);
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .DetailPageMerchImgContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .DetailPageMerchImg {
-    width: 90%;
-    height: 70%;
+  width: 90%;
+  height: 70%;
 }
 
-
 .sizeContainer {
-    display: flex;
+  display: flex;
 }
 
 .counterContainer {
-    display: flex;
-    align-items: center;
-    width: 200px;
-    font-size: 20px;
+  display: flex;
+  align-items: center;
+  width: 200px;
+  font-size: 20px;
 }
 
 .counterh2 {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .DetailPageMerchContantInfo {
-    display: grid;
-    padding: 40px;
+  display: grid;
+  padding: 40px;
 }
 
 .headerNameH1 {
-    font-size: 50px;
-    width: 480px;
+  font-size: 50px;
+  width: 480px;
 }
 
 .discription {
-    width: 480px;
+  width: 480px;
 }
 
 .price {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 .sizeP {
-    margin-right: 20px;
-    font-size: 20px;
+  margin-right: 20px;
+  font-size: 20px;
 }
 
 .statusProduct {
-    color: rgb(0, 159, 0);
-    font-weight: 900;
-    font-size: 20px;
+  color: rgb(0, 159, 0);
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.divider {
+  color: white;
+  width: 100%;
+  height: 150px;
+  background-color: #170200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+}
+
+.text p {
+  margin: 0;
+}
+
+.img {
+  --tw-bg-opacity: 1;
+  color: rgb(185 150 91 / var(--tw-bg-opacity));
+  font-size: 40px;
+}
+
+.textOne {
+  font-size: 18px;
+}
+
+.textTwo {
+  font-size: 30px;
+}
+
+.hr {
+  height: 80%;
+  margin: 50px;
+  opacity: 0.1;
 }
