@@ -3,6 +3,7 @@ import { TOKEN_LS_KEY } from './constants'
 import { getIniteState } from './initState'
 import { basketReducer } from './slices/basketSlice'
 import { favouriteReducer } from './slices/favouriteSlice'
+import { merchReducer } from './slices/merchSlice'
 import { userReducer } from './slices/userSlice'
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
     user: userReducer,
     favourite: favouriteReducer,
     basket: basketReducer,
+    merch: merchReducer,
   },
   preloadedState: getIniteState(),
 })

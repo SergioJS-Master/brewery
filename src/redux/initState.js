@@ -13,6 +13,7 @@ export const initState = {
   },
   favourite: [],
   basket: [],
+  merch: [],
 }
 
 export const getIniteState = () => {

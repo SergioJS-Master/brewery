@@ -2,11 +2,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMobileScreen, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
+import { useDispatch } from 'react-redux'
 import { MerchItem } from './MerchItem/MerchItem'
 import { merchDB } from '../../../API/merch'
 import styles from './Merch.module.css'
+import { setMerch } from '../../../redux/slices/merchSlice'
 
 export function Merch() {
+  const dispatch = useDispatch()
+  dispatch(setMerch(merchDB))
+
   return (
     <div className={styles.productListWr}>
       <div className={styles.wr}>
