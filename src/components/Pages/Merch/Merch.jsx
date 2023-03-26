@@ -1,8 +1,13 @@
+import { useDispatch } from 'react-redux'
 import styles from './Merch.module.css'
 import { MerchItem } from './MerchItem/MerchItem'
 import { merchDB } from '../../../API/merch'
+import { setMerch } from '../../../redux/slices/merchSlice'
 
 export function Merch() {
+  const dispatch = useDispatch()
+  dispatch(setMerch(merchDB))
+
   return (
     <div className={styles.productListWr}>
       <div className={styles.wr}>

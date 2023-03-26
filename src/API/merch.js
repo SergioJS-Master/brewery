@@ -49,7 +49,13 @@ export const merchDB = [
     stock: 20,
     price: 80,
     tags: 'New In',
-    size: ['S', 'M', 'L', 'XL', '2XL'],
+    size: {
+      S: 0,
+      M: 10,
+      L: 9,
+      XL: 14,
+      XXL: 11,
+    },
   },
   {
     id: '667274-85',
@@ -62,7 +68,13 @@ export const merchDB = [
     stock: 40,
     price: 100,
     tags: '',
-    size: ['S', 'M', 'L', 'XL', '2XL'],
+    size: {
+      S: 0,
+      M: 10,
+      L: 9,
+      XL: 14,
+      XXL: 11,
+    },
   },
   {
     id: '4601274-205',
@@ -75,7 +87,13 @@ export const merchDB = [
     stock: 30,
     price: 90,
     tags: '',
-    size: ['S', 'M', 'L', 'XL', '2XL'],
+    size: {
+      S: 0,
+      M: 10,
+      L: 9,
+      XL: 14,
+      XXL: 11,
+    },
   },
   {
     id: '5823829-261',
@@ -88,7 +106,13 @@ export const merchDB = [
     stock: 30,
     price: 90,
     tags: '',
-    size: ['S', 'M', 'L', 'XL', '2XL'],
+    size: {
+      S: 0,
+      M: 10,
+      L: 9,
+      XL: 14,
+      XXL: 11,
+    },
   },
   {
     id: '8102178-289',
