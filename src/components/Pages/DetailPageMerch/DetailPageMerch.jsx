@@ -1,42 +1,49 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
+/* eslint-disable max-len */
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 import { faMobileScreen, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-/* eslint-disable jsx-a11y/mouse-events-have-key-events */
-/* eslint-disable max-len */
-// import { useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import {
-  decrement, getMerchByIdSelector, increment, setSize,
+  decrement, getMerchByIdSelector, increment, resetCount, setSize,
 } from '../../../redux/slices/merchSlice'
 import styles from './detailPageMerch.module.css'
 
 export function DetailPageMerch() {
-  // const merch = useSelector()
   const [over, setOver] = useState(false)
+  const [isActive, setActive] = useState(false)
   const { merchId } = useParams()
   const dispatch = useDispatch()
 
   const {
-    id, size, name, picture, picture2, discription, discount, price, tags,
+    id, selectedSize, size, name, count, picture, picture2, discription, discount, price, tags,
   } = useSelector((state) => getMerchByIdSelector(state, merchId))
 
   const priceDiscount = Math.round(price * (1 - (discount / 100)))
 
-  const incrementButton = () => {
-    dispatch(increment(id))
-  }
-
   const decrementButton = () => {
-    dispatch(decrement())
+    if (count > 1) {
+      dispatch(decrement({ id }))
+    }
   }
 
-  const onSizeClick = (selectedSize) => {
-    dispatch(setSize({ id, size: selectedSize }))
+  const incrementButton = () => {
+    if (size[selectedSize] > count) {
+      dispatch(increment({ id }))
+    }
   }
+
+  const onSizeClick = (newSize) => {
+    dispatch(setSize({ id, size: newSize }))
+  }
+
+  useEffect(() => {
+    dispatch(resetCount(id))
+  }, [merchId, selectedSize, dispatch])
 
   return (
     <>
@@ -44,9 +51,11 @@ export function DetailPageMerch() {
         <div className={styles.DetailPageMerchContainer}>
           <div className={styles.DetailPageMerchContantPictures}>
             <div className={styles.DetailPageMerchImgContainer}>
-              <div>
-                <h3 className={styles.tags}>{tags}</h3>
-              </div>
+              {tags && (
+                <div>
+                  <h3 className={styles.tags}>{tags}</h3>
+                </div>
+              )}
               { picture2 ? (
                 <img
                   onMouseOver={() => setOver(true)}
@@ -98,19 +107,21 @@ export function DetailPageMerch() {
               </h1>
             </div>
             {size && (
-            <div className={styles.sizeContainer}>
-              {Object.keys(size).map((key) => (
-                <button
-                  onClick={() => onSizeClick(key)}
-                  type="button"
-                  disabled={!size[key]}
-                  className={styles.buttonSize}
-                >{key}
-                </button>
-              ))}
+              <div className={styles.sizeContainer}>
+                {Object.keys(size).map((key) => (
+                  <button
+                    onClick={() => { onSizeClick(key); setActive(!isActive) }}
+                    type="button"
+                    disabled={!size[key]}
+                    className={isActive ? (styles.buttonSizeActive) : (styles.buttonSize)}
+                  >
+                    {key}
+                  </button>
+                ))}
 
-            </div>
+              </div>
             )}
+            <p>stock: {size?.[selectedSize]}</p>
             <h2 className={styles.discription}>
               {discription}
             </h2>
@@ -119,16 +130,24 @@ export function DetailPageMerch() {
                 type="button"
                 className={styles.counterh2}
                 onClick={decrementButton}
+                disabled={!selectedSize || count === 1}
               >-
               </button>
-              <h2 className={styles.counterh2}>1</h2>
+              <h2 className={styles.counter}>{count}</h2>
               <button
                 type="button"
                 className={styles.counterh2}
                 onClick={incrementButton}
+                disabled={!selectedSize || count === size[selectedSize]}
               >+
               </button>
-              <button type="button">ADD BASKET</button>
+              <button
+                className={styles.addBasketButton}
+                type="button"
+                disabled={!selectedSize}
+              >
+                ADD BASKET
+              </button>
             </div>
           </div>
         </div>
