@@ -2,11 +2,13 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getBasketSelector } from '../../../redux/slices/basketSlice'
+import { getMerchtSelector } from '../../../redux/slices/merchSlice'
 import styles from './Cart.module.css'
+import { CartItem } from './CartItem/CartItem'
 
 export function Cart() {
-  const cartArray = useSelector(getBasketSelector)
+  const cartArray = useSelector(getMerchtSelector)
+  console.log(cartArray)
   return (
     <>
       {!cartArray.length ? (
@@ -18,7 +20,20 @@ export function Cart() {
           </p>
         </div>
       ) : (
-        <div>Cart</div>
+        <div>
+          {cartArray.map((el) => (
+            <CartItem
+              key={el.id}
+              id={el.id}
+              name={el.name}
+              size={el.size}
+              picture={el.picture}
+              discription={el.discription}
+              discount={el.discount}
+              price={el.price}
+            />
+          ))}
+        </div>
       )}
     </>
   )

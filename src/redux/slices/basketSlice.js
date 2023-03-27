@@ -54,7 +54,13 @@ const basketSlice = createSlice({
 })
 
 export const {
-  basketAdd, basketRemove, basketCheckboxRemove, basketIsCkeckedOne, basketIsCheckedAllCards, basketIncrement, basketDecrement,
+  basketAdd,
+  basketRemove,
+  basketCheckboxRemove,
+  basketIsCkeckedOne,
+  basketIsCheckedAllCards,
+  basketIncrement,
+  basketDecrement,
 } = basketSlice.actions
 export const getBasketSelector = (state) => state.basket
 export const basketReducer = basketSlice.reducer
