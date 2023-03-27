@@ -34,6 +34,14 @@
   font-size: 30px;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
+  display: flex;
+  gap: 10px;
+}
+
+.check {
+  --tw-bg-opacity: 1;
+  color: rgb(185 150 91 / var(--tw-bg-opacity));
+  font-size: 30px;
 }
 
 .wr {

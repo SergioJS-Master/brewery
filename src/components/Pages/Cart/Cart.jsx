@@ -28,7 +28,6 @@ export function Cart() {
   const arrayProductsInCart = useSelector((state) => getMerchByIdsSelector(state, ids))
 
   const countCheckedProduct = cartArray.filter((product) => product.isChecked) // массив выбранных товаров в корзине
-  console.log(countCheckedProduct)
 
   const clearCart = () => {
     dispatch(clearAll())

@@ -35,7 +35,7 @@ export const merchDB = [
       'Versatile and comfortable, suitable for a hot cup, glass, beer mug. Made from cork with a hard, glossy polymer layer on top that has an image printed on it. Size 9.5x9.5 cm; thickness 4 mm',
     discount: 10,
     stock: 80,
-    price: 11,
+    price: 12,
     tags: '',
   },
   {
