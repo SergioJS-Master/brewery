@@ -50,3 +50,5 @@ export const {
 } = basketSlice.actions
 export const getBasketSelector = (state) => state.basket
 export const basketReducer = basketSlice.reducer
+
+export const basketCheckedSelector = (state) => state.basket.filter(({ isChecked }) => isChecked)
