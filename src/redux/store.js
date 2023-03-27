@@ -16,9 +16,6 @@ export const store = configureStore({
   preloadedState: getIniteState(),
 })
 
-console.log('Рендерится store')
-console.log(store.getState())
-
 store.subscribe(() => {
   window.localStorage.setItem(TOKEN_LS_KEY, JSON.stringify(store.getState()))
 })

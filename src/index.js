@@ -71,6 +71,10 @@ const router = createBrowserRouter(
           element: <Cart />,
         },
         {
+          path: '/cart/:merchId',
+          element: <DetailPageMerch />,
+        },
+        {
           path: 'checkout',
           element: <Сheckout />,
         },

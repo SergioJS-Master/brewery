@@ -1,3 +1,35 @@
+.wr {
+  background-color: white;
+  display: flex;
+}
+
+.title {
+  text-align: center;
+  font-size: 40px;
+  color: white;
+}
+
+.hrH {
+  width: 99%;
+  opacity: 0.2;
+}
+
+.inputBox {
+  display: flex;
+  font-size: 20px;
+}
+
+.headerCart {
+  margin-top: 20px;
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+.btnBoxH {
+  display: flex;
+  gap: 10px;
+}
+
 .clearCart {
   display: flex;
   flex-direction: column;
@@ -10,4 +42,154 @@
 .clearCartP a {
   --tw-bg-opacity: 1;
   color: rgb(185 150 91 / var(--tw-bg-opacity));
+}
+
+.divider {
+  color: white;
+  width: 100%;
+  height: 150px;
+  background-color: #170200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+}
+
+.text p {
+  margin: 0;
+}
+
+.img {
+  --tw-bg-opacity: 1;
+  color: rgb(185 150 91 / var(--tw-bg-opacity));
+  font-size: 40px;
+}
+
+.textOne {
+  font-size: 18px;
+}
+
+.textTwo {
+  font-size: 30px;
+}
+
+.hr {
+  height: 80%;
+  margin: 50px;
+  opacity: 0.1;
+}
+
+.btnClear {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(10 4 6 / var(--tw-text-opacity));
+  width: max-content;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 12px;
+}
+
+.btnClear:hover {
+  color: white;
+}
+
+.order {
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.itemInput {
+  width: auto;
+  margin-left: 24px;
+  margin-right: 16px;
+  transform: scale(1.8);
+}
+
+.headerCart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartRight {
+  margin-left: 50px;
+}
+
+.box {
+  display: flex;
+}
+
+.btnCart {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(10 4 6 / var(--tw-text-opacity));
+  width: max-content;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 12px;
+  margin-top: 34px;
+  margin-left: 40px;
+}
+
+.btnClear {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(10 4 6 / var(--tw-text-opacity));
+  width: max-content;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 12px;
+  margin-top: 34px;
+  margin-left: 40px;
+}
+
+.btnClear:hover {
+  background-color: black;
+  color: white;
+}
+
+.btnCart:hover {
+  color: white;
+}
+
+.totalI,
+.totalP {
+  font-size: 30px;
+  margin: 0;
+}
+
+.countTotal,
+.totalPrice {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.cartRightSum,
+.totalPriceBox {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

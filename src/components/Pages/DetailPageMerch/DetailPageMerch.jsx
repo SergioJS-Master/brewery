@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
@@ -10,32 +11,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
+import { basketAdd } from '../../../redux/slices/basketSlice'
 import {
   decrement,
   getMerchByIdSelector,
+  getMerchInCartSelector,
   increment,
   setSize,
 } from '../../../redux/slices/merchSlice'
-import { basketAdd, getBasketSelector } from '../../../redux/slices/basketSlice'
 import styles from './detailPageMerch.module.css'
 
 export function DetailPageMerch() {
   // const merch = useSelector()
+  const dispatch = useDispatch()
   const [over, setOver] = useState(false)
   const { merchId } = useParams()
-  console.log(merchId)
-  const dispatch = useDispatch()
 
   const { id, size, name, picture, picture2, discription, discount, price, tags } = useSelector(
     (state) => getMerchByIdSelector(state, merchId),
   )
+
+  const z = useSelector(getMerchInCartSelector)
+  console.log(z)
+
   const addNewItemToCart = (e) => {
     e.preventDefault()
     dispatch(basketAdd(merchId))
   }
-
-  const productInCart = useSelector(getBasketSelector)
-  console.log(productInCart)
 
   const priceDiscount = Math.round(price * (1 - discount / 100))
 
@@ -97,6 +99,7 @@ export function DetailPageMerch() {
               <div className={styles.sizeContainer}>
                 {Object.keys(size).map((key) => (
                   <button
+                    key={key}
                     onClick={() => onSizeClick(key)}
                     type="button"
                     disabled={!size[key]}
