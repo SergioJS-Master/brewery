@@ -32,7 +32,7 @@ export const merchDB = [
     picture2: '',
     name: 'Coaster violet',
     discription:
-    'Versatile and comfortable, suitable for a hot cup, glass, beer mug. Made from cork with a hard, glossy polymer layer on top that has an image printed on it. Size 9.5x9.5 cm; thickness 4 mm',
+      'Versatile and comfortable, suitable for a hot cup, glass, beer mug. Made from cork with a hard, glossy polymer layer on top that has an image printed on it. Size 9.5x9.5 cm; thickness 4 mm',
     discount: 10,
     stock: 80,
     price: 11,
@@ -107,10 +107,10 @@ export const merchDB = [
     price: 90,
     tags: '',
     size: {
-      S: 1,
+      S: 0,
       M: 0,
       L: 10,
-      XL: 8,
+      XL: 9,
       XXL: 11,
     },
   },

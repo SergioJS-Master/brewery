@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable object-curly-newline */
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-undef */
 import classNames from 'classnames'
 import { Link, useParams } from 'react-router-dom'
@@ -6,9 +9,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import {
-  ErrorMessage, Field, Form, Formik, useField, useFormikContext,
-} from 'formik'
+import { ErrorMessage, Field, Form, Formik, useField, useFormikContext } from 'formik'
 
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -18,10 +19,7 @@ import { toast, Toaster } from 'react-hot-toast'
 import { Modal } from '../../Modal/Modal'
 import styles from './detailPageBar.module.css'
 import { getIniteState } from '../../../redux/initState'
-import {
-  addItemInFavourite,
-  deleteItemFromFavourite,
-} from '../../../redux/slices/favouriteSlice'
+import { addItemInFavourite, deleteItemFromFavourite } from '../../../redux/slices/favouriteSlice'
 import { Loader } from '../../Loader/Loader'
 import { barsApi } from '../../../API/BarsApi'
 import { bookingFormValidationSchema } from './bookingFormValidator'
@@ -83,9 +81,7 @@ export function DetailPageBar() {
 
   const getQueryDetailPageKey = (id) => ['detailPage', id]
 
-  const {
-    data, isLoading, isError, error, refetch,
-  } = useQuery({
+  const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey: getQueryDetailPageKey(+barId),
     queryFn: () => barsApi.getBarById(+barId),
     enabled: !!barId,
@@ -149,18 +145,11 @@ export function DetailPageBar() {
             <div className={styles.cardDescription}>
               <p>{data.description_2}</p>
               <p>
-                Address:
-                {' '}
-                {data.city}
-                ,
-                {' '}
-                {data.address}
+                Address: {data.city}, {data.address}
               </p>
               <div className={styles.iconsWr}>
                 <div className={styles.rating}>
-                  <i
-                    className={classNames('bi bi-star-fill', styles.gradient)}
-                  />
+                  <i className={classNames('bi bi-star-fill', styles.gradient)} />
                   <p className={styles.gradient}>5</p>
                 </div>
                 {token ? (
@@ -228,10 +217,7 @@ export function DetailPageBar() {
                   <ErrorMessage component="p" className="error" name="tel" />
                 </div>
                 <div className={styles.buttonModalWr}>
-                  <button
-                    className={styles.btnDelete}
-                    type="submit"
-                  >
+                  <button className={styles.btnDelete} type="submit">
                     Book
                   </button>
                 </div>

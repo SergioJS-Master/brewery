@@ -1,3 +1,5 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable implicit-arrow-linebreak */
 import { createSlice } from '@reduxjs/toolkit'
 import { initState } from '../initState'
 
@@ -10,7 +12,11 @@ const merchSlice = createSlice({
       //   ...actions.payload, count: 1, selectedSize: null, inCart: false,
       // }
       return actions.payload.map((item) => ({
-        ...item, count: 1, selectedSize: null, inCart: false,
+        ...item,
+        count: 1,
+        selectedSize: null,
+        isChecked: false,
+        inCart: false,
       }))
     },
     increment(state, actions) {
@@ -30,7 +36,6 @@ const merchSlice = createSlice({
       })
     },
     setSize(state, actions) {
-      console.log(actions)
       state.map((item) => {
         if (item.id === actions.payload.id) {
           item.selectedSize = actions.payload.size
@@ -41,10 +46,10 @@ const merchSlice = createSlice({
   },
 })
 
-export const {
-  setMerch, increment, decrement, setSize,
-} = merchSlice.actions
+export const { setMerch, increment, decrement, setSize } = merchSlice.actions
 export const getMerchtSelector = (state) => state.merch
-export const getMerchByIdSelector = (state, merchId) => state.merch
-  .find(({ id }) => merchId === id)
+export const getMerchByIdSelector = (state, merchId) => state.merch.find(({ id }) => merchId === id)
+export const getMerchInCartSelector = (state) => state.merch.filter(({ inCart }) => inCart)
+export const getMerchByIdsSelector = (state, merchIds) =>
+  state.merch.filter(({ id }) => merchIds.includes(id))
 export const merchReducer = merchSlice.reducer
