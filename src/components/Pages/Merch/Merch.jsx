@@ -1,8 +1,17 @@
-import styles from './Merch.module.css'
+/* eslint-disable react/jsx-one-expression-per-line */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMobileScreen, faTruck } from '@fortawesome/free-solid-svg-icons'
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
+import { useDispatch } from 'react-redux'
 import { MerchItem } from './MerchItem/MerchItem'
 import { merchDB } from '../../../API/merch'
+import styles from './Merch.module.css'
+import { setMerch } from '../../../redux/slices/merchSlice'
 
 export function Merch() {
+  const dispatch = useDispatch()
+  dispatch(setMerch(merchDB))
+
   return (
     <div className={styles.productListWr}>
       <div className={styles.wr}>
@@ -21,7 +30,31 @@ export function Merch() {
           />
         ))}
       </div>
-      <hr style={{ width: '80%' }} />
+      <div className={styles.divider}>
+        <div className={styles.text}>
+          <FontAwesomeIcon icon={faMobileScreen} className={styles.img} />
+          <div className={styles.textBox}>
+            <p className={styles.textOne}>GET IN TOUCH</p>
+            <p className={styles.textTwo}>CHAT WITH US LIVE</p>
+          </div>
+        </div>
+        <hr className={styles.hr} />
+        <div className={styles.text}>
+          <FontAwesomeIcon icon={faTruck} className={styles.img} />
+          <div className={styles.textBox}>
+            <p className={styles.textOne}>FREE SHIPPING</p>
+            <p className={styles.textTwo}>OVER $80.00</p>
+          </div>
+        </div>
+        <hr className={styles.hr} />
+        <div className={styles.text}>
+          <FontAwesomeIcon icon={faCircleCheck} className={styles.img} />
+          <div className={styles.textBox}>
+            <p className={styles.textOne}>WE&apos;VE GOT YOU COVERED</p>
+            <p className={styles.textTwo}>AMAZING CUSTOMER SERVICE</p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

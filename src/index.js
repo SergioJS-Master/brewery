@@ -17,6 +17,8 @@ import { User } from './components/Pages/User/User'
 import { store } from './redux/store'
 import { DetailPageBar } from './components/Pages/DetailPageBar/DetailPageBar'
 import { Cart } from './components/Pages/Cart/Cart'
+import { DetailPageMerch } from './components/Pages/DetailPageMerch/DetailPageMerch'
+import { Сheckout } from './components/Pages/Cart/Сheckout/Сheckout'
 
 const router = createBrowserRouter(
   [
@@ -61,8 +63,16 @@ const router = createBrowserRouter(
           element: <Merch />,
         },
         {
+          path: 'merch/:merchId',
+          element: <DetailPageMerch />,
+        },
+        {
           path: 'cart',
           element: <Cart />,
+        },
+        {
+          path: 'checkout',
+          element: <Сheckout />,
         },
       ],
     },

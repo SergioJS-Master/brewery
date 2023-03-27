@@ -13,9 +13,8 @@ export const initState = {
   },
   favourite: [],
   basket: [],
+  merch: [],
 }
-
-console.log('Рендерится initState')
 
 export const getIniteState = () => {
   const dataFromLS = window.localStorage.getItem(TOKEN_LS_KEY)

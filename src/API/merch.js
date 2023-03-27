@@ -22,7 +22,7 @@ export const merchDB = [
     discription:
       'Versatile and comfortable, suitable for a hot cup, glass, beer mug. Made from cork with a hard, glossy polymer layer on top that has an image printed on it. Size 9.5x9.5 cm; thickness 4 mm',
     discount: 0,
-    count: 100,
+    stock: 100,
     price: 10,
     tags: 'New In',
   },
@@ -34,7 +34,7 @@ export const merchDB = [
     discription:
     'Versatile and comfortable, suitable for a hot cup, glass, beer mug. Made from cork with a hard, glossy polymer layer on top that has an image printed on it. Size 9.5x9.5 cm; thickness 4 mm',
     discount: 10,
-    count: 80,
+    stock: 80,
     price: 11,
     tags: '',
   },
@@ -46,9 +46,16 @@ export const merchDB = [
     discription:
       'Comfortable soft sweatshirt. 80% cotton / 20% polyester, weight 260 g/m2. Classic comfort fit. Cuffs and hem in lycra-blend cotton for fit and comfort. Printed with eco-friendly inks (OEKO-TEX® certified). Please refer to the size chart when choosing your size',
     discount: 20,
-    count: 20,
+    stock: 20,
     price: 80,
     tags: 'New In',
+    size: {
+      S: 0,
+      M: 10,
+      L: 9,
+      XL: 14,
+      XXL: 11,
+    },
   },
   {
     id: '667274-85',
@@ -58,9 +65,16 @@ export const merchDB = [
     discription:
       'Comfortable soft sweatshirt with a hood (hoodie). 100% cotton, density 260 g/m2. Classic comfort fit. Double hood. Pass-through hand pocket on the front. Cuffs and hem in lycra-blend cotton for fit and comfort. Printed with eco-friendly inks (OEKO-TEX® certified). Please refer to the size chart when choosing your size',
     discount: 10,
-    count: 40,
+    stock: 40,
     price: 100,
     tags: '',
+    size: {
+      S: 0,
+      M: 10,
+      L: 9,
+      XL: 14,
+      XXL: 11,
+    },
   },
   {
     id: '4601274-205',
@@ -70,9 +84,16 @@ export const merchDB = [
     discription:
       'Comfortable soft sweatshirt with a hood (hoodie). 100% cotton, density 260 g/m2. Classic comfort fit. Double hood. Pass-through hand pocket on the front. Cuffs and hem in lycra-blend cotton for fit and comfort. Printed with eco-friendly inks (OEKO-TEX® certified). Please refer to the size chart when choosing your size',
     discount: 0,
-    count: 30,
+    stock: 30,
     price: 90,
     tags: '',
+    size: {
+      S: 0,
+      M: 10,
+      L: 9,
+      XL: 14,
+      XXL: 11,
+    },
   },
   {
     id: '5823829-261',
@@ -82,9 +103,16 @@ export const merchDB = [
     discription:
       '85% jersey cotton / 15% viscose, 155 g/m2. Classic style. Collar in cotton with Lycra for added comfort and shape retention. Printed with eco-friendly inks (OEKO-TEX® certified). Please refer to the size chart when choosing your size',
     discount: 20,
-    count: 30,
+    stock: 30,
     price: 90,
     tags: '',
+    size: {
+      S: 0,
+      M: 10,
+      L: 9,
+      XL: 14,
+      XXL: 11,
+    },
   },
   {
     id: '8102178-289',
@@ -94,7 +122,7 @@ export const merchDB = [
     discription:
       'Fashionable American trucker baseball cap, white polyester "forehead" on the front, plastic mesh on the back for excellent ventilation of your head. This baseball cap is not just good sun protection, but also a fashion accessory',
     discount: 15,
-    count: 40,
+    stock: 40,
     price: 30,
     tags: '',
   },
@@ -102,6 +130,7 @@ export const merchDB = [
     id: '8814528-30',
     picture: sumka,
     picture2: '',
+
     name: 'Shopper bag',
     discription:
       'Simple, comfortable, durable and roomy. Ideal for everyday use and an eco-friendly lifestyle. Down with extra plastic bags! 100% cotton, density 280 g/m. Size: 38 x 42 cm',
@@ -118,7 +147,7 @@ export const merchDB = [
     discription:
       'Our Official Mountain Brewery Glass - the perfect gift. With a new, contoured shape, the Mountain brewery Glass features an embossed logo on the back of the glass and the Mountain Brewery Logo on the front',
     discount: 15,
-    count: 100,
+    stock: 100,
     price: 20,
     tags: '',
   },
