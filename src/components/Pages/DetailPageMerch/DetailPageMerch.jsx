@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
@@ -10,21 +11,33 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import {
-  decrement, getMerchByIdSelector, increment, setSize,
+  decrement,
+  getMerchByIdSelector,
+  increment,
+  setSize,
 } from '../../../redux/slices/merchSlice'
+import { basketAdd, getBasketSelector } from '../../../redux/slices/basketSlice'
 import styles from './detailPageMerch.module.css'
 
 export function DetailPageMerch() {
   // const merch = useSelector()
   const [over, setOver] = useState(false)
   const { merchId } = useParams()
+  console.log(merchId)
   const dispatch = useDispatch()
 
-  const {
-    id, size, name, picture, picture2, discription, discount, price, tags,
-  } = useSelector((state) => getMerchByIdSelector(state, merchId))
+  const { id, size, name, picture, picture2, discription, discount, price, tags } = useSelector(
+    (state) => getMerchByIdSelector(state, merchId),
+  )
+  const addNewItemToCart = (e) => {
+    e.preventDefault()
+    dispatch(basketAdd(merchId))
+  }
 
-  const priceDiscount = Math.round(price * (1 - (discount / 100)))
+  const productInCart = useSelector(getBasketSelector)
+  console.log(productInCart)
+
+  const priceDiscount = Math.round(price * (1 - discount / 100))
 
   const incrementButton = () => {
     dispatch(increment(id))
@@ -47,7 +60,7 @@ export function DetailPageMerch() {
               <div>
                 <h3 className={styles.tags}>{tags}</h3>
               </div>
-              { picture2 ? (
+              {picture2 ? (
                 <img
                   onMouseOver={() => setOver(true)}
                   onMouseOut={() => setOver(false)}
@@ -56,83 +69,59 @@ export function DetailPageMerch() {
                   alt="картинка"
                 />
               ) : (
-                <img
-                  src={picture}
-                  className={styles.DetailPageMerchImg}
-                  alt="картинка"
-                />
+                <img src={picture} className={styles.DetailPageMerchImg} alt="картинка" />
               )}
-
             </div>
           </div>
           <div className={styles.DetailPageMerchContantInfo}>
-            <h1 className={styles.headerNameH1}>
-              {name.toUpperCase()}
-            </h1>
+            <h1 className={styles.headerNameH1}>{name.toUpperCase()}</h1>
             <div>
               <p className={styles.statusProduct}>In Stock</p>
               <h1 className={styles.price}>
                 {!discount ? (
                   <div className={styles.priceWr}>
                     {' '}
-                    <p>
-                      €
-                      {price}
-                      {' '}
-                    </p>
+                    <p>€{price} </p>
                   </div>
                 ) : (
                   <div className={styles.priceDiscountWr}>
-                    <p className={styles.priceDiscount}>
-                      €
-                      {priceDiscount}
-                    </p>
+                    <p className={styles.priceDiscount}>€{priceDiscount}</p>
                     <div>
-                      <p className={styles.oldPrice}>
-                        €
-                        {price}
-                      </p>
+                      <p className={styles.oldPrice}>€{price}</p>
                     </div>
                   </div>
                 )}
               </h1>
             </div>
             {size && (
-            <div className={styles.sizeContainer}>
-              {Object.keys(size).map((key) => (
-                <button
-                  onClick={() => onSizeClick(key)}
-                  type="button"
-                  disabled={!size[key]}
-                  className={styles.buttonSize}
-                >{key}
-                </button>
-              ))}
-
-            </div>
+              <div className={styles.sizeContainer}>
+                {Object.keys(size).map((key) => (
+                  <button
+                    onClick={() => onSizeClick(key)}
+                    type="button"
+                    disabled={!size[key]}
+                    className={styles.buttonSize}
+                  >
+                    {key}
+                  </button>
+                ))}
+              </div>
             )}
-            <h2 className={styles.discription}>
-              {discription}
-            </h2>
+            <h2 className={styles.discription}>{discription}</h2>
             <div className={styles.counterContainer}>
-              <button
-                type="button"
-                className={styles.counterh2}
-                onClick={decrementButton}
-              >-
+              <button type="button" className={styles.counterh2} onClick={decrementButton}>
+                -
               </button>
               <h2 className={styles.counterh2}>1</h2>
-              <button
-                type="button"
-                className={styles.counterh2}
-                onClick={incrementButton}
-              >+
+              <button type="button" className={styles.counterh2} onClick={incrementButton}>
+                +
               </button>
-              <button type="button">ADD BASKET</button>
+              <button type="button" onClick={addNewItemToCart}>
+                ADD BASKET
+              </button>
             </div>
           </div>
         </div>
-
       </div>
       <div className={styles.divider}>
         <div className={styles.text}>
