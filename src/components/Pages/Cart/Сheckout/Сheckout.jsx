@@ -11,13 +11,17 @@ import { useSelector } from 'react-redux'
 import { validatorCheckout } from './validatorCheckout'
 import styles from './Сheckout.module.css'
 import { Payments } from './Payments/Payments'
-import { basketCheckedSelector, getBasketSelector } from '../../../../redux/slices/basketSlice'
-import { getMerchByIdsSelector, getMerchtSelector } from '../../../../redux/slices/merchSlice'
+// import { getBasketSelector } from '../../../../redux/slices/basketSlice'
+import {
+  getCheckedMerch,
+  // getMerchByIdsSelector,
+  getMerchtSelector,
+} from '../../../../redux/slices/merchSlice'
 
 export function Сheckout() {
   const [form, setForm] = useState('SHIPPING ADDRESS')
 
-  const checkedMerch = useSelector(basketCheckedSelector)
+  const checkedMerch = useSelector(getCheckedMerch)
   const merch = useSelector(getMerchtSelector)
 
   const filteredMerch = merch.filter(({ id }) =>
@@ -40,19 +44,21 @@ export function Сheckout() {
     setForm('REVIEW & PAYMENTS')
     window.scrollTo(0, 0)
   }
-  const cartArray = useSelector(getBasketSelector)
-  const ids = cartArray.map((product) => product.id)
-  const arrayProductsInCart = useSelector((state) => getMerchByIdsSelector(state, ids))
-  const countCheckedProduct = cartArray.filter((product) => product.isChecked)
-  const selectedProductsIsChecked = cartArray.filter((product) => product.isChecked === true)
-  const selectedProducts = arrayProductsInCart.filter((item) =>
-    selectedProductsIsChecked.find((product) => product.id === item.id),
-  )
+  // const cartArray = useSelector(getBasketSelector)
+  // const ids = cartArray.map((product) => product.id)
+  // const arrayProductsInCart = useSelector((state) => getMerchByIdsSelector(state, ids))
+  // const countCheckedProduct = cartArray.filter((product) => product.isChecked)
+  // const selectedProductsIsChecked = cartArray.filter((product) => product.isChecked)
+  // const selectedProducts = arrayProductsInCart.filter((item) =>
+  //   selectedProductsIsChecked.find((product) => product.id === item.id),
+  // )
   const getTotalPrice = () => {
-    const priceSelectedProduct = selectedProducts.reduce((sum, product) => {
-      const { count } = countCheckedProduct.find((item) => item.id === product.id)
-      return Math.round(product.price * count * ((100 - product.discount) / 100) + sum)
-    }, 0)
+    const priceSelectedProduct = checkedMerch.reduce(
+      (sum, product) =>
+        // eslint-disable-next-line implicit-arrow-linebreak
+        Math.round(product.price * product.count * ((100 - product.discount) / 100) + sum),
+      0,
+    )
     return priceSelectedProduct
   }
 
@@ -183,8 +189,8 @@ export function Сheckout() {
                     <p className={styles.name}>{el.name}</p>
                   </div>
                   <p className={styles.price}>
-                    {el.discount > 0 && `${(el.price * (100 - el.discount)) / 100} €`}
-                    {el.discount === 0 && `${el.price} €`}
+                    {el.discount > 0 && `${(el.price * el.count * (100 - el.discount)) / 100} €`}
+                    {el.discount === 0 && `${el.price * el.count} €`}
                   </p>
                 </div>
               ))}

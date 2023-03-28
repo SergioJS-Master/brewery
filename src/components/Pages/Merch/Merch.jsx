@@ -2,20 +2,36 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMobileScreen, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { MerchItem } from './MerchItem/MerchItem'
 import { merchDB } from '../../../API/merch'
 import styles from './Merch.module.css'
-import { setMerch } from '../../../redux/slices/merchSlice'
+import { getMerchtSelector, setMerch } from '../../../redux/slices/merchSlice'
+import { Loader } from '../../Loader/Loader'
 
 export function Merch() {
   const dispatch = useDispatch()
-  dispatch(setMerch(merchDB))
+
+  const merch = useSelector(getMerchtSelector)
+
+  if (!merch.length) {
+    setTimeout(() => {
+      dispatch(setMerch(merchDB))
+    }, 2000)
+  }
+
+  if (!merch.length) {
+    return (
+      <div className={styles.loader}>
+        <Loader />
+      </div>
+    )
+  }
 
   return (
     <div className={styles.productListWr}>
       <div className={styles.wr}>
-        {merchDB.map((el) => (
+        {merch.map((el) => (
           <MerchItem
             key={el.id}
             id={el.id}

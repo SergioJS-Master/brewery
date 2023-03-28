@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable react/jsx-indent */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable object-curly-newline */
@@ -12,49 +14,55 @@ import { useEffect, useState } from 'react'
 import { toast, Toaster } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { basketAdd } from '../../../redux/slices/basketSlice'
-import {
-  decrement,
-  getMerchByIdSelector,
-  increment,
-  setSize,
-  resetCount,
-} from '../../../redux/slices/merchSlice'
+import { getMerchByIdSelector, setSize, addInCart } from '../../../redux/slices/merchSlice'
 import styles from './detailPageMerch.module.css'
 
 export function DetailPageMerch() {
   const dispatch = useDispatch()
   const [over, setOver] = useState(false)
-  // const [isActive, setActive] = useState(false)
   const { merchId } = useParams()
 
   const {
-    id, selectedSize, size, name, stock, count, picture, picture2, discription, discount, price, tags,
+    id,
+    selectedSize,
+    size,
+    name,
+    stock,
+    count,
+    picture,
+    picture2,
+    discription,
+    discount,
+    price,
+    tags,
   } = useSelector((state) => getMerchByIdSelector(state, merchId))
 
   const [active, setActive] = useState(size?.[0])
+  const [currentCount, setCurrentCount] = useState(1)
+
+  console.log(setCurrentCount)
 
   const addNewItemToCart = (e) => {
     e.preventDefault()
+    dispatch(addInCart({ id, count: currentCount }))
     toast.success('Product added!', {
       duration: 2000,
     })
-    dispatch(basketAdd(merchId))
   }
 
   const priceDiscount = Math.round(price * (1 - discount / 100))
 
   const decrementButton = () => {
-    if (count > 1) {
-      dispatch(decrement({ id }))
+    if (currentCount > 1) {
+      setCurrentCount(currentCount - 1)
     }
   }
 
   const incrementButton = () => {
-    if (count < stock) {
-      dispatch(increment({ id }))
+    if (currentCount < stock) {
+      setCurrentCount(currentCount + 1)
     } else if (size[selectedSize] > count) {
-      dispatch(increment({ id }))
+      setCurrentCount(currentCount + 1)
     }
   }
 
@@ -63,8 +71,8 @@ export function DetailPageMerch() {
   }
 
   useEffect(() => {
-    dispatch(resetCount(id))
-  }, [merchId, selectedSize, dispatch])
+    setCurrentCount(1)
+  }, [selectedSize])
 
   return (
     <>
@@ -73,16 +81,19 @@ export function DetailPageMerch() {
           <div className={styles.DetailPageMerchContantPictures}>
             <div className={styles.DetailPageMerchImgContainer}>
               {tags && (
-              <div>
-                <h3 className={styles.tags}>{tags.toUpperCase()}</h3>
-              </div>
-              )}
-              {!discount ? null : discount && (
                 <div>
-                  <h3 className={styles.discount}>{discount}<span>% OFF</span></h3>
+                  <h3 className={styles.tags}>{tags.toUpperCase()}</h3>
                 </div>
               )}
-              { picture2 ? (
+              {!!discount && (
+                <div>
+                  <h3 className={styles.discount}>
+                    {discount}
+                    <span>% OFF</span>
+                  </h3>
+                </div>
+              )}
+              {picture2 ? (
                 <img
                   onMouseOver={() => setOver(true)}
                   onMouseOut={() => setOver(false)}
@@ -123,49 +134,53 @@ export function DetailPageMerch() {
                 {Object.keys(size).map((key) => (
                   <button
                     key={key}
-                    onClick={() => { onSizeClick(key); setActive(key) }}
+                    onClick={() => {
+                      onSizeClick(key)
+                      setActive(key)
+                    }}
                     type="button"
                     disabled={!size[key]}
-                    className={active === key ? (styles.buttonSizeActive) : (styles.buttonSize)}
+                    className={active === key ? styles.buttonSizeActive : styles.buttonSize}
                   >
                     {key}
                   </button>
                 ))}
-
               </div>
             )}
-            <h2 className={styles.discription}>
-              {discription}
-            </h2>
+            <h2 className={styles.discription}>{discription}</h2>
             <div>
-              <div>
-                <p className={styles.stockStyles}>STOCK: {size?.[selectedSize] || stock}</p>
-              </div>
-              <div className={styles.counterContainer}>
-                <button
-                  type="button"
-                  className={styles.counterh2}
-                  onClick={decrementButton}
-                  disabled={!size ? (count === 1) : (!selectedSize || count === 1)}
-                >-
-                </button>
-                <h2 className={styles.counter}>{count}</h2>
-                <button
-                  type="button"
-                  className={styles.counterh2}
-                  onClick={incrementButton}
-                  disabled={!size ? (count === stock) : (!selectedSize || count === size[selectedSize])}
-                >+
-                </button>
-                <button
-                  className={styles.addBasketButton}
-                  type="button"
-                  disabled={!size ? (null) : (!selectedSize)}
-                  onClick={addNewItemToCart}
-                >
-                  ADD CART
-                </button>
-              </div>
+              <p className={styles.stockStyles}>STOCK: {size?.[selectedSize] || stock}</p>
+            </div>
+            <div className={styles.counterContainer}>
+              <button
+                type="button"
+                className={styles.counterh2}
+                onClick={decrementButton}
+                disabled={!size ? currentCount === 1 : !selectedSize || currentCount === 1}
+              >
+                -
+              </button>
+              <h2 className={styles.counter}>{currentCount}</h2>
+              <button
+                type="button"
+                className={styles.counterh2}
+                onClick={incrementButton}
+                disabled={
+                  !size
+                    ? currentCount === stock
+                    : !selectedSize || currentCount === size[selectedSize]
+                }
+              >
+                +
+              </button>
+              <button
+                className={styles.addBasketButton}
+                type="button"
+                disabled={!size ? null : !selectedSize}
+                onClick={addNewItemToCart}
+              >
+                ADD CART
+              </button>
             </div>
           </div>
         </div>
