@@ -2,8 +2,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { toast, Toaster } from 'react-hot-toast'
-import styles from './Payments.module.css'
 import { validatorPayments } from './validatorPayments'
+import styles from './Payments.module.css'
 
 export function Payments() {
   const initPaymentsValues = {
@@ -24,30 +24,33 @@ export function Payments() {
       <div>
         <Formik
           initialValues={initPaymentsValues}
-          onSubmit={submitHandler}
           validationSchema={validatorPayments}
+          onSubmit={submitHandler}
         >
           <Form className={styles.form}>
             <div className={styles.inputBoxN}>
-              <Field name="number" placeholder="1234 1234 1234 1234" type="number" />
+              <Field name="number" placeholder="1234 1234 1234 1234" type="text" />
               <div className={styles.errorMessage}>
-                <ErrorMessage component="p" className={styles.error} name="email" />
+                <ErrorMessage component="p" className={styles.error} name="number" />
               </div>
             </div>
             <div className={styles.box}>
               <div className={styles.inputBoxD}>
                 <Field name="date" placeholder="MM / YY" type="text" />
                 <div className={styles.errorMessage}>
-                  <ErrorMessage component="p" className={styles.error} name="email" />
+                  <ErrorMessage component="p" className={styles.error} name="date" />
                 </div>
               </div>
               <div className={styles.inputBoxC}>
-                <Field name="cvc" placeholder="CVC" type="number" />
+                <Field name="cvc" placeholder="CVC" type="text" />
                 <div className={styles.errorMessage}>
-                  <ErrorMessage component="p" className={styles.error} name="email" />
+                  <ErrorMessage component="p" className={styles.error} name="cvc" />
                 </div>
               </div>
             </div>
+            <button className={styles.pay} type="submit">
+              place order
+            </button>
           </Form>
         </Formik>
       </div>
@@ -56,11 +59,11 @@ export function Payments() {
           *Your card details are protected using PCI DSS v3.2 security standards.
         </p>
       </div>
-      <div>
-        <button className={styles.pay} type="button" onClick={submitHandler}>
+      {/* <div>
+        <button className={styles.pay} type="button">
           place order
         </button>
-      </div>
+      </div> */}
       <Toaster
         position="bottom-right"
         reverseOrder={false}

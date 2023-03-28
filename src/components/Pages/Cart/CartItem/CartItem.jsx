@@ -10,7 +10,7 @@ import {
 } from '../../../../redux/slices/basketSlice'
 import styles from './CartItem.module.css'
 
-export function CartItem({ id, name, picture, price, discount }) {
+export function CartItem({ id, name, picture, price, discount, count }) {
   const dispatch = useDispatch()
 
   const productInCart = useSelector(getBasketSelector) // массив товаров в корзине (id count check)
@@ -50,13 +50,20 @@ export function CartItem({ id, name, picture, price, discount }) {
           </Link>
         </div>
         <div className={styles.itemBoxPrice}>
-          <h6 className={styles.price}>
-            <span>{discount > 0 && `${price} €`}</span>
-          </h6>
-          <h4 className={styles.price}>
-            {discount > 0 && `${(price * (100 - discount)) / 100} €`}
-            {discount === 0 && `${price} €`}
-          </h4>
+          <div className={styles.itemBoxA}>
+            <p className={styles.textCount}>count:</p>
+            <p className={styles.price}>{count}</p>
+          </div>
+          <div className={styles.itemBoxA}>
+            <p className={styles.textCount}>price:</p>
+            {/* <h6 className={styles.price}>
+              <span>{discount > 0 && `${price} €`}</span>
+            </h6> */}
+            <h4 className={styles.price}>
+              {discount > 0 && `${(price * count * (100 - discount)) / 100} €`}
+              {discount === 0 && `${count * price} €`}
+            </h4>
+          </div>
         </div>
         <div className={styles.itemBoxBtn}>
           <button className={styles.cartBtn} type="button" onClick={deleteItemHandler}>

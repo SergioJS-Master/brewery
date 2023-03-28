@@ -142,7 +142,9 @@
 
 .name {
   font-size: 20px;
+  font-weight: 500;
   text-align: start;
+  font-family: 'Poppins', sans-serif;
 }
 
 .btnBox {
@@ -200,4 +202,8 @@
   height: 80%;
   margin: 50px;
   opacity: 0.1;
+}
+
+.countItem {
+  margin-top: 20px;
 }

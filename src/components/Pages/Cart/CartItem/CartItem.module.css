@@ -42,7 +42,9 @@
 }
 
 .itemBoxPrice {
-  width: 100px;
+  display: flex;
+  width: 250px;
+  gap: 20px;
 }
 
 .itemBoxBtn {
@@ -76,4 +78,14 @@
 
 .cartBtn:hover {
   color: white;
+}
+
+.textCount {
+  font-size: 20px;
+}
+
+.itemBoxA {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

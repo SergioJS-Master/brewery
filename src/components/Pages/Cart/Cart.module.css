@@ -1,6 +1,8 @@
 .wr {
   background-color: white;
   display: flex;
+  min-height: 58vh;
+  font-family: 'Poppins', sans-serif;
 }
 
 .title {
@@ -16,13 +18,22 @@
 
 .inputBox {
   display: flex;
+  align-items: center;
   font-size: 20px;
+  margin-top: 30px;
+  border: 1px solid black;
+  padding-right: 14px;
+}
+
+.left {
+  margin-right: -150px;
 }
 
 .headerCart {
-  margin-top: 20px;
   margin-left: 250px;
   margin-right: 250px;
+  display: flex;
+  align-items: center;
 }
 
 .btnBoxH {
@@ -124,11 +135,12 @@
 }
 
 .cartRight {
-  margin-left: 50px;
+  margin-left: 0px;
 }
 
 .box {
   display: flex;
+  flex-direction: column;
 }
 
 .btnCart {
@@ -137,15 +149,14 @@
   text-transform: uppercase;
   --tw-text-opacity: 1;
   color: rgb(10 4 6 / var(--tw-text-opacity));
-  width: max-content;
+  width: 100%;
   border: none;
   cursor: pointer;
   align-self: flex-end;
   font-size: 20px;
   font-weight: 600;
-  padding: 12px;
+  padding: 20px;
   margin-top: 34px;
-  margin-left: 40px;
 }
 
 .btnClear {
@@ -191,5 +202,6 @@
 .totalPriceBox {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
 }
