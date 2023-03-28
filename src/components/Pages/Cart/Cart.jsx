@@ -67,12 +67,7 @@ export function Cart() {
 
   const countTotalProductInCart = () => {
     if (countCheckedProduct.length === 0) return <p>No items selected</p>
-    if (countCheckedProduct.length === 1) return <p>{countCheckedProduct.length} item</p>
-    if (countCheckedProduct.length > 1 && countCheckedProduct.length < 5) {
-      return <p>{countCheckedProduct.length} item</p>
-    }
-    if (countCheckedProduct.length > 4) return <p>{countCheckedProduct.length} items</p>
-    // падежы товаров по кол-ву (не доведена до идеала)
+    if (countCheckedProduct.length >= 1) return <p>{countCheckedProduct.length} item</p>
   }
 
   const navToCheckout = () => {
@@ -128,6 +123,7 @@ export function Cart() {
                   discription={el.discription}
                   discount={el.discount}
                   price={el.price}
+                  count={el.count}
                 />
               ))}
             </div>

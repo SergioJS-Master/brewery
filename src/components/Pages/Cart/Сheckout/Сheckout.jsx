@@ -37,7 +37,8 @@ export function Сheckout() {
   }
 
   const submitHandler = () => {
-    console.log('')
+    setForm('REVIEW & PAYMENTS')
+    window.scrollTo(0, 0)
   }
   const cartArray = useSelector(getBasketSelector)
   const ids = cartArray.map((product) => product.id)
@@ -151,10 +152,10 @@ export function Сheckout() {
                   <button
                     type="submit"
                     className={styles.btnNext}
-                    onClick={() => {
-                      setForm('REVIEW & PAYMENTS')
-                      window.scrollTo(0, 0)
-                    }}
+                    // onClick={() => {
+                    //   setForm('REVIEW & PAYMENTS')
+                    //   window.scrollTo(0, 0)
+                    // }}
                   >
                     NEXT
                   </button>

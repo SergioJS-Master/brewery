@@ -11,10 +11,11 @@
   margin-bottom: 10px;
   margin-top: 10px;
   padding-top: 50px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .inputBoxN input {
-  width: 300px;
+  width: 400px;
   height: 40px;
   text-align: center;
   font-size: 26px;
@@ -27,14 +28,14 @@
 }
 
 .inputBoxD input {
-  width: 136px;
+  width: 186px;
   height: 40px;
   text-align: center;
   font-size: 26px;
 }
 
 .inputBoxC input {
-  width: 136px;
+  width: 186px;
   height: 40px;
   text-align: center;
   font-size: 26px;
@@ -57,7 +58,7 @@
   text-transform: uppercase;
   --tw-text-opacity: 1;
   color: black;
-  width: 308px;
+  width: 408px;
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -73,9 +74,9 @@
 
 .errorMessage {
   display: flex;
-  height: 30px;
+  height: 20px;
   opacity: 0.7;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .error {
