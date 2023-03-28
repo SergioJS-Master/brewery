@@ -151,4 +151,47 @@
     border: none;
     font-size: 15px;
     font-weight: 800;
+    /* transition: .2s ease; */
+}
+
+/* .buttonSize:focus {
+    border: 3px solid;
+    margin-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
+} */
+
+.buttonSizeActive {
+    border: 3px solid;
+    background-color: #432a00;
+    margin-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: rgb(255, 255, 255);
+}
+
+.counterh2 {
+    margin-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #B9965B;
+    border: none;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.counter {
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.addBasketButton {
+    margin-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #B9965B;
+    border: none;
+    font-weight: 800;
+    width: 100px;
 }

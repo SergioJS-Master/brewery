@@ -21,7 +21,7 @@ const merchSlice = createSlice({
     },
     increment(state, actions) {
       state.map((item) => {
-        if (item.id === actions.payload) {
+        if (item.id === actions.payload.id) {
           return (item.count += 1)
         }
         return item
@@ -29,7 +29,7 @@ const merchSlice = createSlice({
     },
     decrement(state, actions) {
       state.map((item) => {
-        if (item.id === actions.payload) {
+        if (item.id === actions.payload.id) {
           return (item.count -= 1)
         }
         return item
@@ -43,10 +43,20 @@ const merchSlice = createSlice({
         return item
       })
     },
+    resetCount(state, actions) {
+      state.map((item) => {
+        if (item.id === actions.payload) {
+          item.count = 1
+        }
+        return item
+      })
+    },
   },
 })
 
-export const { setMerch, increment, decrement, setSize } = merchSlice.actions
+export const {
+  setMerch, increment, decrement, setSize, resetCount,
+} = merchSlice.actions
 export const getMerchtSelector = (state) => state.merch
 export const getMerchByIdSelector = (state, merchId) => state.merch.find(({ id }) => merchId === id)
 export const getMerchInCartSelector = (state) => state.merch.filter(({ inCart }) => inCart)
