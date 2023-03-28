@@ -159,6 +159,10 @@
   margin-top: 34px;
 }
 
+.btnCart:disabled {
+  opacity: 0.5;
+}
+
 .btnClear {
   --tw-bg-opacity: 1;
   background-color: rgb(185 150 91 / var(--tw-bg-opacity));
