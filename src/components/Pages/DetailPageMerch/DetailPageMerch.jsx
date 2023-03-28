@@ -1,3 +1,6 @@
+/* eslint-disable indent */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -8,12 +11,12 @@ import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 import { faMobileScreen, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
+import { toast, Toaster } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import {
   decrement,
   getMerchByIdSelector,
-  getMerchInCartSelector,
   increment,
   setSize,
   addInCart,
@@ -23,7 +26,7 @@ import styles from './detailPageMerch.module.css'
 export function DetailPageMerch() {
   const dispatch = useDispatch()
   const [over, setOver] = useState(false)
-  const [isActive, setActive] = useState(false)
+  // const [isActive, setActive] = useState(false)
   const { merchId } = useParams()
 
   const {
@@ -31,6 +34,7 @@ export function DetailPageMerch() {
     selectedSize,
     size,
     name,
+    stock,
     count,
     picture,
     picture2,
@@ -40,12 +44,14 @@ export function DetailPageMerch() {
     tags,
   } = useSelector((state) => getMerchByIdSelector(state, merchId))
 
-  const z = useSelector(getMerchInCartSelector)
-  console.log(z)
+  const [active, setActive] = useState(size?.[0])
 
   const addNewItemToCart = (e) => {
     e.preventDefault()
     dispatch(addInCart(id))
+    toast.success('Product added!', {
+      duration: 2000,
+    })
   }
 
   const priceDiscount = Math.round(price * (1 - discount / 100))
@@ -57,7 +63,9 @@ export function DetailPageMerch() {
   }
 
   const incrementButton = () => {
-    if (size[selectedSize] > count) {
+    if (count < stock) {
+      dispatch(increment({ id }))
+    } else if (size[selectedSize] > count) {
       dispatch(increment({ id }))
     }
   }
@@ -74,9 +82,19 @@ export function DetailPageMerch() {
             <div className={styles.DetailPageMerchImgContainer}>
               {tags && (
                 <div>
-                  <h3 className={styles.tags}>{tags}</h3>
+                  <h3 className={styles.tags}>{tags.toUpperCase()}</h3>
                 </div>
               )}
+              {!discount
+                ? null
+                : discount && (
+                    <div>
+                      <h3 className={styles.discount}>
+                        {discount}
+                        <span>% OFF</span>
+                      </h3>
+                    </div>
+                  )}
               {picture2 ? (
                 <img
                   onMouseOver={() => setOver(true)}
@@ -91,7 +109,10 @@ export function DetailPageMerch() {
             </div>
           </div>
           <div className={styles.DetailPageMerchContantInfo}>
-            <h1 className={styles.headerNameH1}>{name.toUpperCase()}</h1>
+            <div>
+              <h1 className={styles.headerNameH1}>{name.toUpperCase()}</h1>
+              <hr />
+            </div>
             <div>
               <p className={styles.statusProduct}>In Stock</p>
               <h1 className={styles.price}>
@@ -117,11 +138,11 @@ export function DetailPageMerch() {
                     key={key}
                     onClick={() => {
                       onSizeClick(key)
-                      setActive(!isActive)
+                      setActive(!active)
                     }}
                     type="button"
                     disabled={!size[key]}
-                    className={isActive ? styles.buttonSizeActive : styles.buttonSize}
+                    className={active ? styles.buttonSizeActive : styles.buttonSize}
                   >
                     {key}
                   </button>
@@ -184,6 +205,19 @@ export function DetailPageMerch() {
             <p className={styles.textTwo}>AMAZING CUSTOMER SERVICE</p>
           </div>
         </div>
+        <Toaster
+          position="bottom-right"
+          reverseOrder={false}
+          toastOptions={{
+            style: {
+              border: '1px solid white',
+              borderRadius: '8px',
+              backgroundColor: 'rgba(0, 0, 0)',
+              padding: '4px',
+              color: 'white',
+            },
+          }}
+        />
       </div>
     </>
   )

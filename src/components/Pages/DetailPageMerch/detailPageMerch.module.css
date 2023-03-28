@@ -44,10 +44,6 @@
     font-size: 20px;
 }
 
-.counterh2 {
-    margin-right: 20px;
-}
-
 .DetailPageMerchContantInfo {
     display: grid;
     padding: 40px;
@@ -137,8 +133,19 @@
 .tags {
     position: absolute;
     top: -32px;
+    right: -10px;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    font-size: 25px;
+}
+
+.discount {
+    position: absolute;
+    top: -32px;
     left: -10px;
     background-color: rgba(21, 71, 52, 0.8);
+    color: white;
     padding: 20px;
     font-size: 25px;
 }
@@ -154,6 +161,11 @@
     /* transition: .2s ease; */
 }
 
+.buttonSize:hover {
+    color: #ffffff;
+    background-color: black
+}
+
 /* .buttonSize:focus {
     border: 3px solid;
     margin-right: 10px;
@@ -164,11 +176,12 @@
 
 .buttonSizeActive {
     border: 3px solid;
-    background-color: #432a00;
-    margin-right: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: rgb(255, 255, 255);
+    background-color: #B9965B;
+    margin-right: 7px;
+    padding-left: 17px;
+    padding-right: 17px;
+    font-weight: 800;
+    color: rgb(0, 0, 0);
 }
 
 .counterh2 {
@@ -181,6 +194,11 @@
     font-weight: 800;
 }
 
+.counterh2:hover {
+    background-color: black;
+    color: white;
+}
+
 .counter {
     margin-right: 20px;
     margin-left: 10px;
@@ -188,10 +206,20 @@
 
 .addBasketButton {
     margin-right: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     background-color: #B9965B;
     border: none;
     font-weight: 800;
     width: 100px;
+}
+
+.addBasketButton:hover {
+    background-color: black;
+    color: rgb(255, 255, 255);
+}
+
+.stockStyles {
+    /* margin-bottom: -px; */
+    font-size: 20px;
 }
