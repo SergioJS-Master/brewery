@@ -7,17 +7,16 @@
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 import { faMobileScreen, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { basketAdd } from '../../../redux/slices/basketSlice'
 import {
   decrement,
   getMerchByIdSelector,
   getMerchInCartSelector,
   increment,
   setSize,
-  resetCount,
+  addInCart,
 } from '../../../redux/slices/merchSlice'
 import styles from './detailPageMerch.module.css'
 
@@ -28,7 +27,17 @@ export function DetailPageMerch() {
   const { merchId } = useParams()
 
   const {
-    id, selectedSize, size, name, count, picture, picture2, discription, discount, price, tags,
+    id,
+    selectedSize,
+    size,
+    name,
+    count,
+    picture,
+    picture2,
+    discription,
+    discount,
+    price,
+    tags,
   } = useSelector((state) => getMerchByIdSelector(state, merchId))
 
   const z = useSelector(getMerchInCartSelector)
@@ -36,7 +45,7 @@ export function DetailPageMerch() {
 
   const addNewItemToCart = (e) => {
     e.preventDefault()
-    dispatch(basketAdd(merchId))
+    dispatch(addInCart(id))
   }
 
   const priceDiscount = Math.round(price * (1 - discount / 100))
@@ -57,10 +66,6 @@ export function DetailPageMerch() {
     dispatch(setSize({ id, size: newSize }))
   }
 
-  useEffect(() => {
-    dispatch(resetCount(id))
-  }, [merchId, selectedSize, dispatch])
-
   return (
     <>
       <div className={styles.DetailPageMerchBlock}>
@@ -72,7 +77,7 @@ export function DetailPageMerch() {
                   <h3 className={styles.tags}>{tags}</h3>
                 </div>
               )}
-              { picture2 ? (
+              {picture2 ? (
                 <img
                   onMouseOver={() => setOver(true)}
                   onMouseOut={() => setOver(false)}
@@ -110,28 +115,29 @@ export function DetailPageMerch() {
                 {Object.keys(size).map((key) => (
                   <button
                     key={key}
-                    onClick={() => { onSizeClick(key); setActive(!isActive) }}
+                    onClick={() => {
+                      onSizeClick(key)
+                      setActive(!isActive)
+                    }}
                     type="button"
                     disabled={!size[key]}
-                    className={isActive ? (styles.buttonSizeActive) : (styles.buttonSize)}
+                    className={isActive ? styles.buttonSizeActive : styles.buttonSize}
                   >
                     {key}
                   </button>
                 ))}
-
               </div>
             )}
             <p>stock: {size?.[selectedSize]}</p>
-            <h2 className={styles.discription}>
-              {discription}
-            </h2>
+            <h2 className={styles.discription}>{discription}</h2>
             <div className={styles.counterContainer}>
               <button
                 type="button"
                 className={styles.counterh2}
                 onClick={decrementButton}
                 disabled={!selectedSize || count === 1}
-              >-
+              >
+                -
               </button>
               <h2 className={styles.counter}>{count}</h2>
               <button
@@ -139,7 +145,8 @@ export function DetailPageMerch() {
                 className={styles.counterh2}
                 onClick={incrementButton}
                 disabled={!selectedSize || count === size[selectedSize]}
-              >+
+              >
+                +
               </button>
               <button
                 className={styles.addBasketButton}

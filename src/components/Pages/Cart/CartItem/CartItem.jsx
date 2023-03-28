@@ -1,30 +1,21 @@
+/* eslint-disable no-debugger */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable max-len */
 /* eslint-disable object-curly-newline */
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {
-  basketIsCkeckedOne,
-  basketRemove,
-  getBasketSelector,
-} from '../../../../redux/slices/basketSlice'
+import { removeMerchFromCart, setChecked } from '../../../../redux/slices/merchSlice'
 import styles from './CartItem.module.css'
 
-export function CartItem({ id, name, picture, price, discount, count }) {
+export function CartItem({ id, name, picture, price, discount, count, isChecked }) {
   const dispatch = useDispatch()
 
-  const productInCart = useSelector(getBasketSelector) // массив товаров в корзине (id count check)
-  const currentProduct = productInCart.find((product) => product.id === id) // каждый продукт по отдельности (id)
-  if (!currentProduct) {
-    return null
-  }
-
   const deleteItemHandler = () => {
-    dispatch(basketRemove(id))
+    dispatch(removeMerchFromCart(id))
   }
 
   const onSelectProduct = (event) => {
-    dispatch(basketIsCkeckedOne({ isChecked: event.target.checked, id }))
+    dispatch(setChecked({ isChecked: event.target.checked, id }))
     // один выбранный товар
   }
 
@@ -36,7 +27,7 @@ export function CartItem({ id, name, picture, price, discount, count }) {
             className={styles.itemInput}
             type="checkbox"
             onChange={onSelectProduct}
-            checked={currentProduct.isChecked}
+            checked={isChecked}
           />
         </div>
         <div className={styles.itemBoxImg}>

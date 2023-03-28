@@ -51,15 +51,77 @@ const merchSlice = createSlice({
         return item
       })
     },
+    setChecked(state, actions) {
+      state.map((item) => {
+        if (item.id === actions.payload.id) {
+          item.isChecked = actions.payload.isChecked
+        }
+        return item
+      })
+    },
+    setAllChecked(state, actions) {
+      state.map((item) => {
+        if (item.inCart) {
+          item.isChecked = actions.payload
+        }
+        return item
+      })
+    },
+    removeCheckedMerch(state) {
+      state.map((item) => {
+        if (item.isChecked) {
+          item.isChecked = false
+          item.inCart = false
+        }
+
+        return item
+      })
+    },
+    removeMerchFromCart(state, actions) {
+      state.map((item) => {
+        if (item.id === actions.payload) {
+          item.inCart = false
+          item.isChecked = false
+        }
+        return item
+      })
+    },
+    addInCart(state, actions) {
+      state.map((item) => {
+        if (item.id === actions.payload) item.inCart = true
+        return item
+      })
+    },
+    clearAll() {
+      return []
+    },
   },
 })
 
+// eslint-disable-next-line operator-linebreak
 export const {
-  setMerch, increment, decrement, setSize, resetCount,
+  setMerch,
+  increment,
+  decrement,
+  setSize,
+  resetCount,
+  setChecked,
+  setAllChecked,
+  addInCart,
+  removeCheckedMerch,
+  removeMerchFromCart,
+  clearAll,
 } = merchSlice.actions
+
 export const getMerchtSelector = (state) => state.merch
+
 export const getMerchByIdSelector = (state, merchId) => state.merch.find(({ id }) => merchId === id)
+
 export const getMerchInCartSelector = (state) => state.merch.filter(({ inCart }) => inCart)
+
+export const getCheckedMerch = (state) => state.merch.filter(({ isChecked }) => isChecked)
+
 export const getMerchByIdsSelector = (state, merchIds) =>
   state.merch.filter(({ id }) => merchIds.includes(id))
+
 export const merchReducer = merchSlice.reducer

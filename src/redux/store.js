@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TOKEN_LS_KEY } from './constants'
-import { getIniteState } from './initState'
+// import { getIniteState } from './initState'
 import { basketReducer } from './slices/basketSlice'
 import { favouriteReducer } from './slices/favouriteSlice'
 import { merchReducer } from './slices/merchSlice'
@@ -13,7 +13,7 @@ export const store = configureStore({
     basket: basketReducer,
     merch: merchReducer,
   },
-  preloadedState: getIniteState(),
+  // preloadedState: getIniteState(),
 })
 
 store.subscribe(() => {

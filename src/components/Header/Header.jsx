@@ -39,7 +39,7 @@ export function Header() {
           />
         </Link>
         <div className={styles.btnBox}>
-          {token && (
+          {!token && (
             <NavLink
               className={({ isActive }) => classNames({ [styles.activeLink]: isActive })}
               to="/cart"

@@ -8,12 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import {
-  basketCheckboxRemove,
-  basketIsCheckedAllCards,
+  getCheckedMerch,
+  getMerchInCartSelector,
+  removeCheckedMerch,
+  setAllChecked,
   clearAll,
-  getBasketSelector,
-} from '../../../redux/slices/basketSlice'
-import { getMerchByIdsSelector } from '../../../redux/slices/merchSlice'
+} from '../../../redux/slices/merchSlice'
 import styles from './Cart.module.css'
 import { CartItem } from './CartItem/CartItem'
 
@@ -21,53 +21,46 @@ export function Cart() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const cartArray = useSelector(getBasketSelector) // массив товаров в корзине (id count check)
+  const merchInCart = useSelector(getMerchInCartSelector)
+  const checkedMerch = useSelector(getCheckedMerch)
+  console.log(checkedMerch)
 
-  const ids = cartArray.map((product) => product.id) // массив id в корзине
-
-  const arrayProductsInCart = useSelector((state) => getMerchByIdsSelector(state, ids))
-
-  const countCheckedProduct = cartArray.filter((product) => product.isChecked) // массив выбранных товаров в корзине
+  const countCheckedMerch = checkedMerch.map((el) => el.count)
+  console.log(countCheckedMerch)
 
   const clearCart = () => {
     dispatch(clearAll())
   } // очистка корзины
 
-  const checkedAllProducts = () => cartArray.every((product) => product.isChecked)
+  const checkedAllProducts = () => merchInCart.every((product) => product.isChecked)
   // функция, при вызове которой ставиться чекбокс, если все чекбоксы проставлены
 
   const selectedAllProducts = (event) => {
-    dispatch(basketIsCheckedAllCards(event.target.checked))
+    dispatch(setAllChecked(event.target.checked))
     // выбираем все продукты (чекбокс)
   }
 
   const removeSelectedProductsHandler = () => {
-    dispatch(basketCheckboxRemove())
+    dispatch(removeCheckedMerch())
     // удаляет выбранный по чекбоксу товар
   }
 
-  const selectedProductsIsChecked = cartArray.filter(
-    (product) => product.isChecked === true,
-    // массив, в котором отфильтрованы товары лежащие в корзине по ключу isCheked
-  )
-
-  const selectedProducts = arrayProductsInCart.filter(
-    (item) => selectedProductsIsChecked.find((product) => product.id === item.id),
-    // массив товаров отфильтрованных по нажатию на чекбокс (фулл)
-  )
-
   const getTotalPrice = () => {
-    const priceSelectedProduct = selectedProducts.reduce((sum, product) => {
-      const { count } = countCheckedProduct.find((item) => item.id === product.id)
-      return Math.round(product.price * count * ((100 - product.discount) / 100) + sum)
-    }, 0)
+    const priceSelectedProduct = checkedMerch.reduce(
+      (sum, product) =>
+        // eslint-disable-next-line implicit-arrow-linebreak
+        Math.round(product.price * product.count * ((100 - product.discount) / 100) + sum),
+      0,
+    )
     // массив хранит в себе цену выбранных продуктов. Проходимся по массиву и считаем суммарно цену с учетом скидок
     return priceSelectedProduct
   }
 
   const countTotalProductInCart = () => {
-    if (countCheckedProduct.length === 0) return <p>No items selected</p>
-    if (countCheckedProduct.length >= 1) return <p>{countCheckedProduct.length} item</p>
+    if (checkedMerch.length === 0) return <p>No items selected</p>
+    if (checkedMerch.length >= 1) {
+      return <p>{checkedMerch.reduce((sum, { count }) => count + sum, 0)} item</p>
+    }
   }
 
   const navToCheckout = () => {
@@ -76,7 +69,7 @@ export function Cart() {
 
   return (
     <>
-      {!cartArray.length ? (
+      {!merchInCart.length ? (
         <div className={styles.clearCart}>
           <h1>Cart is empty</h1>
           <p className={styles.clearCartP}>
@@ -113,7 +106,7 @@ export function Cart() {
                   </button>
                 </div>
               </div>
-              {arrayProductsInCart.map((el) => (
+              {merchInCart.map((el) => (
                 <CartItem
                   key={el.id}
                   id={el.id}
@@ -124,6 +117,7 @@ export function Cart() {
                   discount={el.discount}
                   price={el.price}
                   count={el.count}
+                  isChecked={el.isChecked}
                 />
               ))}
             </div>
