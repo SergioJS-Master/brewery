@@ -135,7 +135,7 @@ export const merchDB = [
     discription:
       'Simple, comfortable, durable and roomy. Ideal for everyday use and an eco-friendly lifestyle. Down with extra plastic bags! 100% cotton, density 280 g/m. Size: 38 x 42 cm',
     discount: 5,
-    count: 60,
+    stock: 60,
     price: 50,
     tags: 'New In',
   },
