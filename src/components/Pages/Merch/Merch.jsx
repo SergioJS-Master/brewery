@@ -7,6 +7,7 @@ import { MerchItem } from './MerchItem/MerchItem'
 import { merchDB } from '../../../API/merch'
 import styles from './Merch.module.css'
 import { getMerchtSelector, setMerch } from '../../../redux/slices/merchSlice'
+import { Loader } from '../../Loader/Loader'
 
 export function Merch() {
   const dispatch = useDispatch()
@@ -14,7 +15,17 @@ export function Merch() {
   const merch = useSelector(getMerchtSelector)
 
   if (!merch.length) {
-    dispatch(setMerch(merchDB))
+    setTimeout(() => {
+      dispatch(setMerch(merchDB))
+    }, 2000)
+  }
+
+  if (!merch.length) {
+    return (
+      <div className={styles.loader}>
+        <Loader />
+      </div>
+    )
   }
 
   return (

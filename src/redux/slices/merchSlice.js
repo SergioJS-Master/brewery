@@ -19,22 +19,6 @@ const merchSlice = createSlice({
         inCart: false,
       }))
     },
-    increment(state, actions) {
-      state.map((item) => {
-        if (item.id === actions.payload.id) {
-          return (item.count += 1)
-        }
-        return item
-      })
-    },
-    decrement(state, actions) {
-      state.map((item) => {
-        if (item.id === actions.payload.id) {
-          return (item.count -= 1)
-        }
-        return item
-      })
-    },
     setSize(state, actions) {
       state.map((item) => {
         if (item.id === actions.payload.id) {
@@ -88,7 +72,10 @@ const merchSlice = createSlice({
     },
     addInCart(state, actions) {
       state.map((item) => {
-        if (item.id === actions.payload) item.inCart = true
+        if (item.id === actions.payload.id) {
+          item.inCart = true
+          item.count = actions.payload.count
+        }
         return item
       })
     },
@@ -101,8 +88,6 @@ const merchSlice = createSlice({
 // eslint-disable-next-line operator-linebreak
 export const {
   setMerch,
-  increment,
-  decrement,
   setSize,
   resetCount,
   setChecked,

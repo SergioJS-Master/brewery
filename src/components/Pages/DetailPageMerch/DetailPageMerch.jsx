@@ -10,23 +10,16 @@
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 import { faMobileScreen, faTruck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast, Toaster } from 'react-hot-toast'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import {
-  decrement,
-  getMerchByIdSelector,
-  increment,
-  setSize,
-  addInCart,
-} from '../../../redux/slices/merchSlice'
+import { getMerchByIdSelector, setSize, addInCart } from '../../../redux/slices/merchSlice'
 import styles from './detailPageMerch.module.css'
 
 export function DetailPageMerch() {
   const dispatch = useDispatch()
   const [over, setOver] = useState(false)
-  // const [isActive, setActive] = useState(false)
   const { merchId } = useParams()
 
   const {
@@ -45,10 +38,13 @@ export function DetailPageMerch() {
   } = useSelector((state) => getMerchByIdSelector(state, merchId))
 
   const [active, setActive] = useState(size?.[0])
+  const [currentCount, setCurrentCount] = useState(1)
+
+  console.log(setCurrentCount)
 
   const addNewItemToCart = (e) => {
     e.preventDefault()
-    dispatch(addInCart(id))
+    dispatch(addInCart({ id, count: currentCount }))
     toast.success('Product added!', {
       duration: 2000,
     })
@@ -57,22 +53,26 @@ export function DetailPageMerch() {
   const priceDiscount = Math.round(price * (1 - discount / 100))
 
   const decrementButton = () => {
-    if (count > 1) {
-      dispatch(decrement({ id }))
+    if (currentCount > 1) {
+      setCurrentCount(currentCount - 1)
     }
   }
 
   const incrementButton = () => {
-    if (count < stock) {
-      dispatch(increment({ id }))
+    if (currentCount < stock) {
+      setCurrentCount(currentCount + 1)
     } else if (size[selectedSize] > count) {
-      dispatch(increment({ id }))
+      setCurrentCount(currentCount + 1)
     }
   }
 
   const onSizeClick = (newSize) => {
     dispatch(setSize({ id, size: newSize }))
   }
+
+  useEffect(() => {
+    setCurrentCount(1)
+  }, [selectedSize])
 
   return (
     <>
@@ -85,16 +85,14 @@ export function DetailPageMerch() {
                   <h3 className={styles.tags}>{tags.toUpperCase()}</h3>
                 </div>
               )}
-              {!discount
-                ? null
-                : discount && (
-                    <div>
-                      <h3 className={styles.discount}>
-                        {discount}
-                        <span>% OFF</span>
-                      </h3>
-                    </div>
-                  )}
+              {!!discount && (
+                <div>
+                  <h3 className={styles.discount}>
+                    {discount}
+                    <span>% OFF</span>
+                  </h3>
+                </div>
+              )}
               {picture2 ? (
                 <img
                   onMouseOver={() => setOver(true)}
@@ -138,41 +136,47 @@ export function DetailPageMerch() {
                     key={key}
                     onClick={() => {
                       onSizeClick(key)
-                      setActive(!active)
+                      setActive(key)
                     }}
                     type="button"
                     disabled={!size[key]}
-                    className={active ? styles.buttonSizeActive : styles.buttonSize}
+                    className={active === key ? styles.buttonSizeActive : styles.buttonSize}
                   >
                     {key}
                   </button>
                 ))}
               </div>
             )}
-            <p>stock: {size?.[selectedSize]}</p>
             <h2 className={styles.discription}>{discription}</h2>
+            <div>
+              <p className={styles.stockStyles}>STOCK: {size?.[selectedSize] || stock}</p>
+            </div>
             <div className={styles.counterContainer}>
               <button
                 type="button"
                 className={styles.counterh2}
                 onClick={decrementButton}
-                disabled={!selectedSize || count === 1}
+                disabled={!size ? currentCount === 1 : !selectedSize || currentCount === 1}
               >
                 -
               </button>
-              <h2 className={styles.counter}>{count}</h2>
+              <h2 className={styles.counter}>{currentCount}</h2>
               <button
                 type="button"
                 className={styles.counterh2}
                 onClick={incrementButton}
-                disabled={!selectedSize || count === size[selectedSize]}
+                disabled={
+                  !size
+                    ? currentCount === stock
+                    : !selectedSize || currentCount === size[selectedSize]
+                }
               >
                 +
               </button>
               <button
                 className={styles.addBasketButton}
                 type="button"
-                disabled={!selectedSize}
+                disabled={!size ? null : !selectedSize}
                 onClick={addNewItemToCart}
               >
                 ADD CART
