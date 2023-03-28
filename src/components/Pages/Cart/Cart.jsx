@@ -150,7 +150,12 @@ export function Cart() {
                   </div>
                 </div>
                 <div className={styles.btnBox}>
-                  <button className={styles.btnCart} type="button" onClick={navToCheckout}>
+                  <button
+                    className={styles.btnCart}
+                    type="button"
+                    onClick={navToCheckout}
+                    disabled={!checkedMerch.length}
+                  >
                     Checkout
                   </button>
                 </div>
