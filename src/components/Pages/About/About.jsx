@@ -7,7 +7,7 @@ import production1 from '../../../images/solod.jpg'
 import production2 from '../../../images/mash.jpg'
 import production3 from '../../../images/fermentation.jpg'
 import production4 from '../../../images/finish.jpg'
-import team from '../../../images/team.PNG'
+import team from '../../../images/team.png'
 import stylesAbout from './About.module.css'
 
 export function About() {
