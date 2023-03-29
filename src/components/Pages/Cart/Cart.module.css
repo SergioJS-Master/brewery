@@ -161,6 +161,7 @@
 
 .btnCart:disabled {
   opacity: 0.5;
+  color: white;
 }
 
 .btnClear {
@@ -178,6 +179,42 @@
   padding: 12px;
   margin-top: 34px;
   margin-left: 40px;
+}
+
+.btnClearCheck {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+  text-transform: uppercase;
+  --tw-text-opacity: 1;
+  color: rgb(10 4 6 / var(--tw-text-opacity));
+  width: max-content;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 12px;
+  margin-top: 34px;
+  margin-left: 40px;
+}
+
+.btnClearCheck:disabled:hover {
+  opacity: 0.5;
+  color: white;
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+}
+
+.btnClearCheck:disabled {
+  opacity: 0.5;
+  color: white;
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 150 91 / var(--tw-bg-opacity));
+}
+
+.btnClearCheck:hover {
+  background-color: black;
+  color: white;
 }
 
 .btnClear:hover {

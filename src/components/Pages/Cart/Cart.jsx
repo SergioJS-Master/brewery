@@ -23,10 +23,6 @@ export function Cart() {
 
   const merchInCart = useSelector(getMerchInCartSelector)
   const checkedMerch = useSelector(getCheckedMerch)
-  console.log(checkedMerch)
-
-  const countCheckedMerch = checkedMerch.map((el) => el.count)
-  console.log(countCheckedMerch)
 
   const clearCart = () => {
     dispatch(clearAll())
@@ -95,9 +91,10 @@ export function Cart() {
                 </div>
                 <div className={styles.btnBoxH}>
                   <button
-                    className={styles.btnClear}
+                    className={styles.btnClearCheck}
                     type="button"
                     onClick={removeSelectedProductsHandler}
+                    disabled={!checkedMerch.length}
                   >
                     delete checked
                   </button>
