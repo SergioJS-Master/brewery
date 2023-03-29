@@ -59,11 +59,6 @@ export function Payments() {
           *Your card details are protected using PCI DSS v3.2 security standards.
         </p>
       </div>
-      {/* <div>
-        <button className={styles.pay} type="button">
-          place order
-        </button>
-      </div> */}
       <Toaster
         position="bottom-right"
         reverseOrder={false}

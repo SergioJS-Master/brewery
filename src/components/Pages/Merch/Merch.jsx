@@ -59,7 +59,7 @@ export function Merch() {
           <FontAwesomeIcon icon={faTruck} className={styles.img} />
           <div className={styles.textBox}>
             <p className={styles.textOne}>FREE SHIPPING</p>
-            <p className={styles.textTwo}>OVER $80.00</p>
+            <p className={styles.textTwo}>OVER €80.00</p>
           </div>
         </div>
         <hr className={styles.hr} />

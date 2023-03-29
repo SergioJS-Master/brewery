@@ -40,8 +40,6 @@ export function DetailPageMerch() {
   const [active, setActive] = useState(size?.[0])
   const [currentCount, setCurrentCount] = useState(1)
 
-  console.log(setCurrentCount)
-
   const addNewItemToCart = (e) => {
     e.preventDefault()
     dispatch(addInCart({ id, count: currentCount }))
@@ -198,7 +196,7 @@ export function DetailPageMerch() {
           <FontAwesomeIcon icon={faTruck} className={styles.img} />
           <div className={styles.textBox}>
             <p className={styles.textOne}>FREE SHIPPING</p>
-            <p className={styles.textTwo}>OVER $80.00</p>
+            <p className={styles.textTwo}>OVER €80.00</p>
           </div>
         </div>
         <hr className={styles.hr} />

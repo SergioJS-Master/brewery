@@ -15,7 +15,6 @@ export function ModalWarning() {
       document.body.style.overflow = ''
     }
     if (!isTest) document.body.style.overflow = 'hidden'
-    // document.body.classList.toggle('test-message', !isTest)
   }, [isTest])
 
   const onSubmit = (e) => {

@@ -158,7 +158,6 @@
     border: none;
     font-size: 15px;
     font-weight: 800;
-    /* transition: .2s ease; */
 }
 
 .buttonSize:hover {
@@ -179,14 +178,6 @@
     --tw-bg-opacity: 1;
     background-color: rgb(185 150 91 / var(--tw-bg-opacity));
 }
-
-/* .buttonSize:focus {
-    border: 3px solid;
-    margin-right: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: black;
-} */
 
 .buttonSizeActive {
     border: 3px solid;
@@ -262,6 +253,5 @@
 }
 
 .stockStyles {
-    /* margin-bottom: -px; */
     font-size: 20px;
 }

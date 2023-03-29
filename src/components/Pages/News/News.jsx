@@ -1,8 +1,5 @@
 /* eslint-disable consistent-return */
 /* eslint-disable max-len */
-// import { useEffect, useState } from 'react'
-// import { View } from 'react-native'
-// import { Card, Title } from 'react-native-paper'
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import styles from './News.module.css'

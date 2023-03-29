@@ -118,18 +118,6 @@ export function Cart() {
                 />
               ))}
             </div>
-            {/* {arrayProductsInCart.map((el) => (
-              <CartItem
-                key={el.id}
-                id={el.id}
-                name={el.name}
-                size={el.size}
-                picture={el.picture}
-                discription={el.discription}
-                discount={el.discount}
-                price={el.price}
-              />
-            ))} */}
             <div className={styles.cartRight}>
               <div>
                 <p className={styles.order}>ORDER CONDITIONS</p>
@@ -172,7 +160,7 @@ export function Cart() {
               <FontAwesomeIcon icon={faTruck} className={styles.img} />
               <div className={styles.textBox}>
                 <p className={styles.textOne}>FREE SHIPPING</p>
-                <p className={styles.textTwo}>OVER $80.00</p>
+                <p className={styles.textTwo}>OVER €80.00</p>
               </div>
             </div>
             <hr className={styles.hr} />

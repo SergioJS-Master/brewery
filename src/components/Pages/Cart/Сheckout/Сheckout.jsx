@@ -11,10 +11,8 @@ import { useSelector } from 'react-redux'
 import { validatorCheckout } from './validatorCheckout'
 import styles from './Сheckout.module.css'
 import { Payments } from './Payments/Payments'
-// import { getBasketSelector } from '../../../../redux/slices/basketSlice'
 import {
   getCheckedMerch,
-  // getMerchByIdsSelector,
   getMerchtSelector,
 } from '../../../../redux/slices/merchSlice'
 
@@ -44,14 +42,7 @@ export function Сheckout() {
     setForm('REVIEW & PAYMENTS')
     window.scrollTo(0, 0)
   }
-  // const cartArray = useSelector(getBasketSelector)
-  // const ids = cartArray.map((product) => product.id)
-  // const arrayProductsInCart = useSelector((state) => getMerchByIdsSelector(state, ids))
-  // const countCheckedProduct = cartArray.filter((product) => product.isChecked)
-  // const selectedProductsIsChecked = cartArray.filter((product) => product.isChecked)
-  // const selectedProducts = arrayProductsInCart.filter((item) =>
-  //   selectedProductsIsChecked.find((product) => product.id === item.id),
-  // )
+
   const getTotalPrice = () => {
     const priceSelectedProduct = checkedMerch.reduce(
       (sum, product) =>
@@ -73,9 +64,6 @@ export function Сheckout() {
               )}
               SHIPPING
             </div>
-            {/* {form === 'REVIEW & PAYMENTS' && (
-              <FontAwesomeIcon icon={faCheck} className={styles.check} />
-            )} */}
             <div className={styles.btnCheckoutLeft}>
               {form === 'REVIEW & PAYMENTS' && (
                 <FontAwesomeIcon icon={faCheck} className={styles.check} />
@@ -158,10 +146,6 @@ export function Сheckout() {
                   <button
                     type="submit"
                     className={styles.btnNext}
-                    // onClick={() => {
-                    //   setForm('REVIEW & PAYMENTS')
-                    //   window.scrollTo(0, 0)
-                    // }}
                   >
                     NEXT
                   </button>
@@ -211,7 +195,7 @@ export function Сheckout() {
           <FontAwesomeIcon icon={faTruck} className={styles.img} />
           <div className={styles.textBox}>
             <p className={styles.textOne}>FREE SHIPPING</p>
-            <p className={styles.textTwo}>OVER $80.00</p>
+            <p className={styles.textTwo}>OVER €80.00</p>
           </div>
         </div>
         <hr className={styles.hrD} />

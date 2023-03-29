@@ -47,9 +47,6 @@ export function CartItem({ id, name, picture, price, discount, count, isChecked 
           </div>
           <div className={styles.itemBoxA}>
             <p className={styles.textCount}>price:</p>
-            {/* <h6 className={styles.price}>
-              <span>{discount > 0 && `${price} €`}</span>
-            </h6> */}
             <h4 className={styles.price}>
               {discount > 0 && `${(price * count * (100 - discount)) / 100} €`}
               {discount === 0 && `${count * price} €`}

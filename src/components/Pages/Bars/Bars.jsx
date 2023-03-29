@@ -52,7 +52,6 @@ export function Bars() {
     queryFn: () => barsApi.getAllBars(),
   })
 
-  // console.log(error, data)
   if (isLoading) {
     return (
       <div className={styles.loader}>

@@ -10,10 +10,7 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { ErrorMessage, Field, Form, Formik, useField, useFormikContext } from 'formik'
-
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 import 'react-datepicker/dist/react-datepicker.css'
-
 import ReactDatePicker from 'react-datepicker'
 import { toast, Toaster } from 'react-hot-toast'
 import { Modal } from '../../Modal/Modal'
@@ -59,7 +56,6 @@ function DatePickerField({ ...props }) {
 export function DetailPageBar() {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   const { barId } = useParams()
-  console.log(barId)
   const dispatch = useDispatch()
 
   const {
@@ -81,7 +77,7 @@ export function DetailPageBar() {
 
   const getQueryDetailPageKey = (id) => ['detailPage', id]
 
-  const { data, isLoading, isError, error, refetch } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: getQueryDetailPageKey(+barId),
     queryFn: () => barsApi.getBarById(+barId),
     enabled: !!barId,
@@ -89,8 +85,6 @@ export function DetailPageBar() {
 
   if (isLoading) return <Loader />
   if (isError) return <h1>Error happend</h1>
-
-  console.log(data, error, refetch)
 
   const clickFavouriteHandler = (e) => {
     e.stopPropagation()
@@ -102,8 +96,7 @@ export function DetailPageBar() {
     }
   }
 
-  const submitHandler = async (values) => {
-    console.log({ values })
+  const submitHandler = async () => {
     document.body.style.overflow = ''
     setIsOpenDeleteModal(false)
     toast('booking request sent')

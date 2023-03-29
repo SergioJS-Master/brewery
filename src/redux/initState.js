@@ -12,7 +12,6 @@ export const initState = {
     _id: '',
   },
   favourite: [],
-  basket: [],
   merch: [],
 }
 
