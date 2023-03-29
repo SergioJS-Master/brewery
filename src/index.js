@@ -80,7 +80,7 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  // { basename: '/brewery/' },
+  { basename: '/brewery/' },
 )
 
 const queryClient = new QueryClient({
