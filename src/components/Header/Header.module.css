@@ -49,6 +49,7 @@
   background: transparent;
   color: white;
   border: none;
+  position: relative;
 }
 
 .btnBox {
@@ -59,4 +60,14 @@
 
 .activeLink {
   opacity: 0.5;
+}
+
+.cartItemCount {
+  position: absolute;
+  right: -10px;
+  top: -20px;
+  background: transparent;
+  color: white;
+  padding: 2px 5px;
+  font-size: 22px;
 }
