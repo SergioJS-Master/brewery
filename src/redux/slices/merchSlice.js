@@ -8,9 +8,6 @@ const merchSlice = createSlice({
   initialState: initState.merch,
   reducers: {
     setMerch(state, actions) {
-      // state = {
-      //   ...actions.payload, count: 1, selectedSize: null, inCart: false,
-      // }
       return actions.payload.map((item) => ({
         ...item,
         count: 1,

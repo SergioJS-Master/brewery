@@ -38,7 +38,6 @@ export function BarsItem({
   }
 
   const clickDetailPage = (e) => {
-    console.log(e)
     if (e.target.dataset.hello === 'hello' || e.target.dataset.helloname === 'helloName') {
       navigate(`/bars/${id}`)
     }

@@ -29,11 +29,9 @@ import { getQueryBarKey } from './utils'
 function FavouriteBar({ id, name }) {
   const dispatch = useDispatch()
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
-  // const queryClient = useQueryClient()
   const deleteFavouritesBarHandler = () => {
     document.body.style.overflow = ''
     dispatch(deleteItemFromFavourite(id))
-    // queryClient.invalidateQueries({ queryKey: [getQueryBarKey(favouritesBarId.lenght)] })
   }
 
   const closeDeleteModalHandler = () => {
@@ -178,10 +176,6 @@ export const User = () => {
         <div className={styles.headerUserLeft}>
           <p className={styles.textTitle}>WELCOME TO PERSONAL PAGE</p>
         </div>
-        {/* <div className={styles.headerUserRight}>
-          <img className={styles.avatarMini} src={data.avatar} alt="avatar" />
-          <p className={styles.textTitleRight}>Hello {data.name.split(' ', 1)}</p>
-        </div> */}
       </div>
       <div className={styles.userInfo}>
         <div className={styles.userInfoLeft}>

@@ -85,8 +85,6 @@ export function Slider({ sliders }) {
         onClick={nextSlide}
       />
       <FontAwesomeIcon icon={faAngleLeft} className={sliderStyles.arrowLeft} onClick={prevSlide} />
-
-      {/* <Cards className={sliderStyles.cardsContainerSlider} /> */}
     </div>
   )
 }

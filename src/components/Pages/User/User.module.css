@@ -42,7 +42,6 @@
   background-color: #170200;
   right: 50px;
   top: -20px;
-  /* border: 2px solid white; */
   padding: 10px;
   width: auto;
 }
@@ -50,7 +49,6 @@
 .headerUserLeft {
   position: absolute;
   background-color: #170200;
-  /* border: 2px solid white; */
   padding: 10px;
   width: auto;
   top: -20px;

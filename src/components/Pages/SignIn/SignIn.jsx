@@ -5,7 +5,7 @@ import { useMutation } from '@tanstack/react-query'
 import { Form, Formik } from 'formik'
 import { useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { breweryApi } from '../../../API/BreweryApi'
 import { EmailInput } from '../../EmailInput/EmailInput'
 import { Loader } from '../../Loader/Loader'
@@ -13,7 +13,7 @@ import { PasswordInput } from '../../PasswordInput/PasswordInput'
 import styles from './SignIn.module.css'
 import { createSignInFormValidationScheme } from './validator'
 import logo from '../../../images/signUp1.jpg'
-import { getTokenSelector, setUser } from '../../../redux/slices/userSlice'
+import { setUser } from '../../../redux/slices/userSlice'
 
 const initialLoginValues = {
   email: '',
@@ -23,7 +23,6 @@ const initialLoginValues = {
 export function SignIn() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const token = useSelector(getTokenSelector)
   const { mutateAsync, isLoading, isError, error } = useMutation({
     mutationFn: (values) =>
       breweryApi.signIn(values).then((data) => {
@@ -54,8 +53,6 @@ export function SignIn() {
       </div>
     )
   }
-
-  console.log(token)
 
   return (
     <div className={styles.wr}>

@@ -97,13 +97,6 @@ export function Menu({ active, setActive }) {
               transition={{ duration: 0.3 }}
               className={styles.menuListA}
             >
-              {/* <Link to="/merch/merchId">merchId</Link>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: [null, 1.2, 1.1] }}
-              transition={{ duration: 0.3 }}
-              className={styles.menuListA}
-            > */}
               <Link to="/merch">MERCH</Link>
             </motion.div>
             <motion.div
